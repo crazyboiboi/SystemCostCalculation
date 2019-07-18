@@ -47,9 +47,9 @@ namespace SystemCostCalculation
             }
         }
 
-        private static string LoadConnectionString(string id = "Default")
+        private static string LoadConnectionString()
         {
-            return ConfigurationManager.ConnectionStrings[id].ConnectionString;
+            return ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
         }
 
     }

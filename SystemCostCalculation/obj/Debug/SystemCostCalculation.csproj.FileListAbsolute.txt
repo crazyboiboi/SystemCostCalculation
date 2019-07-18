@@ -21,3 +21,5 @@ D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin
 D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\System.Data.SQLite.xml
 D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\System.Data.SQLite.dll.config
 D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.csproj.CopyComplete
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\ManageSupplierView.g.cs
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\ManageSupplierView.baml
