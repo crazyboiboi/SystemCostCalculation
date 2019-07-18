@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:SystemCostCalculation"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="600">
-    
-    
-    
+
+
+
     <Grid Margin="10 0 10 0">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.25*"/>
@@ -60,12 +60,12 @@
                 <DataGridTextColumn IsReadOnly="true" Header="Cost" Binding="{Binding }" Width="0.5*"/>
             </DataGrid.Columns>
         </DataGrid>
-        
-        
-        
+
+
+
     </Grid>
-    
-    
-    
-    
+
+
+
+
 </Window>

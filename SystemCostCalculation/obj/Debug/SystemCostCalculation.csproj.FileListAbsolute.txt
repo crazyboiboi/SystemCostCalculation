@@ -15,3 +15,9 @@ D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj
 D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.pdb
 D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\StockDatabase.db
 D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation_Content.g.cs
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\Dapper.dll
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\System.Data.SQLite.dll
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\Dapper.xml
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\System.Data.SQLite.xml
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\System.Data.SQLite.dll.config
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.csproj.CopyComplete
