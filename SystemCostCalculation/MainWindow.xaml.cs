@@ -20,9 +20,24 @@ namespace SystemCostCalculation
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<ItemModel> items = new List<ItemModel>();
+        List<SupplierModel> suppliers = new List<SupplierModel>();
         public MainWindow()
         {
             InitializeComponent();
+
+            LoadItemList();
+            LoadSupplierList();
+        }
+
+        private void LoadItemList()
+        {
+            items = SqliteDataAccess.LoadItems();
+        }
+
+        private void LoadSupplierList()
+        {
+            suppliers = SqliteDataAccess.LoadSuppliers();
         }
     }
 }
