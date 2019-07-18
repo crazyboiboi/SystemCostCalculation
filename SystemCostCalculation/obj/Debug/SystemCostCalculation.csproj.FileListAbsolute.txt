@@ -1,0 +1,15 @@
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\SystemCostCalculation.exe.config
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\SystemCostCalculation.exe
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\SystemCostCalculation.pdb
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.csprojAssemblyReference.cache
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\MainWindow.g.cs
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\App.g.cs
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation_MarkupCompile.cache
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation_MarkupCompile.lref
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\MainWindow.baml
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.g.resources
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.Properties.Resources.resources
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.csproj.GenerateResource.cache
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.csproj.CoreCompileInputs.cache
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.exe
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.pdb
