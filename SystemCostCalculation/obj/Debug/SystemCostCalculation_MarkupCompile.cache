@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\
 SystemCostCalculation
 none
 false
 DEBUG;TRACE
-D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\App.xaml
-11151548125
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\App.xaml
+2-1223201199
 
-5-2017746502
+8-1856263102
 13-1505183044
-MainWindow.xaml;
+MainWindow.xaml;Views\ManageSupplierView.xaml;
 
-False
+True
 
