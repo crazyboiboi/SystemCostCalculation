@@ -66,10 +66,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ItemModel.cs" />
+    <Compile Include="Models\ItemModel.cs" />
     <Compile Include="ObservableObject.cs" />
     <Compile Include="SqliteDataAccess.cs" />
-    <Compile Include="SupplierModel.cs" />
+    <Compile Include="Models\SupplierModel.cs" />
     <Compile Include="ViewModels\ManageSupplierViewModel.cs" />
     <Compile Include="Views\ManageSupplierView.xaml.cs">
       <DependentUpon>ManageSupplierView.xaml</DependentUpon>

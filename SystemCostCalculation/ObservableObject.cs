@@ -10,7 +10,6 @@ namespace SystemCostCalculation
 {
     public abstract class ObservableObject :INotifyPropertyChanged
     {
-
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged(string propertyName)
@@ -23,7 +22,7 @@ namespace SystemCostCalculation
                 this.PropertyChanged(this, e);
             }
         }
-
+        
         [Conditional("DEBUG")]
         [DebuggerStepThrough]
         public virtual void VerifyPropertyName(string propertyName)
