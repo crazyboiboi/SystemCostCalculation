@@ -47,6 +47,37 @@ namespace SystemCostCalculation
             }
         }
 
+        public static void UpdateItem(ItemModel item)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Execute("update Item set Name = @Name, Size = @Size, Type = @Type, Price = @Price where ID = @ID", item);
+            }
+        }
+
+        public static void UpdateSupplier(SupplierModel supplier)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Execute("update Supplier set Name = @Name where ID = @ID", supplier);
+            }
+        }
+
+        public static void DeleteItem(ItemModel item)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Execute("delete from Item where ID = @ID", item);
+            }
+        }
+        public static void DeleteSupplier(SupplierModel supplier)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Execute("delete from Item where ID = @ID", supplier);
+            }
+        }
+
         private static string LoadConnectionString()
         {
             return ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
