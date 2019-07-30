@@ -1,7 +1,6 @@
 D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\SystemCostCalculation.exe.config
 D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\SystemCostCalculation.exe
 D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\SystemCostCalculation.pdb
-D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.csprojAssemblyReference.cache
 D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\MainWindow.g.cs
 D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\App.g.cs
 D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation_MarkupCompile.cache
@@ -50,3 +49,6 @@ C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\ManageItemView.g.cs
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\ManageItemView.baml
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\ManageItemView.g.cs
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\ManageItemView.baml
