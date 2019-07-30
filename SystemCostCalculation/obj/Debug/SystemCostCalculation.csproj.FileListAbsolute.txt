@@ -23,3 +23,30 @@ D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin
 D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.csproj.CopyComplete
 D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\ManageSupplierView.g.cs
 D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\ManageSupplierView.baml
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\bin\Debug\StockDatabase.db
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\bin\Debug\SystemCostCalculation.exe.config
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\bin\Debug\SystemCostCalculation.exe
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\bin\Debug\SystemCostCalculation.pdb
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\bin\Debug\Dapper.dll
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\bin\Debug\System.Data.SQLite.dll
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\bin\Debug\Dapper.xml
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\bin\Debug\System.Data.SQLite.xml
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\bin\Debug\System.Data.SQLite.dll.config
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\MainWindow.g.cs
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\ManageSupplierView.g.cs
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\App.g.cs
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation_Content.g.cs
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation_MarkupCompile.cache
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation_MarkupCompile.lref
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\MainWindow.baml
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\ManageSupplierView.baml
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.g.resources
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.Properties.Resources.resources
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.csproj.GenerateResource.cache
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.csproj.CoreCompileInputs.cache
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.csproj.CopyComplete
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.exe
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.pdb
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\ManageItemView.g.cs
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\ManageItemView.baml

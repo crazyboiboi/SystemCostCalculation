@@ -12,7 +12,7 @@ namespace SystemCostCalculation
 {
     public class SqliteDataAccess
     {
-
+        /*
         public static List<ItemModel> LoadItems()
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
@@ -82,6 +82,6 @@ namespace SystemCostCalculation
         {
             return ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
         }
-
+        */
     }
 }

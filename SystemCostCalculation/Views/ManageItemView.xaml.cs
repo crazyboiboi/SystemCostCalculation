@@ -13,18 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SystemCostCalculation
+namespace SystemCostCalculation.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ManageItemView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ManageItemView : UserControl
     {
-        public MainWindow()
+        public ManageItemView()
         {
-            InitializeComponent();            
+            InitializeComponent();
         }
-
-        
     }
 }

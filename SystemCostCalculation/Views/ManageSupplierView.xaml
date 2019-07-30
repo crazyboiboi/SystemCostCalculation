@@ -6,62 +6,73 @@
              xmlns:local="clr-namespace:SystemCostCalculation.Views"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="600">
-    
-    
-    <Grid Margin="10 0 10 0">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="0.25*"/>
-            <RowDefinition Height="0.5*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
 
 
-        <StackPanel Grid.Row="0" VerticalAlignment="Center" Orientation="Horizontal">
-            <TextBlock Text="Supplier Name"/>
-            <TextBox Width="200" Margin="20 0 0 0"/>
-            <Button Content="Add" Width="40" Margin="20 0 0 0"/>
-            <Button Content="Left" Width="40" Margin="20 0 0 0"/>
-            <Button Content="Right" Width="40" Margin="20 0 0 0"/>
-        </StackPanel>
-
-        <Grid Margin="0 0 0 10" Grid.Row="1">
+    <Border Padding="10">
+        <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.5*" />
-                <RowDefinition Height="0.5*" />
-                <RowDefinition Height="0.5*" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Row="0" Grid.Column="0" Text="Supplier ID" />
-            <TextBox Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Padding="2" Width="150"/>
-            <TextBlock Grid.Row="0" Grid.Column="1" Text="Supplier Contact" />
-            <TextBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Padding="2" Width="150"/>
-            <TextBlock Grid.Row="2" Grid.Column="0" Text="Supplier Address" />
-            <TextBox Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" Padding="2" Width="150"/>
-            <TextBlock Grid.Row="2" Grid.Column="1" Text="Other Details" />
-            <TextBox Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Padding="2" Width="150"/>
+            <StackPanel Grid.Row="0" VerticalAlignment="Center" Orientation="Horizontal">
+                <TextBlock Text="Supplier Name"/>
+                <TextBox Width="200" Margin="20 0 0 0" Text="{Binding name, Mode=TwoWay}"/>
+                <Button Content="Add" Width="40" Margin="20 0 0 0" Command="{Binding ButtonCommand}" CommandParameter="Hai"/>
+                <Button Content="Left" Width="40" Margin="20 0 0 0" Command="{Binding DebugCommand}"/>
+                <Button Content="Right" Width="40" Margin="20 0 0 0"/>
+            </StackPanel>
+
+            <Grid Margin="0 0 0 0" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.5*" />
+                    <RowDefinition Height="0.5*" />
+                    <RowDefinition Height="0.5*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Supplier ID" />
+                <TextBox Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Padding="2" Width="150"/>
+                <TextBlock Grid.Row="0" Grid.Column="1" Text="Supplier Contact" />
+                <TextBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Padding="2" Width="150"/>
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Supplier Address" />
+                <TextBox Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" Padding="2" Width="150"/>
+                <TextBlock Grid.Row="2" Grid.Column="1" Text="Other Details" />
+                <TextBox Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Padding="2" Width="150"/>
+            </Grid>
+
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Margin="0 0 20 0" Text="Item"/>
+                <ComboBox Width="150" />
+            </StackPanel>
+
+
+
+            <DataGrid Grid.Row="3" x:Name="stockItemTable"  CanUserAddRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" AutoGenerateColumns="False" Margin="0 0 0 0" >
+                <DataGrid.Columns >
+                    <DataGridTextColumn IsReadOnly="true" Header="ItemID" Binding="{Binding }" Width="0.25*"/>
+                    <DataGridTextColumn IsReadOnly="true" Header="Description" Binding="{Binding}" Width="*"/>
+                    <DataGridTextColumn IsReadOnly="true" Header="Size" Binding="{Binding }" Width="0.5*"/>
+                    <DataGridTextColumn IsReadOnly="true" Header="Type" Binding="{Binding }" Width="0.5*"/>
+                    <DataGridTextColumn IsReadOnly="true" Header="Cost" Binding="{Binding }" Width="0.5*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+
+
         </Grid>
+    </Border>
 
 
-        <DataGrid Grid.Row="2" x:Name="stockItemTable"  CanUserAddRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" AutoGenerateColumns="False" Margin="0 0 10 0" >
-            <DataGrid.Columns >
-                <DataGridTextColumn IsReadOnly="true" Header="ItemID" Binding="{Binding }" Width="0.25*"/>
-                <DataGridTextColumn IsReadOnly="true" Header="Description" Binding="{Binding}" Width="*"/>
-                <DataGridTextColumn IsReadOnly="true" Header="Size" Binding="{Binding }" Width="0.5*"/>
-                <DataGridTextColumn IsReadOnly="true" Header="Type" Binding="{Binding }" Width="0.5*"/>
-                <DataGridTextColumn IsReadOnly="true" Header="Cost" Binding="{Binding }" Width="0.5*"/>
-            </DataGrid.Columns>
-        </DataGrid>
-        
-        
-    </Grid>
-    
-    
+
 </UserControl>
