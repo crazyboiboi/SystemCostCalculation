@@ -17,7 +17,11 @@
             <views:ManageSupplierView/>
         </DataTemplate>
     </Window.Resources>
-    
+
+
+    <Window.DataContext>
+        <viewmodels:MainWindowViewModel/>
+    </Window.DataContext>
     
     
     <Border Padding="10">
