@@ -52,3 +52,15 @@ C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\
 D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\ManageItemView.g.cs
 D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\ManageItemView.baml
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\bin\Debug\CommonServiceLocator.dll
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\bin\Debug\GalaSoft.MvvmLight.dll
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\bin\Debug\GalaSoft.MvvmLight.Extras.dll
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\bin\Debug\GalaSoft.MvvmLight.Platform.dll
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\bin\Debug\GalaSoft.MvvmLight.pdb
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\bin\Debug\GalaSoft.MvvmLight.xml
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\bin\Debug\GalaSoft.MvvmLight.Extras.pdb
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\bin\Debug\GalaSoft.MvvmLight.Extras.xml
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\bin\Debug\GalaSoft.MvvmLight.Platform.pdb
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\bin\Debug\GalaSoft.MvvmLight.Platform.xml
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.csprojAssemblyReference.cache

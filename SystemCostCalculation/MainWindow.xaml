@@ -5,14 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SystemCostCalculation"
         xmlns:viewmodels="clr-namespace:SystemCostCalculation.ViewModels"        
+        xmlns:views="clr-namespace:SystemCostCalculation.Views"        
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="1200">
 
-
-    <Window.DataContext>
-        <viewmodels:MainWindowViewModel/>
-    </Window.DataContext>
-
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewmodels:ManageItemViewModel}">
+            <views:ManageItemView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:ManageSupplierViewModel}">
+            <views:ManageSupplierView/>
+        </DataTemplate>
+    </Window.Resources>
+    
+    
+    
     <Border Padding="10">
 
         <Grid>
@@ -28,26 +35,18 @@
 
             <StackPanel Grid.Row="1" Orientation="Horizontal">
                 <Button Content="Home" Width="150" Background="AliceBlue" />
-                <Button Content="Stock Item" Width="150" Background="AliceBlue" />
-                <Button Content="Supplier" Width="150" Background="AliceBlue" />
-                <Button Content="Templates" Width="150" Background="AliceBlue" />
+                <Button Content="Item" Width="150" Background="AliceBlue" Command="{Binding ItemTabCommand}"/>
+                <Button Content="Supplier" Width="150" Background="AliceBlue" Command="{Binding SupplierTabCommand}"/>
+                <Button Content="Template" Width="150" Background="AliceBlue" />
                 <Button Content="Summary" Width="150" Background="AliceBlue" />
                 <Button Content="Comment" Width="150" Background="AliceBlue" />
             </StackPanel>
-            
-            
-            
-            
+
+            <Grid Grid.Row="2">
+                <ContentControl Content="{Binding currentViewModel}"/>
+
+            </Grid>
         </Grid>
-            
-            
-            
-        
         
     </Border>
-    
-
-
-
-
 </Window>
