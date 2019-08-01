@@ -7,7 +7,8 @@
         xmlns:viewmodels="clr-namespace:SystemCostCalculation.ViewModels"        
         xmlns:views="clr-namespace:SystemCostCalculation.Views"        
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1200">
+        Title="MainWindow" Width="1920" Height="1030"
+        WindowStartupLocation="CenterScreen" WindowState="Maximized">
 
     <Window.Resources>
         <DataTemplate DataType="{x:Type viewmodels:ManageItemViewModel}">
@@ -22,35 +23,45 @@
     <Window.DataContext>
         <viewmodels:MainWindowViewModel/>
     </Window.DataContext>
-    
-    
-    <Border Padding="10">
-
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="0.75*"/>
-                <RowDefinition Height="600"/>
-            </Grid.RowDefinitions>
 
 
-            <TextBlock Text="System Cost Calculation" FontSize="40"/>
 
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-            <StackPanel Grid.Row="1" Orientation="Horizontal">
-                <Button Content="Home" Width="150" Background="AliceBlue" />
-                <Button Content="Item" Width="150" Background="AliceBlue" Command="{Binding ItemTabCommand}"/>
-                <Button Content="Supplier" Width="150" Background="AliceBlue" Command="{Binding SupplierTabCommand}"/>
-                <Button Content="Template" Width="150" Background="AliceBlue" />
-                <Button Content="Summary" Width="150" Background="AliceBlue" />
-                <Button Content="Comment" Width="150" Background="AliceBlue" />
-            </StackPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.15*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-            <Grid Grid.Row="2">
-                <ContentControl Content="{Binding currentViewModel}"/>
-
-            </Grid>
-        </Grid>
         
-    </Border>
+        <Grid Background="#00385c" Grid.ColumnSpan="2">
+            <TextBlock Text="System Cost Calculation" Foreground="White" FontSize="40" VerticalAlignment="Center" Margin="50 -20 0 0"/>
+        </Grid>
+
+
+        <StackPanel Grid.Row="1" Grid.Column="0"  Background="#005d99">            
+            <Button Content="Home" Style="{StaticResource NavButton}"/>
+            <Button Content="Item"  Style="{StaticResource NavButton}" Command="{Binding ItemTabCommand}"/>
+            <Button Content="Supplier" Style="{StaticResource NavButton}" Command="{Binding SupplierTabCommand}"/>
+            <Button Content="Create Template" Style="{StaticResource NavButton}"/>
+            <Button Content="View Templates" Style="{StaticResource NavButton}"/>
+            <Button Content="Summary"  Style="{StaticResource NavButton}"/>            
+        </StackPanel>
+
+
+
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Border BorderThickness="10" BorderBrush="#d9d9d9">
+                <ContentControl Content="{Binding currentViewModel}"/>
+            </Border>            
+        </Grid>
+
+
+    </Grid>
+
 </Window>
