@@ -24,8 +24,6 @@
         <viewmodels:MainWindowViewModel/>
     </Window.DataContext>
 
-
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.2*"/>
