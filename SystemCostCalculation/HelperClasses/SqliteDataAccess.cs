@@ -63,7 +63,7 @@ namespace SystemCostCalculation
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                cnn.Execute("insert into Supplier (ID, Name) values (@ID, @Name)", supplier);
+                cnn.Execute("insert into Supplier (Code, Name, Contact, Address, OtherDetails) values (@Code, @Name, @Contact, @Address, @OtherDetails)", supplier);
             }
         }
 
