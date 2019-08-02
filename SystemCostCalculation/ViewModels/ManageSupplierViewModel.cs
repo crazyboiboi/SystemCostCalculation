@@ -112,6 +112,7 @@ namespace SystemCostCalculation.ViewModels
                 {
                     PopulateSupplierDetails(value.Code, value.Name, value.Contact, value.Address, value.OtherDetails);
                 }
+                updateCommand.RaiseCanExecuteChanged();
             }
         }
 

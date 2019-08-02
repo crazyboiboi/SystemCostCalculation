@@ -64,11 +64,11 @@
 
                 <DataGrid x:Name="stockItemTable" SelectedItem="{Binding Path=selectedSupplier, Mode=TwoWay}" ItemsSource="{Binding suppliers}" CanUserAddRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" AutoGenerateColumns="False" Margin="0 10 0 0" Height="500" >
                     <DataGrid.Columns >
-                        <DataGridTextColumn IsReadOnly="true" Header="SupplierCode" Binding="{Binding code}" Width="0.25*"/>
-                        <DataGridTextColumn IsReadOnly="true" Header="Name" Binding="{Binding name}" Width="0.3*"/>
-                        <DataGridTextColumn IsReadOnly="true" Header="Contact" Binding="{Binding contact}" Width="0.25*"/>
-                        <DataGridTextColumn IsReadOnly="true" Header="Address" Binding="{Binding address}" Width="0.5*"/>
-                        <DataGridTextColumn IsReadOnly="true" Header="Other Details" Binding="{Binding otherDetails}" Width="0.5*"/>
+                        <DataGridTextColumn IsReadOnly="true" Header="SupplierCode" Binding="{Binding Code}" Width="0.25*"/>
+                        <DataGridTextColumn IsReadOnly="true" Header="Name" Binding="{Binding Name}" Width="0.3*"/>
+                        <DataGridTextColumn IsReadOnly="true" Header="Contact" Binding="{Binding Contact}" Width="0.25*"/>
+                        <DataGridTextColumn IsReadOnly="true" Header="Address" Binding="{Binding Address}" Width="0.5*"/>
+                        <DataGridTextColumn IsReadOnly="true" Header="Other Details" Binding="{Binding OtherDetails}" Width="0.5*"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>
