@@ -24,5 +24,7 @@ namespace SystemCostCalculation.Models
         public string OtherDetails { get; set; }
 
         public int ID { get; set; }
+
+        public bool Selected { get; set; }
     }
 }
