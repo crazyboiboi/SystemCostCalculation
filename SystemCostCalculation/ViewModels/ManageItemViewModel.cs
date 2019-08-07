@@ -172,7 +172,7 @@ namespace SystemCostCalculation.ViewModels
 
         private void AddItem()
         {
-            ItemModel item = new ItemModel() { Code = code, Name = name, Category = category, Size = size, Type = type, }
+            ItemModel item = new ItemModel() { Code = code, Name = name, Category = category, Size = size, Type = type, };
         }
 
         #endregion

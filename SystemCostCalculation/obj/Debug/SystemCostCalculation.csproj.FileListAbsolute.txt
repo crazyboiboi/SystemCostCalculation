@@ -45,7 +45,6 @@ C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\bin\
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\bin\Debug\GalaSoft.MvvmLight.Platform.xml
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\bin\Debug\System.Data.SQLite.xml
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\bin\Debug\System.Data.SQLite.dll.config
-C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.csprojAssemblyReference.cache
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\MainWindow.g.cs
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\ManageItemView.g.cs
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\ManageSupplierView.g.cs
@@ -78,3 +77,4 @@ D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin
 D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\GalaSoft.MvvmLight.Platform.xml
 D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.csprojAssemblyReference.cache
 D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\App.baml
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.csprojAssemblyReference.cache
