@@ -77,3 +77,4 @@ D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin
 D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\GalaSoft.MvvmLight.Platform.xml
 D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\App.baml
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.csprojAssemblyReference.cache
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.csprojAssemblyReference.cache

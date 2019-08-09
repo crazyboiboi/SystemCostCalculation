@@ -9,10 +9,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="1632">
 
-    <UserControl.Resources>
-
-    </UserControl.Resources>
-
     <UserControl.DataContext>
         <viewmodels:ManageItemViewModel/>
     </UserControl.DataContext>
@@ -50,8 +46,8 @@
                 <StackPanel Grid.Column="1" HorizontalAlignment="Left" Margin="10 0 0 0">
                     <TextBox Width="150" Height="20" HorizontalAlignment="Left" Margin="0 0 0 0" Text="{Binding code,Mode=TwoWay}"/>
                     <TextBox Width="200" Height="20" HorizontalAlignment="Left" Margin="0 15 0 0" Text="{Binding name,Mode=TwoWay}"/>
-                    <ComboBox Width="150" HorizontalAlignment="Left" Margin="0 15 0 0" ItemsSource="{Binding categories}" SelectedItem="{Binding category,Mode=TwoWay}"/>
-                    <ComboBox Width="50" HorizontalAlignment="Left" Margin="0 15 0 0" ItemsSource="{Binding sizes}" SelectedItem="{Binding size,Mode=TwoWay}"/>
+                    <ComboBox Width="150" HorizontalAlignment="Left" Margin="0 15 0 0" ItemsSource="{Binding categories}" SelectedValue="{Binding category,Mode=TwoWay}"/>
+                    <ComboBox Width="50" HorizontalAlignment="Left" Margin="0 15 0 0" ItemsSource="{Binding sizes}" SelectedValue="{Binding size,Mode=TwoWay}"/>
                     <TextBox Width="150" Height="20" HorizontalAlignment="Left" Margin="0 15 0 0" Text="{Binding type,Mode=TwoWay}"/>
                     <TextBox Width="225" Height="70" HorizontalAlignment="Left" Margin="0 17 0 0" TextWrapping="Wrap" Text="{Binding description,Mode=TwoWay}"/>
                 </StackPanel>
@@ -104,7 +100,7 @@
 
 
                 <DataGrid x:Name="stockItemTable" SelectedItem="{Binding Path=selectedItem, Mode=TwoWay}" ItemsSource="{Binding items}"  CanUserAddRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" AutoGenerateColumns="False" Margin="0 10 0 0" Height="450" >
-                    <DataGrid.Columns >
+                    <DataGrid.Columns>
                         <DataGridTextColumn IsReadOnly="true" Header="ItemID" Binding="{Binding Code}" Width="0.25*"/>
                         <DataGridTextColumn IsReadOnly="true" Header="Name" Binding="{Binding Name}" Width="0.75*"/>
                         <DataGridTextColumn IsReadOnly="true" Header="Size" Binding="{Binding Size}" Width="0.5*"/>

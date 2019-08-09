@@ -117,7 +117,7 @@ namespace SystemCostCalculation.ViewModels
         }
 
         private string _description;
-        public string descripton
+        public string description
         {
             get
             {
@@ -168,9 +168,9 @@ namespace SystemCostCalculation.ViewModels
                         category = "";
                         size = 0;
                         type = "";
-                        descripton = "";
+                        description = "";
                     },
-                    () => !string.IsNullOrEmpty(code) && !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(category) && !string.IsNullOrEmpty(type) && !string.IsNullOrEmpty(descripton)
+                    () => !string.IsNullOrEmpty(code) && !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(type) && !string.IsNullOrEmpty(category) && !string.IsNullOrEmpty(description)
                     );
                 }
                 return addCommand;
@@ -217,12 +217,14 @@ namespace SystemCostCalculation.ViewModels
 
         private void AddItem()
         {
-            ItemModel item = new ItemModel() { Code = code, Name = name, Category = category, Size = size, Type = type, };
+            ItemModel item = new ItemModel() { Code = code, Name = name, Category = category, Size = size, Type = type, Description = description, Price = 0, ID = currentIdNumber++ };
+            items.Add(item);
+            SqliteDataAccess.SaveItem(item);
         }
 
         private void UpdateItem()
         {
-            ItemModel updatedItem = new ItemModel() { Code = code, Name = name, Category = category, Size = size, Type = type, Description = descripton, ID = selectedItem.ID };
+            ItemModel updatedItem = new ItemModel() { Code = code, Name = name, Category = category, Size = size, Type = type, Description = description, Price = price, ID = selectedItem.ID };
             for (int i = 0; i < items.Count; i++)
             {
                 if (items[i].ID == updatedItem.ID)
@@ -238,7 +240,7 @@ namespace SystemCostCalculation.ViewModels
             category = "";
             size = 0;
             type = "";
-            descripton = "";
+            description = "";
 
         }
 
@@ -259,7 +261,7 @@ namespace SystemCostCalculation.ViewModels
             category = cat;
             size = s;
             type = t;
-            descripton = desc;
+            description = desc;
         }
 
         #endregion
@@ -270,8 +272,8 @@ namespace SystemCostCalculation.ViewModels
         {
             List<ItemModel> sqlItems = SqliteDataAccess.LoadItems();
             items = new ObservableCollection<ItemModel>(sqlItems as List<ItemModel>);
-            categories = new ObservableCollection<string> { "hi", "world" };
             sizes = new ObservableCollection<int> { 1, 2, 3 };
+            categories = new ObservableCollection<string> { "HEllow", "World" };
         }
 
         #endregion

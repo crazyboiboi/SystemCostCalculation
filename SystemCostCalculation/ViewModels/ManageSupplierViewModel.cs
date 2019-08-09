@@ -177,10 +177,11 @@ namespace SystemCostCalculation.ViewModels
                 {
                     removeCommand = new RelayCommand(() =>
                     {
-                        
+
                     },
-                    () => selec
+                    () => selectedSupplier != null);
                 }
+                return removeCommand;
             }
         }
 

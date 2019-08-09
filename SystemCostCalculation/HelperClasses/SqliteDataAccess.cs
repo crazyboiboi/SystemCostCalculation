@@ -51,7 +51,7 @@ namespace SystemCostCalculation
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                cnn.Execute("insert into Item (ID, Code, Name, Category, Size, Type, Price, Description) values (@ID, @Code, @Name, @Category, @Size, @Type, @Price, @Description)", item);
+                cnn.Execute("insert into Item (Code, Name, Category, Size, Type, Price, Description) values (@Code, @Name, @Category, @Size, @Type, @Price, @Description)", item);
             }
         }
 
@@ -99,7 +99,7 @@ namespace SystemCostCalculation
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                if (cnn.Query<ItemModel>("select * from Item where ID = @ID", new DynamicParameters()) != null)
+                if (cnn.Query<ItemModel>("select * from Item where ID = @itemID", new DynamicParameters()) != null)
                 {
                     cnn.Execute("delete from Item where ID = @ID", item);
                 }

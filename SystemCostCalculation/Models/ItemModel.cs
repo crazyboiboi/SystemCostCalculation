@@ -13,7 +13,7 @@ namespace SystemCostCalculation.Models
     {
 
         //Class properties
-        public string ID { get; set; }
+        public int ID { get; set; }
 
         public string Code { get; set; }
 
