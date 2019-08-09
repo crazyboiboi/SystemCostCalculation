@@ -17,6 +17,8 @@ namespace SystemCostCalculation.ViewModels
         public int currentIdNumber = 0;
 
         public ObservableCollection<ItemModel> items { get; set; }
+        public ObservableCollection<string> categories { get; set; }
+        public ObservableCollection<int> sizes { get; set; }
 
         private int _id;
         public int id
@@ -41,6 +43,7 @@ namespace SystemCostCalculation.ViewModels
             set
             {
                 Set(ref _code, value);
+                AddCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -54,6 +57,7 @@ namespace SystemCostCalculation.ViewModels
             set
             {
                 Set(ref _name, value);
+                AddCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -67,6 +71,7 @@ namespace SystemCostCalculation.ViewModels
             set
             {
                 Set(ref _category, value);
+                AddCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -80,6 +85,7 @@ namespace SystemCostCalculation.ViewModels
             set
             {
                 Set(ref _size, value);
+                AddCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -93,6 +99,7 @@ namespace SystemCostCalculation.ViewModels
             set
             {
                 Set(ref _type, value);
+                AddCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -119,6 +126,7 @@ namespace SystemCostCalculation.ViewModels
             set
             {
                 Set(ref _description, value);
+                AddCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -136,6 +144,8 @@ namespace SystemCostCalculation.ViewModels
                 {
                     PopulateItemDetails(value.Code, value.Name, value.Category, value.Size, value.Type, value.Description);
                 }
+                UpdateCommand.RaiseCanExecuteChanged();
+                RemoveCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -157,12 +167,47 @@ namespace SystemCostCalculation.ViewModels
                         name = "";
                         category = "";
                         size = 0;
+                        type = "";
                         descripton = "";
                     },
-                    () => !string.IsNullOrEmpty(code) && !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(category) && !string.IsNullOrEmpty(descripton)
+                    () => !string.IsNullOrEmpty(code) && !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(category) && !string.IsNullOrEmpty(type) && !string.IsNullOrEmpty(descripton)
                     );
                 }
                 return addCommand;
+            }
+        }
+
+        private RelayCommand updateCommand;
+        public RelayCommand UpdateCommand
+        {
+            get
+            {
+                if (updateCommand == null)
+                {
+                    updateCommand = new RelayCommand(() =>
+                    {
+                        UpdateItem();
+                    },
+                    () => selectedItem != null);
+                }
+                return updateCommand;
+            }
+        }
+
+        private RelayCommand removeCommand;
+        public RelayCommand RemoveCommand
+        {
+            get
+            {
+                if (removeCommand == null)
+                {
+                    removeCommand = new RelayCommand(() =>
+                    {
+                        RemoveItem();
+                    },
+                    () => selectedItem != null);
+                }
+                return removeCommand;
             }
         }
 
@@ -173,6 +218,34 @@ namespace SystemCostCalculation.ViewModels
         private void AddItem()
         {
             ItemModel item = new ItemModel() { Code = code, Name = name, Category = category, Size = size, Type = type, };
+        }
+
+        private void UpdateItem()
+        {
+            ItemModel updatedItem = new ItemModel() { Code = code, Name = name, Category = category, Size = size, Type = type, Description = descripton, ID = selectedItem.ID };
+            for (int i = 0; i < items.Count; i++)
+            {
+                if (items[i].ID == updatedItem.ID)
+                {
+                    items[i] = updatedItem;
+                    SqliteDataAccess.UpdateItem(updatedItem);
+                    break;
+                }
+            }
+            selectedItem = null;
+            code = "";
+            name = "";
+            category = "";
+            size = 0;
+            type = "";
+            descripton = "";
+
+        }
+
+        private void RemoveItem()
+        {
+            items.Remove(selectedItem);
+            SqliteDataAccess.DeleteItem(selectedItem);
         }
 
         #endregion
@@ -197,6 +270,8 @@ namespace SystemCostCalculation.ViewModels
         {
             List<ItemModel> sqlItems = SqliteDataAccess.LoadItems();
             items = new ObservableCollection<ItemModel>(sqlItems as List<ItemModel>);
+            categories = new ObservableCollection<string> { "hi", "world" };
+            sizes = new ObservableCollection<int> { 1, 2, 3 };
         }
 
         #endregion

@@ -112,7 +112,7 @@ namespace SystemCostCalculation.ViewModels
                 {
                     PopulateSupplierDetails(value.Code, value.Name, value.Contact, value.Address, value.OtherDetails);
                 }
-                updateCommand.RaiseCanExecuteChanged();
+                UpdateCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -168,6 +168,22 @@ namespace SystemCostCalculation.ViewModels
             }
         }
 
+        private RelayCommand removeCommand;
+        public RelayCommand RemoveCommand
+        {
+            get
+            {
+                if (removeCommand == null)
+                {
+                    removeCommand = new RelayCommand(() =>
+                    {
+                        
+                    },
+                    () => selec
+                }
+            }
+        }
+
         #endregion
 
         #region Command Methods
@@ -187,6 +203,7 @@ namespace SystemCostCalculation.ViewModels
                 if (suppliers[i].ID == updatedSupplier.ID)
                 {
                     suppliers[i] = updatedSupplier;
+                    SqliteDataAccess.UpdateSupplier(updatedSupplier);
                     break;
                 }
             }

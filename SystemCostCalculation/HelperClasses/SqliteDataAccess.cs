@@ -51,7 +51,7 @@ namespace SystemCostCalculation
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                cnn.Execute("insert into Item (ID, Name, Size, Type, Price) values (@ID, @Name, @Size, @Type, @Price)", item);
+                cnn.Execute("insert into Item (ID, Code, Name, Category, Size, Type, Price, Description) values (@ID, @Code, @Name, @Category, @Size, @Type, @Price, @Description)", item);
             }
         }
 
@@ -75,7 +75,7 @@ namespace SystemCostCalculation
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                cnn.Execute("update Item set Name = @Name, Size = @Size, Type = @Type, Price = @Price where ID = @ID", item);
+                cnn.Execute("update Item set Code = @Code, Name = @Name, Category = @Category, Size = @Size, Type = @Type, Price = @Price, Description = @Description where ID = @ID", item);
             }
         }
 
@@ -87,7 +87,7 @@ namespace SystemCostCalculation
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                cnn.Execute("update Supplier set Name = @Name where ID = @ID", supplier);
+                cnn.Execute("update Supplier set Code = @Code, Name = @Name, Contact = @Contact, Address = @Address, OtherDetails = @OtherDetails where ID = @ID", supplier);
             }
         }
 
@@ -116,7 +116,7 @@ namespace SystemCostCalculation
             {
                 if (cnn.Query<SupplierModel>("select * from Supplier where ID = @ID", new DynamicParameters()) != null)
                 {
-                    cnn.Execute("delete from Item where ID = @ID", supplier);
+                    cnn.Execute("delete from Supplier where ID = @ID", supplier);
                 }
             }
         }
