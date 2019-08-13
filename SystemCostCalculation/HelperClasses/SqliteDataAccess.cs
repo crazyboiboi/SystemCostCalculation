@@ -43,6 +43,14 @@ namespace SystemCostCalculation
             }
         }
 
+        public static List<ItemModel> LoadFilteredItems(SupplierModel supplier)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                var output = cnn.Query("select ")
+            }
+        }
+
         /// <summary>
         /// Inserts a new item into the Item table
         /// </summary>
@@ -99,7 +107,7 @@ namespace SystemCostCalculation
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                if (cnn.Query<ItemModel>("select * from Item where ID = @itemID", new DynamicParameters()) != null)
+                if (item != null)
                 {
                     cnn.Execute("delete from Item where ID = @ID", item);
                 }
