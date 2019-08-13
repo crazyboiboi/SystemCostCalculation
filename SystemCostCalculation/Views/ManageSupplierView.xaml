@@ -33,7 +33,7 @@
         <StackPanel HorizontalAlignment="Center" Grid.Row="1" Grid.RowSpan="3" Margin="0 -30 0 0">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="20">
                 <TextBlock VerticalAlignment="Center" Text="Displayed Supplier"/>
-                <ComboBox VerticalAlignment="Center" Width="200" Margin="10 0 0 0"/>
+                <ComboBox VerticalAlignment="Center" Width="200" Margin="10 0 0 0" ItemsSource="{Binding suppliers}" SelectedValue="{Binding selectedSupplier}"/>
                 <Button Content="Add" Width="50" Height="50" Margin="80 0 0 0" Command="{Binding AddCommand}"/>
             </StackPanel>
 
@@ -67,7 +67,7 @@
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 50 0 0 " Grid.Row="1" Grid.ColumnSpan="2">
                         <Button Content="Update" Width="50" Height="25" Margin="10 0 0 0" Command="{Binding UpdateCommand}"/>
-                        <Button Content="Delete" Width="50" Height="25" Margin="10 0 0 0" Command="{Binding}"/>
+                        <Button Content="Delete" Width="50" Height="25" Margin="10 0 0 0" Command="{Binding DeleteCommand}"/>
                     </StackPanel>
                 </Grid>
             </Border> 
@@ -103,18 +103,18 @@
                         <TextBox Width="175" Height="20" Margin="10 0 0 0"/>
                     </StackPanel>
 
-                    <Button Content="X Remove Selected" Grid.Column="1" HorizontalAlignment="Right"/>
+                    <Button Content="X Remove Selected" Grid.Column="1" HorizontalAlignment="Right" Command="{Binding RemoveItemCommand}"/>
 
                 </Grid>
                 
 
-                <DataGrid x:Name="stockItemTable" SelectedItem="{Binding Path=selectedSupplier, Mode=TwoWay}" ItemsSource="{Binding suppliers}" CanUserAddRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" AutoGenerateColumns="False" Margin="0 10 0 0" Height="400">
+                <DataGrid x:Name="stockItemTable" SelectedItem="{Binding Path=selectedItem, Mode=TwoWay}" ItemsSource="{Binding filteredItems}" CanUserAddRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" AutoGenerateColumns="False" Margin="0 10 0 0" Height="400">
                     <DataGrid.Columns >
-                        <DataGridTextColumn IsReadOnly="true" Header="SupplierCode" Binding="{Binding Code}" Width="0.25*"/>
-                        <DataGridTextColumn IsReadOnly="true" Header="Name" Binding="{Binding Name}" Width="0.3*"/>
-                        <DataGridTextColumn IsReadOnly="true" Header="Contact" Binding="{Binding Contact}" Width="0.25*"/>
-                        <DataGridTextColumn IsReadOnly="true" Header="Address" Binding="{Binding Address}" Width="0.5*"/>
-                        <DataGridTextColumn IsReadOnly="true" Header="Other Details" Binding="{Binding OtherDetails}" Width="0.5*"/>
+                        <DataGridTextColumn IsReadOnly="true" Header="ItemID" Binding="{Binding Code}" Width="0.25*"/>
+                        <DataGridTextColumn IsReadOnly="true" Header="Name" Binding="{Binding Name}" Width="0.75*"/>
+                        <DataGridTextColumn IsReadOnly="true" Header="Size" Binding="{Binding Size}" Width="0.5*"/>
+                        <DataGridTextColumn IsReadOnly="true" Header="Type" Binding="{Binding Type}" Width="0.5*"/>
+                        <DataGridTextColumn IsReadOnly="true" Header="Category" Binding="{Binding Category}" Width="0.5*"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>

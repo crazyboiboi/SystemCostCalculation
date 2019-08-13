@@ -16,6 +16,8 @@ namespace SystemCostCalculation.ViewModels
         public int currentIdNumber = 0;
         public ObservableCollection<SupplierModel> suppliers { get; set; }
 
+        public ObservableCollection<ItemModel> filteredItems { get; set; }
+
         private int _id;
         public int id
         {
@@ -111,8 +113,25 @@ namespace SystemCostCalculation.ViewModels
                 if (_selectedSupplier != null)
                 {
                     PopulateSupplierDetails(value.Code, value.Name, value.Contact, value.Address, value.OtherDetails);
+
+                    filteredItems = new ObservableCollection<ItemModel>();
                 }
                 UpdateCommand.RaiseCanExecuteChanged();
+                DeleteCommand.RaiseCanExecuteChanged();
+            }
+        }
+
+        private ItemModel _selectedItem;
+        public ItemModel selectedItem
+        {
+            get
+            {
+                return _selectedItem;
+            }
+            set
+            {
+                Set(ref _selectedItem, value);
+                RemoveItemCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -123,7 +142,6 @@ namespace SystemCostCalculation.ViewModels
         {
             List<SupplierModel> sqlSuppliers = SqliteDataAccess.LoadSuppliers();
             suppliers = new ObservableCollection<SupplierModel>(sqlSuppliers as List<SupplierModel>);
-            
         }
         #endregion
 
@@ -168,20 +186,37 @@ namespace SystemCostCalculation.ViewModels
             }
         }
 
-        private RelayCommand removeCommand;
-        public RelayCommand RemoveCommand
+        private RelayCommand deleteCommand;
+        public RelayCommand DeleteCommand
         {
             get
             {
-                if (removeCommand == null)
+                if (deleteCommand == null)
                 {
-                    removeCommand = new RelayCommand(() =>
+                    deleteCommand = new RelayCommand(() =>
                     {
 
                     },
                     () => selectedSupplier != null);
                 }
-                return removeCommand;
+                return deleteCommand;
+            }
+        }
+
+        private RelayCommand removeItemCommand;
+        public RelayCommand RemoveItemCommand
+        {
+            get
+            {
+                if (removeItemCommand == null)
+                {
+                    removeItemCommand = new RelayCommand(() =>
+                    {
+
+                    },
+                    () => selectedItem != null);
+                }
+                return removeItemCommand;
             }
         }
 

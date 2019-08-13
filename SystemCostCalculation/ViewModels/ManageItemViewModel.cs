@@ -246,8 +246,8 @@ namespace SystemCostCalculation.ViewModels
 
         private void RemoveItem()
         {
-            items.Remove(selectedItem);
             SqliteDataAccess.DeleteItem(selectedItem);
+            items.Remove(selectedItem);
         }
 
         #endregion
@@ -272,8 +272,6 @@ namespace SystemCostCalculation.ViewModels
         {
             List<ItemModel> sqlItems = SqliteDataAccess.LoadItems();
             items = new ObservableCollection<ItemModel>(sqlItems as List<ItemModel>);
-            sizes = new ObservableCollection<int> { 1, 2, 3 };
-            categories = new ObservableCollection<string> { "HEllow", "World" };
         }
 
         #endregion
