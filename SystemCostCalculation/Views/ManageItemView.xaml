@@ -19,9 +19,6 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-
-
-
         <Border BorderThickness="0.4" BorderBrush="Gray" Width="400" Height="475">
             <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 -50 0 0">
                 <Grid.ColumnDefinitions>
@@ -46,8 +43,14 @@
                 <StackPanel Grid.Column="1" HorizontalAlignment="Left" Margin="10 0 0 0">
                     <TextBox Width="150" Height="20" HorizontalAlignment="Left" Margin="0 0 0 0" Text="{Binding code,Mode=TwoWay}"/>
                     <TextBox Width="200" Height="20" HorizontalAlignment="Left" Margin="0 15 0 0" Text="{Binding name,Mode=TwoWay}"/>
-                    <ComboBox Width="150" HorizontalAlignment="Left" Margin="0 15 0 0" ItemsSource="{Binding categories}" SelectedValue="{Binding category,Mode=TwoWay}"/>
-                    <ComboBox Width="50" HorizontalAlignment="Left" Margin="0 15 0 0" ItemsSource="{Binding sizes}" SelectedValue="{Binding size,Mode=TwoWay}"/>
+                    <StackPanel Orientation="Horizontal" Margin="0 15 0 0">
+                        <ComboBox Width="150" HorizontalAlignment="Left"  ItemsSource="{Binding categories}" SelectedValue="{Binding category,Mode=TwoWay}"/>
+                        <Button Content="+" Margin="10 0 0 0"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 15 0 0">
+                        <ComboBox Width="50" HorizontalAlignment="Left" ItemsSource="{Binding sizes}" SelectedValue="{Binding size,Mode=TwoWay}"/>
+                        <Button Content="+" Margin="10 0 0 0"/>
+                    </StackPanel>
                     <TextBox Width="150" Height="20" HorizontalAlignment="Left" Margin="0 15 0 0" Text="{Binding type,Mode=TwoWay}"/>
                     <TextBox Width="225" Height="70" HorizontalAlignment="Left" Margin="0 17 0 0" TextWrapping="Wrap" Text="{Binding description,Mode=TwoWay}"/>
                 </StackPanel>
@@ -60,27 +63,8 @@
         </Border>
 
 
-
-
-        <StackPanel >
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.5*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-
-
-
-            </Grid>
-
-
-
-
-        </StackPanel>
-
-
-
+        
+        
         <Border Padding="20" Grid.Column="1" Grid.Row="1">
             <StackPanel Margin="0 50 0 0">
                 <Grid>
@@ -95,7 +79,6 @@
                     </StackPanel>
 
                     <Button Content="X Remove Selected" Grid.Column="1" HorizontalAlignment="Right" Command="{Binding RemoveCommand}"/>
-
                 </Grid>
 
 
