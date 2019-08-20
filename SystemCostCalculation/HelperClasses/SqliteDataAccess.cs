@@ -47,7 +47,8 @@ namespace SystemCostCalculation
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                var output = cnn.Query("select ")
+                var output = cnn.Query<ItemModel>("select Item.ID,Item.Code,Item.Name,Item.Category,Item.Size,Item.Type,Item.Description from Relation inner join Item on Relation.ItemID=Item.ID where Relation.SupplierID=@ID", supplier);
+                return output.ToList();
             }
         }
 
@@ -59,7 +60,7 @@ namespace SystemCostCalculation
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                cnn.Execute("insert into Item (Code, Name, Category, Size, Type, Price, Description) values (@Code, @Name, @Category, @Size, @Type, @Price, @Description)", item);
+                cnn.Execute("insert into Item (Code, Name, Category, Size, Type, Description) values (@Code, @Name, @Category, @Size, @Type, @Description)", item);
             }
         }
 
@@ -83,7 +84,7 @@ namespace SystemCostCalculation
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                cnn.Execute("update Item set Code = @Code, Name = @Name, Category = @Category, Size = @Size, Type = @Type, Price = @Price, Description = @Description where ID = @ID", item);
+                cnn.Execute("update Item set Code = @Code, Name = @Name, Category = @Category, Size = @Size, Type = @Type, Description = @Description where ID = @ID", item);
             }
         }
 
