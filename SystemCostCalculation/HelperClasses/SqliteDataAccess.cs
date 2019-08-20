@@ -47,7 +47,8 @@ namespace SystemCostCalculation
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                var output = cnn.Query("select ")
+                var output = cnn.Query<ItemModel>("select Item.ID,Item.Code,Item.Name,Item.Category,Item.Size,Item.Type,Item.Description from Relation inner join Item on Relation.ItemID=Item.ID where Relation.SupplierID=@ID", supplier);
+                return output.ToList();
             }
         }
 
