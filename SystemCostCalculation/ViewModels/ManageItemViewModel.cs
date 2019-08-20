@@ -103,19 +103,6 @@ namespace SystemCostCalculation.ViewModels
             }
         }
 
-        private double _price;
-        public double price
-        {
-            get
-            {
-                return _price;
-            }
-            set
-            {
-                Set(ref _price, value);
-            }
-        }
-
         private string _description;
         public string description
         {
@@ -217,14 +204,14 @@ namespace SystemCostCalculation.ViewModels
 
         private void AddItem()
         {
-            ItemModel item = new ItemModel() { Code = code, Name = name, Category = category, Size = size, Type = type, Description = description, Price = 0, ID = currentIdNumber++ };
+            ItemModel item = new ItemModel() { Code = code, Name = name, Category = category, Size = size, Type = type, Description = description, ID = currentIdNumber++ };
             items.Add(item);
             SqliteDataAccess.SaveItem(item);
         }
 
         private void UpdateItem()
         {
-            ItemModel updatedItem = new ItemModel() { Code = code, Name = name, Category = category, Size = size, Type = type, Description = description, Price = price, ID = selectedItem.ID };
+            ItemModel updatedItem = new ItemModel() { Code = code, Name = name, Category = category, Size = size, Type = type, Description = description, ID = selectedItem.ID };
             for (int i = 0; i < items.Count; i++)
             {
                 if (items[i].ID == updatedItem.ID)

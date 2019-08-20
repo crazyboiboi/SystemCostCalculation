@@ -113,8 +113,8 @@ namespace SystemCostCalculation.ViewModels
                 if (_selectedSupplier != null)
                 {
                     PopulateSupplierDetails(value.Code, value.Name, value.Contact, value.Address, value.OtherDetails);
-
-                    filteredItems = new ObservableCollection<ItemModel>();
+                    List<ItemModel> supplierItems = SqliteDataAccess.LoadFilteredItems(value);
+                    filteredItems = new ObservableCollection<ItemModel>(supplierItems as List<ItemModel>);
                 }
                 UpdateCommand.RaiseCanExecuteChanged();
                 DeleteCommand.RaiseCanExecuteChanged();
@@ -132,6 +132,36 @@ namespace SystemCostCalculation.ViewModels
             {
                 Set(ref _selectedItem, value);
                 RemoveItemCommand.RaiseCanExecuteChanged();
+            }
+        }
+
+        private string itemName;
+        public string ItemName
+        {
+            get
+            {
+                return itemName;
+            }
+            set
+            {
+                Set(ref itemName, value);
+                AddItemCommand.RaiseCanExecuteChanged();
+                EditItemCommand.RaiseCanExecuteChanged();
+            }
+        }
+
+        private float itemPrice;
+        public float ItemPrice
+        {
+            get
+            {
+                return itemPrice;
+            }
+            set
+            {
+                Set(ref itemPrice, value);
+                AddItemCommand.RaiseCanExecuteChanged();
+                EditItemCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -195,11 +225,50 @@ namespace SystemCostCalculation.ViewModels
                 {
                     deleteCommand = new RelayCommand(() =>
                     {
-
+                        DeleteSupplier();
+                        code = "";
+                        name = "";
+                        contact = "";
+                        address = "";
+                        otherDetails = "";
                     },
                     () => selectedSupplier != null);
                 }
                 return deleteCommand;
+            }
+        }
+
+        private RelayCommand addItemCommand;
+        public RelayCommand AddItemCommand
+        {
+            get
+            {
+                if (addItemCommand == null)
+                {
+                    addItemCommand = new RelayCommand(() =>
+                    {
+                        AddItem();
+                    },
+                    () => !string.IsNullOrEmpty(ItemName) && !float.IsNaN(ItemPrice));
+                }
+                return addItemCommand;
+            }
+        }
+
+        private RelayCommand editItemCommand;
+        public RelayCommand EditItemCommand
+        {
+            get
+            {
+                if (editItemCommand == null)
+                {
+                    editItemCommand = new RelayCommand(() =>
+                    {
+                        EditItem();
+                    },
+                    () => !string.IsNullOrEmpty(ItemName) && !float.IsNaN(ItemPrice));
+                }
+                return editItemCommand;
             }
         }
 
@@ -212,7 +281,7 @@ namespace SystemCostCalculation.ViewModels
                 {
                     removeItemCommand = new RelayCommand(() =>
                     {
-
+                        RemoveItem();
                     },
                     () => selectedItem != null);
                 }
@@ -249,6 +318,27 @@ namespace SystemCostCalculation.ViewModels
             contact = "";
             address = "";
             otherDetails = "";
+        }
+
+        private void DeleteSupplier()
+        {
+            SqliteDataAccess.DeleteSupplier(selectedSupplier);
+            suppliers.Remove(selectedSupplier);
+        }
+
+        private void AddItem()
+        {
+
+        }
+
+        private void EditItem()
+        {
+
+        }
+
+        private void RemoveItem()
+        {
+
         }
 
         #endregion

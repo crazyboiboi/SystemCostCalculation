@@ -78,11 +78,11 @@
             <Border Padding="20" BorderThickness="0.4" BorderBrush="Gray">
                 <StackPanel Orientation="Horizontal" >
                     <TextBlock Text="Item" Margin="0 0 0 0"/>
-                    <TextBox Width="200" Margin="10 0 0 0"/>
+                    <TextBox Width="200" Margin="10 0 0 0" Text="{Binding ItemName,Mode=TwoWay}"/>
                     <TextBlock Text="Price" Margin="10 0 0 0"/>
-                    <TextBox Width="200" Margin="10 0 0 0"/>
-                    <Button Content="Add Item" Width="60" Height="25" Margin="10 0 0 0"/>
-                    <Button Content="Edit Item" Width="60" Height="25" Margin="10 0 0 0"/>
+                    <TextBox Width="200" Margin="10 0 0 0" Text="{Binding ItemPrice, Mode=TwoWay}"/>
+                    <Button Content="Add Item" Width="60" Height="25" Margin="10 0 0 0" Command="{Binding AddItemCommand}"/>
+                    <Button Content="Edit Item" Width="60" Height="25" Margin="10 0 0 0" Command="{Binding EditItemCommand}"/>
                 </StackPanel>
             </Border>
         </StackPanel>
