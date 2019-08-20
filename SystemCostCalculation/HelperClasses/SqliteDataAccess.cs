@@ -43,13 +43,7 @@ namespace SystemCostCalculation
             }
         }
 
-        public static List<ItemModel> LoadFilteredItems(SupplierModel supplier)
-        {
-            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
-            {
-                var output = cnn.Query("select ")
-            }
-        }
+        
 
         /// <summary>
         /// Inserts a new item into the Item table
