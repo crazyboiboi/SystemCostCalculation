@@ -15,6 +15,8 @@ namespace SystemCostCalculation.Models
         //Class properties
         public int ID { get; set; }
 
+        public int SupplierID { get; set; }
+
         public string Code { get; set; }
 
         public string Name { get; set; }
@@ -26,6 +28,8 @@ namespace SystemCostCalculation.Models
         public string Type { get; set; }
 
         public string Description { get; set; }
+
+        public float Price { get; set; }
 
         public bool Selected { get; set; }
 
