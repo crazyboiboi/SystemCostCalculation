@@ -26,5 +26,10 @@ namespace SystemCostCalculation.Models
         public int ID { get; set; }
 
         public bool Selected { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

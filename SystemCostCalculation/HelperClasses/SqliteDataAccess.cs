@@ -38,9 +38,11 @@ namespace SystemCostCalculation
         /// <returns>Single unassigned item</returns>
         public static ItemModel FindUnassignedItem(string ItemName)
         {
+            var parameters = new DynamicParameters();
+            parameters.Add("@Name", ItemName);
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                var output = cnn.Query<ItemModel>("select * from Item where Name = @Name and SupplierID = -1 and Price = -1", ItemName);
+                var output = cnn.Query<ItemModel>("select * from Item where Name = @Name and SupplierID = -1 and Price = -1", parameters);
                 return output.First();
             }
         }
@@ -228,7 +230,7 @@ namespace SystemCostCalculation
 
         #endregion
 
-        #region Helper Method
+        #region Helper Methods
 
         /// <summary>
         /// Returns the highest current item ID in the table so that IDs won't overlap
@@ -238,8 +240,8 @@ namespace SystemCostCalculation
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                var output = cnn.Query<int>("select MAX(ID) from Item");
-                return output.First();
+                var output = cnn.ExecuteScalar<int>("select COUNT(*) from Item");
+                return output;
             }
         }
 
@@ -251,8 +253,8 @@ namespace SystemCostCalculation
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                var output = cnn.Query<int>("select MAX(ID) from Supplier");
-                return output.First();
+                var output = cnn.ExecuteScalar<int>("select COUNT(*) from Supplier");
+                return output;
             }
         }
 
