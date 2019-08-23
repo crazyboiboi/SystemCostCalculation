@@ -20,25 +20,122 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.5*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="0.4*"/>
         </Grid.RowDefinitions>
 
         
-        <!-- Row 0 Column 0     System Information Form Input -->
+        <Border BorderThickness="0.4" BorderBrush="Gray" Grid.RowSpan="3" Height="400" Width="400">
+            <StackPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Displayed Supplier" Style="{StaticResource FieldHeading}"/>
+                    <ComboBox Grid.Row="0" Grid.Column="1" Width="175" ItemsSource="{Binding suppliers}" SelectedValue="{Binding selectedSupplier}" Margin="10 0 0 0"/>
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Find" Style="{StaticResource FieldHeading}" Margin="0 15 0 0"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource InputField}" Margin="10 15 0 0"/>
+
+                </Grid>
+                
+
+                <ListView Height="200" Margin="0 20 0 0">
+                    
+                </ListView>
+
+                <Button Content="Add Item" Width="60" Height="30" Margin="0 20 0 0"/>
+                
+            </StackPanel>            
+            
+        </Border>
+        
+
+        <Grid Grid.Column="1" Width="700" Height="150" HorizontalAlignment="Left" Margin="0 20 0 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition Width="0.6*"/>
+                <ColumnDefinition Width="0.4*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="System Name" Grid.Row="0" Style="{StaticResource FieldHeading}"/>
+            <TextBlock Text="Tender Name" Grid.Row="1" Style="{StaticResource FieldHeading}"/>
+            <TextBlock Text="Location" Grid.Row="2" Style="{StaticResource FieldHeading}"/>
+            <TextBlock Text="Date Created" Grid.Row="1" Grid.Column="2" Style="{StaticResource FieldHeading}"/>
+            <TextBlock Text="Template Number" Grid.Row="0" Grid.Column="2" Style="{StaticResource FieldHeading}"/>
+            <TextBlock Text="Remark" Grid.Row="2" Grid.Column="2" Style="{StaticResource FieldHeading}"/>
+            <TextBlock Text="(Displays today's date)" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center"/>
+
+            <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource InputField}"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource InputField}"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Style="{StaticResource InputField}"/>
+
+            <TextBox Grid.Row="0" Grid.Column="3" Style="{StaticResource InputField}"/>
+            <TextBox Grid.Row="2" Grid.Column="3" Grid.RowSpan="2" Margin="0 -10 0 0" Style="{StaticResource InputField}" Height="42" Width="250" TextWrapping="Wrap"/>
+        
+        </Grid>
 
 
-        <!-- Row 0 Column 1     System Information Form Input -->
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.3*"/>
+            </Grid.ColumnDefinitions>
+
+            <DataGrid x:Name="templateItemTable" SelectedItem="{Binding Path=selectedItem, Mode=TwoWay}" ItemsSource="{Binding items}"  CanUserAddRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" AutoGenerateColumns="False" Margin="0 10 0 0" Height="300" Width="550" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <DataGrid.Columns>
+                    <DataGridTextColumn IsReadOnly="true" Header="ItemID" Binding="{Binding Code}" Width="0.25*"/>
+                    <DataGridTextColumn IsReadOnly="true" Header="Name" Binding="{Binding Name}" Width="0.75*"/>
+                    <DataGridTextColumn IsReadOnly="true" Header="Size" Binding="{Binding Size}" Width="0.5*"/>
+                    <DataGridTextColumn IsReadOnly="true" Header="Type" Binding="{Binding Type}" Width="0.5*"/>
+                    <DataGridTextColumn IsReadOnly="true" Header="Price" Binding="{Binding Price}" Width="0.4*"/>
+                    <DataGridTextColumn IsReadOnly="true" Header="Quantity" Binding="{Binding Quantity}" Width="0.4*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <StackPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <Button Height="60" Width="60">
+                    <TextBlock Text="Edit Item Discount" TextWrapping="Wrap" TextAlignment="Center"/>
+                </Button>
+                <Button Height="60" Width="60" Margin="0 20 0 0">
+                    <TextBlock Text="Edit Item Quantity" TextWrapping="Wrap" TextAlignment="Center"/>
+                </Button>
+                <Button Height="60" Width="60" Margin="0 20 0 0">
+                    <TextBlock Text="Remove Item" TextWrapping="Wrap" TextAlignment="Center"/>
+                </Button>
+            </StackPanel>
+            
+        </Grid>
         
+
+
+        <StackPanel Grid.Row="2" Grid.Column="1" Margin="0 10 0 0">
+            <TextBlock Text="Total Cost: " Style="{StaticResource FieldHeading}" Margin="0 10 0 0"/>
+            <TextBlock Text="Discount " Style="{StaticResource FieldHeading}" Margin="0 10 0 0"/>
+            <TextBlock Text="Total Cost after discount: " Style="{StaticResource FieldHeading}" Margin="0 10 0 0" />
+
+
+        </StackPanel>
         
-        <!-- Row 1 Column 1     DataGrid showing the items of the system along with quantity -->
-        
-        
-        
-        
-        
-        
-        
+
+
+
     </Grid>
     
 </UserControl>
