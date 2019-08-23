@@ -13,7 +13,7 @@ namespace SystemCostCalculation.ViewModels
     public class ManageSupplierViewModel : ViewModelBase
     {
         #region Fields
-        public int currentIdNumber = 0;
+        public int currentIdNumber;
         public ObservableCollection<SupplierModel> suppliers { get; set; }
 
         public ObservableCollection<ItemModel> filteredItems { get; set; }
@@ -41,7 +41,7 @@ namespace SystemCostCalculation.ViewModels
             set
             {
                 Set(ref _code, value);
-                AddCommand.RaiseCanExecuteChanged();
+                AddSupplierCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -55,7 +55,7 @@ namespace SystemCostCalculation.ViewModels
             set
             {
                 Set(ref _name, value);
-                AddCommand.RaiseCanExecuteChanged();
+                AddSupplierCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -69,7 +69,7 @@ namespace SystemCostCalculation.ViewModels
             set
             {
                 Set(ref _contact, value);
-                AddCommand.RaiseCanExecuteChanged();
+                AddSupplierCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -83,7 +83,7 @@ namespace SystemCostCalculation.ViewModels
             set
             {
                 Set(ref _address, value);
-                AddCommand.RaiseCanExecuteChanged();
+                AddSupplierCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -116,8 +116,8 @@ namespace SystemCostCalculation.ViewModels
                     List<ItemModel> supplierItems = SqliteDataAccess.LoadFilteredItems(value);
                     filteredItems = new ObservableCollection<ItemModel>(supplierItems as List<ItemModel>);
                 }
-                UpdateCommand.RaiseCanExecuteChanged();
-                DeleteCommand.RaiseCanExecuteChanged();
+                UpdateSupplierCommand.RaiseCanExecuteChanged();
+                DeleteSupplierCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -167,24 +167,16 @@ namespace SystemCostCalculation.ViewModels
 
         #endregion
 
-        #region Default Constructor
-        public ManageSupplierViewModel()
-        {
-            List<SupplierModel> sqlSuppliers = SqliteDataAccess.LoadSuppliers();
-            suppliers = new ObservableCollection<SupplierModel>(sqlSuppliers as List<SupplierModel>);
-        }
-        #endregion
-
         #region UI Commands
 
-        private RelayCommand addCommand;
-        public RelayCommand AddCommand
+        private RelayCommand addSupplierCommand;
+        public RelayCommand AddSupplierCommand
         {
             get
             {
-                if(addCommand == null)
+                if(addSupplierCommand == null)
                 {
-                    addCommand = new RelayCommand(() =>
+                    addSupplierCommand = new RelayCommand(() =>
                    {
                        AddSupplier();
                        code = "";
@@ -195,35 +187,35 @@ namespace SystemCostCalculation.ViewModels
                    },
                    () => !string.IsNullOrEmpty(code) && !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(contact) && !string.IsNullOrEmpty(address));
                 }
-                return addCommand;
+                return addSupplierCommand;
             }
         }
 
-        private RelayCommand updateCommand;
-        public RelayCommand UpdateCommand
+        private RelayCommand updateSupplierCommand;
+        public RelayCommand UpdateSupplierCommand
         {
             get
             {
-                if (updateCommand == null)
+                if (updateSupplierCommand == null)
                 {
-                    updateCommand = new RelayCommand(() =>
+                    updateSupplierCommand = new RelayCommand(() =>
                     {
                         UpdateSupplier();
                     },
                     () => selectedSupplier != null);
                 }
-                return updateCommand;
+                return updateSupplierCommand;
             }
         }
 
-        private RelayCommand deleteCommand;
-        public RelayCommand DeleteCommand
+        private RelayCommand deleteSupplierCommand;
+        public RelayCommand DeleteSupplierCommand
         {
             get
             {
-                if (deleteCommand == null)
+                if (deleteSupplierCommand == null)
                 {
-                    deleteCommand = new RelayCommand(() =>
+                    deleteSupplierCommand = new RelayCommand(() =>
                     {
                         DeleteSupplier();
                         code = "";
@@ -234,7 +226,7 @@ namespace SystemCostCalculation.ViewModels
                     },
                     () => selectedSupplier != null);
                 }
-                return deleteCommand;
+                return deleteSupplierCommand;
             }
         }
 
@@ -248,6 +240,8 @@ namespace SystemCostCalculation.ViewModels
                     addItemCommand = new RelayCommand(() =>
                     {
                         AddItem();
+                        ItemName = "";
+                        ItemPrice = 0.0f;
                     },
                     () => !string.IsNullOrEmpty(ItemName) && !float.IsNaN(ItemPrice));
                 }
@@ -265,6 +259,8 @@ namespace SystemCostCalculation.ViewModels
                     editItemCommand = new RelayCommand(() =>
                     {
                         EditItem();
+                        ItemName = "";
+                        ItemPrice = 0.0f;
                     },
                     () => !string.IsNullOrEmpty(ItemName) && !float.IsNaN(ItemPrice));
                 }
@@ -328,17 +324,31 @@ namespace SystemCostCalculation.ViewModels
 
         private void AddItem()
         {
-
+            ItemModel itemToBeAssigned = SqliteDataAccess.FindUnassignedItem(ItemName);
+            itemToBeAssigned.ID = currentIdNumber++;
+            itemToBeAssigned.SupplierID = selectedSupplier.ID;
+            itemToBeAssigned.Price = ItemPrice;
+            SqliteDataAccess.SaveItem(itemToBeAssigned);
+            filteredItems.Add(itemToBeAssigned);
         }
 
         private void EditItem()
         {
-
+            for (int i = 0; i < filteredItems.Count; i++)
+            {
+                if (filteredItems[i].Name == ItemName)
+                {
+                    filteredItems[i].Price = ItemPrice;
+                    SqliteDataAccess.UpdateItem(filteredItems[i]);
+                    break;
+                }
+            }
         }
 
         private void RemoveItem()
         {
-
+            SqliteDataAccess.DeleteItem(selectedItem);
+            filteredItems.Remove(selectedItem);
         }
 
         #endregion
@@ -354,6 +364,15 @@ namespace SystemCostCalculation.ViewModels
             otherDetails = det;
         }
 
+        #endregion
+
+        #region Default Constructor
+        public ManageSupplierViewModel()
+        {
+            List<SupplierModel> sqlSuppliers = SqliteDataAccess.LoadSuppliers();
+            suppliers = new ObservableCollection<SupplierModel>(sqlSuppliers as List<SupplierModel>);
+            currentIdNumber = SqliteDataAccess.GetMaxSupplierID();
+        }
         #endregion
     }
 }

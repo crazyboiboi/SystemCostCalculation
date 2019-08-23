@@ -14,7 +14,7 @@ namespace SystemCostCalculation.ViewModels
     {
         #region Fields
 
-        public int currentIdNumber = 0;
+        public int currentIdNumber;
 
         public ObservableCollection<ItemModel> items { get; set; }
         public ObservableCollection<string> categories { get; set; }
@@ -198,20 +198,54 @@ namespace SystemCostCalculation.ViewModels
             }
         }
 
+        private RelayCommand addCategoryCommand;
+        public RelayCommand AddCategoryCommand
+        {
+            get
+            {
+                if (addCategoryCommand == null)
+                {
+                    addCategoryCommand = new RelayCommand(() =>
+                    {
+                        AddCategory();
+                    },
+                    () => !string.IsNullOrEmpty(category));
+                }
+                return addCategoryCommand;
+            }
+        }
+
+        private RelayCommand addSizeCommand;
+        public RelayCommand AddSizeCommand
+        {
+            get
+            {
+                if (addSizeCommand == null)
+                {
+                    addSizeCommand = new RelayCommand(() =>
+                    {
+                        AddSize();
+                    },
+                    () => size > 0);
+                }
+                return addSizeCommand;
+            }
+        }
+
         #endregion
 
         #region Command Methods
 
         private void AddItem()
         {
-            ItemModel item = new ItemModel() { Code = code, Name = name, Category = category, Size = size, Type = type, Description = description, ID = currentIdNumber++ };
+            ItemModel item = new ItemModel() { SupplierID = -1, Code = code, Name = name, Category = category, Size = size, Type = type, Description = description, ID = currentIdNumber++, Price = -1 };
             items.Add(item);
             SqliteDataAccess.SaveItem(item);
         }
 
         private void UpdateItem()
         {
-            ItemModel updatedItem = new ItemModel() { Code = code, Name = name, Category = category, Size = size, Type = type, Description = description, ID = selectedItem.ID };
+            ItemModel updatedItem = new ItemModel() { SupplierID = selectedItem.SupplierID, Code = code, Name = name, Category = category, Size = size, Type = type, Description = description, ID = selectedItem.ID, Price = selectedItem.Price };
             for (int i = 0; i < items.Count; i++)
             {
                 if (items[i].ID == updatedItem.ID)
@@ -237,6 +271,26 @@ namespace SystemCostCalculation.ViewModels
             items.Remove(selectedItem);
         }
 
+        private void AddCategory()
+        {
+            if (!categories.Contains(category))
+            {
+                SqliteDataAccess.SaveCategory(category);
+                categories.Add(category);
+                category = "";
+            }
+        }
+
+        private void AddSize()
+        {
+            if (!sizes.Contains(size))
+            {
+                SqliteDataAccess.SaveSize(size);
+                sizes.Add(size);
+                size = 0;
+            }
+        }
+
         #endregion
 
         #region Helper Methods
@@ -259,6 +313,11 @@ namespace SystemCostCalculation.ViewModels
         {
             List<ItemModel> sqlItems = SqliteDataAccess.LoadItems();
             items = new ObservableCollection<ItemModel>(sqlItems as List<ItemModel>);
+            List<string> sqlCategories = SqliteDataAccess.LoadCategories();
+            categories = new ObservableCollection<string>(sqlCategories as List<string>);
+            List<int> sqlSizes = SqliteDataAccess.LoadSizes();
+            sizes = new ObservableCollection<int>(sqlSizes as List<int>);
+            currentIdNumber = SqliteDataAccess.GetMaxItemID();
         }
 
         #endregion
