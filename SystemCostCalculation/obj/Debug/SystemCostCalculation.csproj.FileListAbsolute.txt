@@ -52,7 +52,6 @@ C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation_Content.g.cs
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation_MarkupCompile.cache
-C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation_MarkupCompile.lref
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\MainWindow.baml
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\ManageItemView.baml
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\ManageSupplierView.baml
@@ -78,6 +77,8 @@ D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin
 D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\App.baml
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\CreateTemplateView.g.cs
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\CreateTemplateView.baml
-C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.csprojAssemblyReference.cache
 D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\CreateTemplateView.g.cs
 D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\CreateTemplateView.baml
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation_MarkupCompile.lref
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\ViewTemplateView.g.cs
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\ViewTemplateView.baml
