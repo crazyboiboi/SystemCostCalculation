@@ -54,8 +54,7 @@
 
                 <Button Content="Add Item" Width="60" Height="30" Margin="0 20 0 0"/>
                 
-            </StackPanel>            
-            
+            </StackPanel>                        
         </Border>
         
 

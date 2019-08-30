@@ -13,6 +13,7 @@ namespace SystemCostCalculation.ViewModels
         private ManageItemViewModel manageItemViewModel;
         private ManageSupplierViewModel manageSupplierViewModel;
         private CreateTemplateViewModel createTemplateViewModel;
+        private ViewTemplateViewModel viewTemplateViewModel;
 
 
         public MainWindowViewModel()
@@ -20,6 +21,7 @@ namespace SystemCostCalculation.ViewModels
             manageItemViewModel = new ManageItemViewModel();
             manageSupplierViewModel = new ManageSupplierViewModel();
             createTemplateViewModel = new CreateTemplateViewModel();
+            viewTemplateViewModel = new ViewTemplateViewModel();
         }
 
 
@@ -89,6 +91,22 @@ namespace SystemCostCalculation.ViewModels
             }
         }
 
+        private RelayCommand viewTemplateTabCommand; 
+        public RelayCommand ViewTemplateTabCommand
+        {
+            get
+            {
+                if(viewTemplateTabCommand == null)
+                {
+                    viewTemplateTabCommand = new RelayCommand(() =>
+                   {
+                       setView("viewtemplate");
+                   });
+                }
+                return viewTemplateTabCommand;
+            }
+        }
+
 
 
 
@@ -104,6 +122,9 @@ namespace SystemCostCalculation.ViewModels
             } else if (name.Equals("createtemplate"))
             {
                 currentViewModel = createTemplateViewModel;
+            } else if (name.Equals("viewtemplate"))
+            {
+                currentViewModel = viewTemplateViewModel;
             }
         }
 

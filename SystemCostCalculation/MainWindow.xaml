@@ -16,8 +16,12 @@
         </DataTemplate>
         <DataTemplate DataType="{x:Type viewmodels:ManageSupplierViewModel}">
             <views:ManageSupplierView/>
-        </DataTemplate><DataTemplate DataType="{x:Type viewmodels:CreateTemplateViewModel}">
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:CreateTemplateViewModel}">
             <views:CreateTemplateView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:ViewTemplateViewModel}">
+            <views:ViewTemplateView/>
         </DataTemplate>
     </Window.Resources>
 
@@ -48,7 +52,7 @@
             <Button Content="Item"  Style="{StaticResource NavButton}" Command="{Binding ItemTabCommand}"/>
             <Button Content="Supplier" Style="{StaticResource NavButton}" Command="{Binding SupplierTabCommand}"/>
             <Button Content="Create Template" Style="{StaticResource NavButton}" Command="{Binding CreateTemplateTabCommand}"/>
-            <Button Content="View Templates" Style="{StaticResource NavButton}"/>
+            <Button Content="View Templates" Style="{StaticResource NavButton}" Command="{Binding ViewTemplateTabCommand}"/>
             <Button Content="Summary"  Style="{StaticResource NavButton}"/>            
         </StackPanel>
 

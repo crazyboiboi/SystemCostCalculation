@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="SystemCostCalculation.Views.ViewTemplateView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SystemCostCalculation.Views"
+             xmlns:viewmodels="clr-namespace:SystemCostCalculation.ViewModels"        
+             xmlns:views="clr-namespace:SystemCostCalculation.Views"        
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="1632">
+
+
+    <UserControl.DataContext>
+        <viewmodels:ViewTemplateViewModel/>
+    </UserControl.DataContext>
+
+    
+    
+    
+    
+    
+    <Border Padding="10">
+        <DataGrid x:Name="tenplateTable" SelectedItem="{Binding Path=selectedItem, Mode=TwoWay}" ItemsSource="{Binding filteredItems}" CanUserAddRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" AutoGenerateColumns="False" Margin="0 10 0 0">
+            <DataGrid.Columns >
+                <DataGridTextColumn IsReadOnly="true" Header="Template ID" Binding="{Binding }" Width="0.25*"/>
+                <DataGridTextColumn IsReadOnly="true" Header="Template Name" Binding="{Binding }" Width="0.5*"/>
+                <DataGridTextColumn IsReadOnly="true" Header="Tender Name" Binding="{Binding }" Width="0.5*"/>
+                <DataGridTextColumn IsReadOnly="true" Header="Date Modified" Binding="{Binding }" Width="0.45*"/>
+                <DataGridTemplateColumn Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="Edit"/>
+                                <Button Content="Delete"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Border>
+    
+        
+        
+</UserControl>
