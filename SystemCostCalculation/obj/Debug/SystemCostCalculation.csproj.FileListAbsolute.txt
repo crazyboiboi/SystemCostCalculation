@@ -81,3 +81,4 @@ C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.csprojAssemblyReference.cache
 D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\CreateTemplateView.g.cs
 D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\CreateTemplateView.baml
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.csprojAssemblyReference.cache
