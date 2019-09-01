@@ -106,15 +106,16 @@
                     <Button Content="X Remove Selected" Grid.Column="1" HorizontalAlignment="Right" Command="{Binding RemoveItemCommand}"/>
 
                 </Grid>
-                
 
-                <DataGrid x:Name="stockItemTable" SelectedItem="{Binding Path=selectedItem, Mode=TwoWay}" ItemsSource="{Binding filteredItems}" CanUserAddRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" AutoGenerateColumns="False" Margin="0 10 0 0" Height="400">
+
+                <DataGrid x:Name="stockItemTable" SelectedItem="{Binding Path=selectedItem, Mode=TwoWay}" ItemsSource="{Binding filteredItems, Mode=OneWay}" CanUserAddRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" AutoGenerateColumns="False" Margin="0 10 0 0" Height="400">
                     <DataGrid.Columns >
                         <DataGridTextColumn IsReadOnly="true" Header="ItemID" Binding="{Binding Code}" Width="0.25*"/>
                         <DataGridTextColumn IsReadOnly="true" Header="Name" Binding="{Binding Name}" Width="0.75*"/>
                         <DataGridTextColumn IsReadOnly="true" Header="Size" Binding="{Binding Size}" Width="0.5*"/>
                         <DataGridTextColumn IsReadOnly="true" Header="Type" Binding="{Binding Type}" Width="0.5*"/>
                         <DataGridTextColumn IsReadOnly="true" Header="Category" Binding="{Binding Category}" Width="0.5*"/>
+                        <DataGridTextColumn IsReadOnly="True" Header="Price" Binding="{Binding Price}" Width="0.5*"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>

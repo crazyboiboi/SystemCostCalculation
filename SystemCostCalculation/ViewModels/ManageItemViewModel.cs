@@ -72,6 +72,7 @@ namespace SystemCostCalculation.ViewModels
             {
                 Set(ref _category, value);
                 AddCommand.RaiseCanExecuteChanged();
+                AddCategoryCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -86,6 +87,7 @@ namespace SystemCostCalculation.ViewModels
             {
                 Set(ref _size, value);
                 AddCommand.RaiseCanExecuteChanged();
+                AddSizeCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -269,6 +271,13 @@ namespace SystemCostCalculation.ViewModels
         {
             SqliteDataAccess.DeleteItem(selectedItem);
             items.Remove(selectedItem);
+            selectedItem = null;
+            code = "";
+            name = "";
+            category = "";
+            size = 0;
+            type = "";
+            description = "";
         }
 
         private void AddCategory()

@@ -16,6 +16,8 @@ namespace SystemCostCalculation.ViewModels
         public int currentIdNumber;
         public ObservableCollection<SupplierModel> suppliers { get; set; }
 
+        private ObservableCollection<ItemModel> allItems { get; set; }
+
         public ObservableCollection<ItemModel> filteredItems { get; set; }
 
         private int _id;
@@ -113,8 +115,19 @@ namespace SystemCostCalculation.ViewModels
                 if (_selectedSupplier != null)
                 {
                     PopulateSupplierDetails(value.Code, value.Name, value.Contact, value.Address, value.OtherDetails);
-                    List<ItemModel> supplierItems = SqliteDataAccess.LoadFilteredItems(value);
-                    filteredItems = new ObservableCollection<ItemModel>(supplierItems as List<ItemModel>);
+                    //List<ItemModel> supplierItems = SqliteDataAccess.LoadFilteredItems(value);
+                    if (filteredItems.Count > 0)
+                    {
+                        filteredItems.Clear();
+                    }
+                    foreach (ItemModel item in allItems)
+                    {
+                        if (item.SupplierID == value.ID)
+                        {
+                            filteredItems.Add(item);
+                        }
+                    }
+                    //filteredItems = new ObservableCollection<ItemModel>(supplierItems as List<ItemModel>);
                 }
                 UpdateSupplierCommand.RaiseCanExecuteChanged();
                 DeleteSupplierCommand.RaiseCanExecuteChanged();
@@ -320,6 +333,12 @@ namespace SystemCostCalculation.ViewModels
         {
             SqliteDataAccess.DeleteSupplier(selectedSupplier);
             suppliers.Remove(selectedSupplier);
+            selectedSupplier = null;
+            code = "";
+            name = "";
+            contact = "";
+            address = "";
+            otherDetails = "";
         }
 
         private void AddItem()
@@ -328,8 +347,9 @@ namespace SystemCostCalculation.ViewModels
             itemToBeAssigned.ID = currentIdNumber++;
             itemToBeAssigned.SupplierID = selectedSupplier.ID;
             itemToBeAssigned.Price = ItemPrice;
-            SqliteDataAccess.SaveItem(itemToBeAssigned);
             filteredItems.Add(itemToBeAssigned);
+            SqliteDataAccess.SaveItem(itemToBeAssigned);
+            
         }
 
         private void EditItem()
@@ -372,6 +392,9 @@ namespace SystemCostCalculation.ViewModels
             List<SupplierModel> sqlSuppliers = SqliteDataAccess.LoadSuppliers();
             suppliers = new ObservableCollection<SupplierModel>(sqlSuppliers as List<SupplierModel>);
             currentIdNumber = SqliteDataAccess.GetMaxSupplierID();
+            List<ItemModel> sqlItems = SqliteDataAccess.LoadItems();
+            allItems = new ObservableCollection<ItemModel>(sqlItems as List<ItemModel>);
+            filteredItems = new ObservableCollection<ItemModel>();
         }
         #endregion
     }

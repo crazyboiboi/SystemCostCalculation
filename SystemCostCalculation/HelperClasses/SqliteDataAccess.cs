@@ -72,9 +72,11 @@ namespace SystemCostCalculation
         /// <returns>List of ItemModels</returns>
         public static List<ItemModel> LoadFilteredItems(SupplierModel supplier)
         {
+            var parameters = new DynamicParameters();
+            parameters.Add("@ID", supplier.ID);
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                var output = cnn.Query<ItemModel>("select * from Item where SupplierID = @ID", supplier);
+                var output = cnn.Query<ItemModel>("select * from Item where SupplierID = @ID", parameters);
                 return output.ToList();
             }
         }
@@ -85,9 +87,18 @@ namespace SystemCostCalculation
         /// <param name="item"></param>
         public static void SaveItem(ItemModel item)
         {
+            var parameters = new DynamicParameters();
+            parameters.Add("@SupplierID", item.SupplierID);
+            parameters.Add("@Code", item.Code);
+            parameters.Add("@Name", item.Name);
+            parameters.Add("@Category", item.Category);
+            parameters.Add("@Size", item.Size);
+            parameters.Add("@Type", item.Type);
+            parameters.Add("@Description", item.Description);
+            parameters.Add("@Price", item.Price);
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                cnn.Execute("insert into Item (SupplierID, Code, Name, Category, Size, Type, Description, Price) values (@SupplierID, @Code, @Name, @Category, @Size, @Type, @Description, @Price)", item);
+                cnn.Execute("insert into Item (SupplierID, Code, Name, Category, Size, Type, Description, Price) values (@SupplierID, @Code, @Name, @Category, @Size, @Type, @Description, @Price)", parameters);
             }
         }
 
@@ -97,9 +108,19 @@ namespace SystemCostCalculation
         /// <param name="item"></param>
         public static void UpdateItem(ItemModel item)
         {
+            var parameters = new DynamicParameters();
+            parameters.Add("@ID", item.ID);
+            parameters.Add("@SupplierID", item.SupplierID);
+            parameters.Add("@Code", item.Code);
+            parameters.Add("@Name", item.Name);
+            parameters.Add("@Category", item.Category);
+            parameters.Add("@Size", item.Size);
+            parameters.Add("@Type", item.Type);
+            parameters.Add("@Description", item.Description);
+            parameters.Add("@Price", item.Price);
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                cnn.Execute("update Item set SupplierID = @SupplierID, Code = @Code, Name = @Name, Category = @Category, Size = @Size, Type = @Type, Description = @Description, Price = @Price where ID = @ID", item);
+                cnn.Execute("update Item set SupplierID = @SupplierID, Code = @Code, Name = @Name, Category = @Category, Size = @Size, Type = @Type, Description = @Description, Price = @Price where ID = @ID", parameters);
             }
         }
 
@@ -210,9 +231,11 @@ namespace SystemCostCalculation
         /// <param name="category"></param>
         public static void SaveCategory(string category)
         {
+            var parameters = new DynamicParameters();
+            parameters.Add("@Category", category);
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                cnn.Execute("insert into Category (Name) values (@Name)", category);
+                cnn.Execute("insert into Category (Name) values (@Category)", parameters);
             }
         }
 
@@ -222,9 +245,11 @@ namespace SystemCostCalculation
         /// <param name="size"></param>
         public static void SaveSize(int size)
         {
+            var parameters = new DynamicParameters();
+            parameters.Add("@Size", size);
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                cnn.Execute("insert into Size (Size) values (@Size)", size);
+                cnn.Execute("insert into Size (Size) values (@Size)", parameters);
             }
         }
 
