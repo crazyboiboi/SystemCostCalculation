@@ -84,11 +84,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="HelperClasses\SqliteDataAccess.cs" />
+    <Compile Include="HelperClasses\TemplateSaveAndLoad.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\ItemModel.cs" />
     <Compile Include="Models\SupplierModel.cs" />
+    <Compile Include="Models\TemplateModel.cs" />
     <Compile Include="ViewModels\CreateTemplateViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\ManageItemViewModel.cs" />
