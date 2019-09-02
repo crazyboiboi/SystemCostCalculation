@@ -29,9 +29,16 @@ namespace SystemCostCalculation.Models
 
         public string Description { get; set; }
 
-        public float Price { get; set; }
+        public double Price { get; set; }
 
-        public bool Selected { get; set; }
+        public int ItemDiscount { get; set; }
 
+
+
+
+        public void saveItem()
+        {
+
+        }
     }
 }
