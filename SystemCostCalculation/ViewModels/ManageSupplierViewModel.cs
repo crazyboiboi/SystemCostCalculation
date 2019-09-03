@@ -167,8 +167,8 @@ namespace SystemCostCalculation.ViewModels
             }
         }
 
-        private float itemPrice;
-        public float ItemPrice
+        private double itemPrice;
+        public double ItemPrice
         {
             get
             {
@@ -258,9 +258,9 @@ namespace SystemCostCalculation.ViewModels
                     {
                         AddItem();
                         ItemName = "";
-                        ItemPrice = 0.0f;
+                        ItemPrice = 0.0d;
                     },
-                    () => !string.IsNullOrEmpty(ItemName) && !float.IsNaN(ItemPrice));
+                    () => !string.IsNullOrEmpty(ItemName) && !double.IsNaN(ItemPrice) && selectedSupplier != null);
                 }
                 return addItemCommand;
             }
@@ -277,9 +277,9 @@ namespace SystemCostCalculation.ViewModels
                     {
                         EditItem();
                         ItemName = "";
-                        ItemPrice = 0.0f;
+                        ItemPrice = 0.0d;
                     },
-                    () => !string.IsNullOrEmpty(ItemName) && !float.IsNaN(ItemPrice));
+                    () => !string.IsNullOrEmpty(ItemName) && !double.IsNaN(ItemPrice) && selectedSupplier != null);
                 }
                 return editItemCommand;
             }
@@ -350,7 +350,7 @@ namespace SystemCostCalculation.ViewModels
             ItemModel itemToBeAssigned = SqliteDataAccess.FindUnassignedItem(ItemName);
             itemToBeAssigned.ID = currentIdNumber++;
             itemToBeAssigned.SupplierID = selectedSupplier.ID;
-            itemToBeAssigned.Price = ItemPrice;
+            itemToBeAssigned.Price = Math.Round(ItemPrice, 2);
             filteredItems.Add(itemToBeAssigned);
             SqliteDataAccess.SaveItem(itemToBeAssigned);
             
@@ -389,7 +389,7 @@ namespace SystemCostCalculation.ViewModels
             otherDetails = det;
         }
 
-        private void PopulateItemDetails(string n, float p)
+        private void PopulateItemDetails(string n, double p)
         {
             ItemName = n;
             ItemPrice = p;

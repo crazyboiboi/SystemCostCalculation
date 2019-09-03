@@ -9,6 +9,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="1632">
 
+    
     <UserControl.DataContext>
         <viewmodels:CreateTemplateViewModel/>
     </UserControl.DataContext>
@@ -58,10 +59,21 @@
                     <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource InputField}" Margin="10 15 0 0"/>
 
                 </Grid>
-                
 
                 <ListView Height="200" Margin="0 20 0 0" ItemsSource="{Binding SupplierItems}" SelectedItem="{Binding selectedItem}">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
                     
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Code" Width="120" DisplayMemberBinding="{Binding Code}" />
+                            <GridViewColumn Header="Name" Width="140" DisplayMemberBinding="{Binding Name}" />
+                            <GridViewColumn Header="Price" Width="50" DisplayMemberBinding="{Binding Price}" />
+                        </GridView>
+                    </ListView.View>
                 </ListView>
 
                 <Button Content="Add Item" Width="60" Height="30" Margin="0 20 0 0" Command="{Binding AddItemCommand}"/>
@@ -127,7 +139,7 @@
                 <Button Height="60" Width="60" Margin="0 20 0 0">
                     <TextBlock Text="Edit Item Quantity" TextWrapping="Wrap" TextAlignment="Center"/>
                 </Button>
-                <Button Height="60" Width="60" Margin="0 20 0 0">
+                <Button Height="60" Width="60" Margin="0 20 0 0" Command="{Binding RemoveItemFromTemplateCommand}">
                     <TextBlock Text="Remove Item" TextWrapping="Wrap" TextAlignment="Center"/>
                 </Button>
             </StackPanel>

@@ -62,7 +62,10 @@ namespace SystemCostCalculation.ViewModels
             set
             {
                 Set(ref _selectedItem, value);
-                AddItemCommand.RaiseCanExecuteChanged();
+                if (value != null)
+                {
+                    AddItemCommand.RaiseCanExecuteChanged();
+                }
             }
         }
 
@@ -75,7 +78,11 @@ namespace SystemCostCalculation.ViewModels
             }
             set
             {
-                Set(ref _selectedTemplateItem);
+                Set(ref _selectedTemplateItem, value);
+                if (value != null)
+                {
+                    RemoveItemFromTemplateCommand.RaiseCanExecuteChanged();
+                }
             }
         }
 
@@ -93,9 +100,27 @@ namespace SystemCostCalculation.ViewModels
                     addItemCommand = new RelayCommand(() =>
                     {
                         AddItemToTemplate();
-                    });
+                    },
+                    () => selectedItem != null);
                 }
                 return addItemCommand;
+            }
+        }
+
+        private RelayCommand removeItemFromTemplateCommand;
+        public RelayCommand RemoveItemFromTemplateCommand
+        {
+            get
+            {
+                if (removeItemFromTemplateCommand == null)
+                {
+                    removeItemFromTemplateCommand = new RelayCommand(() =>
+                    {
+                        RemoveItemFromTemplate();
+                    },
+                    () => selectedTemplateItem != null);
+                }
+                return removeItemFromTemplateCommand;
             }
         }
 
@@ -109,6 +134,15 @@ namespace SystemCostCalculation.ViewModels
             {
                 selectedItem.Quantity = 0;
                 TemplateItems.Add(selectedItem);
+            }
+            selectedItem = null;
+        }
+
+        private void RemoveItemFromTemplate()
+        {
+            if (selectedTemplateItem != null)
+            {
+                TemplateItems.Remove(selectedTemplateItem);
             }
         }
 
