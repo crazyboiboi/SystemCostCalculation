@@ -32,9 +32,9 @@
 
         <StackPanel HorizontalAlignment="Center" Grid.Row="1" Grid.RowSpan="3" Margin="0 -30 0 0">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="20">
-                <TextBlock VerticalAlignment="Center" Text="Displayed Supplier"/>
+                <TextBlock Style="{StaticResource FieldHeading}" VerticalAlignment="Center" Text="Displayed Supplier"/>
                 <ComboBox VerticalAlignment="Center" Width="200" Margin="10 0 0 0" ItemsSource="{Binding suppliers}" SelectedValue="{Binding selectedSupplier}"/>
-                <Button Content="Add" Width="50" Height="50" Margin="80 0 0 0" Command="{Binding AddSupplierCommand}"/>
+                <Button Content="Add" Style="{StaticResource SquareButtons}" Margin="80 0 0 0" Command="{Binding AddSupplierCommand}"/>
             </StackPanel>
 
             <Border BorderThickness="0.4" BorderBrush="Gray" Padding="20" Width="400">
@@ -50,19 +50,19 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel Grid.Column="0">
-                        <TextBlock Text="Code" Margin="0 0 0 0"/>
-                        <TextBlock Text="Name" Margin="0 20 0 0"/>
-                        <TextBlock Text="Contact" Margin="0 20 0 0"/>
-                        <TextBlock Text="Address" Margin="0 20 0 0"/>
-                        <TextBlock Text="Other Details" Margin="0 20 0 0"/>
+                        <TextBlock Style="{StaticResource FieldHeading}" Text="Code" Margin="0 0 0 0"/>
+                        <TextBlock Style="{StaticResource FieldHeading}" Text="Name" Margin="0 20 0 0"/>
+                        <TextBlock Style="{StaticResource FieldHeading}" Text="Contact" Margin="0 20 0 0"/>
+                        <TextBlock Style="{StaticResource FieldHeading}" Text="Address" Margin="0 20 0 0"/>
+                        <TextBlock Style="{StaticResource FieldHeading}" Text="Other Details" Margin="0 20 0 0"/>
                     </StackPanel>
 
                     <StackPanel Grid.Column="1" HorizontalAlignment="Left" Margin="10 0 0 0">
-                        <TextBox Width="150" Height="20" HorizontalAlignment="Left" Margin="0 0 0 0" Text="{Binding code, Mode=TwoWay}"/>
-                        <TextBox Width="200" Height="20" HorizontalAlignment="Left" Margin="0 15 0 0" Text="{Binding name, Mode=TwoWay}"/>
-                        <TextBox Width="150" Height="20" HorizontalAlignment="Left" Margin="0 15 0 0" Text="{Binding contact, Mode=TwoWay}"/>
-                        <TextBox Width="150" Height="20" HorizontalAlignment="Left" Margin="0 15 0 0" Text="{Binding address, Mode=TwoWay}"/>
-                        <TextBox Width="225" Height="70" HorizontalAlignment="Left" Margin="0 17 0 0" TextWrapping="Wrap" Text="{Binding otherDetails, Mode=TwoWay}"/>
+                        <TextBox Style="{StaticResource InputField}" Width="150" Height="20" HorizontalAlignment="Left" Margin="0 0 0 0" Text="{Binding code, Mode=TwoWay}"/>
+                        <TextBox Style="{StaticResource InputField}" Width="200" Height="20" HorizontalAlignment="Left" Margin="0 15 0 0" Text="{Binding name, Mode=TwoWay}"/>
+                        <TextBox Style="{StaticResource InputField}" Width="150" Height="20" HorizontalAlignment="Left" Margin="0 15 0 0" Text="{Binding contact, Mode=TwoWay}"/>
+                        <TextBox Style="{StaticResource InputField}" Width="150" Height="20" HorizontalAlignment="Left" Margin="0 15 0 0" Text="{Binding address, Mode=TwoWay}"/>
+                        <TextBox Style="{StaticResource InputField}" Width="225" Height="70" HorizontalAlignment="Left" Margin="0 17 0 0" TextWrapping="Wrap" Text="{Binding otherDetails, Mode=TwoWay}"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 50 0 0 " Grid.Row="1" Grid.ColumnSpan="2">
@@ -77,12 +77,12 @@
         <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20 30 0 0">
             <Border Padding="20" BorderThickness="0.4" BorderBrush="Gray">
                 <StackPanel Orientation="Horizontal" >
-                    <TextBlock Text="Item" Margin="0 0 0 0"/>
-                    <TextBox Width="200" Margin="10 0 0 0" Text="{Binding ItemName,Mode=TwoWay}"/>
-                    <TextBlock Text="Price" Margin="10 0 0 0"/>
-                    <TextBox Width="200" Margin="10 0 0 0" Text="{Binding ItemPrice, Mode=TwoWay}"/>
-                    <Button Content="Add Item" Width="60" Height="25" Margin="10 0 0 0" Command="{Binding AddItemCommand}"/>
-                    <Button Content="Edit Item" Width="60" Height="25" Margin="10 0 0 0" Command="{Binding EditItemCommand}"/>
+                    <TextBlock Text="Item" Style="{StaticResource FieldHeading}" Margin="0 0 0 0"/>
+                    <TextBox Width="200" Margin="10 0 0 0" Style="{StaticResource InputField}" Text="{Binding ItemName,Mode=TwoWay}"/>
+                    <TextBlock Text="Price" Style="{StaticResource FieldHeading}" Margin="10 0 0 0"/>
+                    <TextBox Width="200" Margin="10 0 0 0" Style="{StaticResource InputField}" Text="{Binding ItemPrice, Mode=TwoWay}"/>
+                    <Button Style="{StaticResource RectangularButtons}" Content="Add Item" Width="70" Height="25" Margin="10 0 0 0" Command="{Binding AddItemCommand}"/>
+                    <Button Style="{StaticResource RectangularButtons}" Content="Edit Item" Width="70" Height="25" Margin="10 0 0 0" Command="{Binding EditItemCommand}"/>
                 </StackPanel>
             </Border>
         </StackPanel>
@@ -99,11 +99,11 @@
                     </Grid.ColumnDefinitions>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                        <TextBlock Text="Find" Margin="0 0 0 0"/>
-                        <TextBox Width="175" Height="20" Margin="10 0 0 0"/>
+                        <TextBlock Style="{StaticResource FieldHeading}" Text="Find" Margin="0 0 0 0"/>
+                        <TextBox Style="{StaticResource InputField}" Width="175" Height="20" Margin="10 0 0 0"/>
                     </StackPanel>
 
-                    <Button Content="X Remove Selected" Grid.Column="1" HorizontalAlignment="Right" Command="{Binding RemoveItemCommand}"/>
+                    <Button Style="{StaticResource RectangularButtons}" Content="X Remove Selected" Grid.Column="1" HorizontalAlignment="Right" Command="{Binding RemoveItemCommand}"/>
 
                 </Grid>
 
