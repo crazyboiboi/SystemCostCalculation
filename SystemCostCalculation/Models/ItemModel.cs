@@ -31,7 +31,10 @@ namespace SystemCostCalculation.Models
 
         public double Price { get; set; }
 
+        public bool Selected { get; set; }
+
         public int ItemDiscount { get; set; }
+
 
 
 

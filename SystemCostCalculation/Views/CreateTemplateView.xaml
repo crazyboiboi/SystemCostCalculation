@@ -10,7 +10,7 @@
              d:DesignHeight="600" d:DesignWidth="1632">
 
     <UserControl.DataContext>
-        <viewmodels:ManageItemViewModel/>
+        <viewmodels:CreateTemplateViewModel/>
     </UserControl.DataContext>
 
     <Grid>
@@ -52,7 +52,7 @@
                     </Grid.ColumnDefinitions>
 
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Displayed Supplier" Style="{StaticResource FieldHeading}"/>
-                    <ComboBox Grid.Row="0" Grid.Column="1" Width="175" ItemsSource="{Binding suppliers}" SelectedValue="{Binding selectedSupplier}" Margin="10 0 0 0"/>
+                    <ComboBox Grid.Row="0" Grid.Column="1" Width="175" ItemsSource="{Binding Suppliers}" SelectedValue="{Binding selectedSupplier}" Margin="10 0 0 0"/>
 
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="Find" Style="{StaticResource FieldHeading}" Margin="0 15 0 0"/>
                     <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource InputField}" Margin="10 15 0 0"/>
@@ -60,11 +60,11 @@
                 </Grid>
                 
 
-                <ListView Height="200" Margin="0 20 0 0">
+                <ListView Height="200" Margin="0 20 0 0" ItemsSource="{Binding SupplierItems}" SelectedItem="{Binding selectedItem}">
                     
                 </ListView>
 
-                <Button Content="Add Item" Width="60" Height="30" Margin="0 20 0 0"/>
+                <Button Content="Add Item" Width="60" Height="30" Margin="0 20 0 0" Command="{Binding AddItemCommand}"/>
                 
             </StackPanel>                        
         </Border>
@@ -89,7 +89,7 @@
             <TextBlock Text="Tender Name" Grid.Row="1" Style="{StaticResource FieldHeading}"/>
             <TextBlock Text="Location" Grid.Row="2" Style="{StaticResource FieldHeading}"/>
             <TextBlock Text="Date Created" Grid.Row="1" Grid.Column="2" Style="{StaticResource FieldHeading}"/>
-            <TextBlock Text="Template Number" Grid.Row="0" Grid.Column="2" Style="{StaticResource FieldHeading}"/>
+            <TextBlock Text="Template Code" Grid.Row="0" Grid.Column="2" Style="{StaticResource FieldHeading}"/>
             <TextBlock Text="Remark" Grid.Row="2" Grid.Column="2" Style="{StaticResource FieldHeading}"/>
             <TextBlock Text="(Displays today's date)" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center"/>
 
@@ -109,7 +109,7 @@
                 <ColumnDefinition Width="0.3*"/>
             </Grid.ColumnDefinitions>
 
-            <DataGrid x:Name="templateItemTable" SelectedItem="{Binding Path=selectedItem, Mode=TwoWay}" ItemsSource="{Binding items}"  CanUserAddRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" AutoGenerateColumns="False" Margin="0 10 0 0" Height="300" Width="550" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <DataGrid x:Name="templateItemTable" SelectedItem="{Binding Path=selectedTemplateItem, Mode=TwoWay}" ItemsSource="{Binding TemplateItems}"  CanUserAddRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" AutoGenerateColumns="False" Margin="0 10 0 0" Height="300" Width="550" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <DataGrid.Columns>
                     <DataGridTextColumn IsReadOnly="true" Header="ItemID" Binding="{Binding Code}" Width="0.25*"/>
                     <DataGridTextColumn IsReadOnly="true" Header="Name" Binding="{Binding Name}" Width="0.75*"/>

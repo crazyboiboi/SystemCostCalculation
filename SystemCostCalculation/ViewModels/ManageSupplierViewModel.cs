@@ -115,7 +115,8 @@ namespace SystemCostCalculation.ViewModels
                 if (_selectedSupplier != null)
                 {
                     PopulateSupplierDetails(value.Code, value.Name, value.Contact, value.Address, value.OtherDetails);
-                    //List<ItemModel> supplierItems = SqliteDataAccess.LoadFilteredItems(value);
+                    List<ItemModel> sqlItems = SqliteDataAccess.LoadItems();
+                    allItems = new ObservableCollection<ItemModel>(sqlItems as List<ItemModel>);
                     if (filteredItems.Count > 0)
                     {
                         filteredItems.Clear();
@@ -127,7 +128,6 @@ namespace SystemCostCalculation.ViewModels
                             filteredItems.Add(item);
                         }
                     }
-                    //filteredItems = new ObservableCollection<ItemModel>(supplierItems as List<ItemModel>);
                 }
                 UpdateSupplierCommand.RaiseCanExecuteChanged();
                 DeleteSupplierCommand.RaiseCanExecuteChanged();
@@ -144,6 +144,10 @@ namespace SystemCostCalculation.ViewModels
             set
             {
                 Set(ref _selectedItem, value);
+                if (value != null)
+                {
+                    PopulateItemDetails(value.Name, value.Price);
+                }
                 RemoveItemCommand.RaiseCanExecuteChanged();
             }
         }
@@ -354,11 +358,12 @@ namespace SystemCostCalculation.ViewModels
 
         private void EditItem()
         {
-            for (int i = 0; i < filteredItems.Count; i++)
+            for (int i = 0; i < filteredItems.Count(); i++)
             {
                 if (filteredItems[i].Name == ItemName)
                 {
-                    filteredItems[i].Price = ItemPrice;
+                    ItemModel updatedItem = new ItemModel { ID = filteredItems[i].ID, SupplierID = filteredItems[i].SupplierID, Code = filteredItems[i].Code, Name = filteredItems[i].Name, Category = filteredItems[i].Category, Size = filteredItems[i].Size, Type = filteredItems[i].Type, Description = filteredItems[i].Description, Price = ItemPrice };
+                    filteredItems[i] = updatedItem;
                     SqliteDataAccess.UpdateItem(filteredItems[i]);
                     break;
                 }
@@ -382,6 +387,12 @@ namespace SystemCostCalculation.ViewModels
             address = a;
             contact = con;
             otherDetails = det;
+        }
+
+        private void PopulateItemDetails(string n, float p)
+        {
+            ItemName = n;
+            ItemPrice = p;
         }
 
         #endregion
