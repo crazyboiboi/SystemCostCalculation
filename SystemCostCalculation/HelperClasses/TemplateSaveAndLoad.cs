@@ -34,7 +34,8 @@ namespace SystemCostCalculation.HelperClasses
         //Save the template in a .txt file
         public static void save(TemplateModel template)
         {
-            string path = "";
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string path = Path.Combine(desktopPath, "TemplateSaveExample.txt");
 
             using (StreamWriter sw = new StreamWriter(path))
             {
@@ -68,8 +69,11 @@ namespace SystemCostCalculation.HelperClasses
 
 
         //Load the template in a .txt file
-        public static void load(string path)
+        public static void load()
         {
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string path = Path.Combine(desktopPath, "TemplateSaveExample.txt");
+
             try
             {
                 string[] lines = File.ReadAllLines(path);
