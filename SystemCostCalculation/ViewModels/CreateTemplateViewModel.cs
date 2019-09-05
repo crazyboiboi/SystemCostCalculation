@@ -23,6 +23,8 @@ namespace SystemCostCalculation.ViewModels
 
         private ObservableCollection<ItemModel> allItems { get; set; }
 
+        public string CurrentDate { get; }
+
         private SupplierModel _selectedSupplier;
         public SupplierModel selectedSupplier
         {
@@ -86,6 +88,91 @@ namespace SystemCostCalculation.ViewModels
             }
         }
 
+        private string systemName;
+        public string SystemName
+        {
+            get
+            {
+                return systemName;
+            }
+            set
+            {
+                Set(ref systemName, value);
+                if (value != null)
+                {
+                    CreateTemplateCommand.RaiseCanExecuteChanged();
+                    SaveTemplateCommand.RaiseCanExecuteChanged();
+                }
+            }
+        }
+
+        private string tenderName;
+        public string TenderName
+        {
+            get
+            {
+                return tenderName;
+            }
+            set
+            {
+                Set(ref tenderName, value);
+                if (value != null)
+                {
+                    CreateTemplateCommand.RaiseCanExecuteChanged();
+                    SaveTemplateCommand.RaiseCanExecuteChanged();
+                }
+            }
+        }
+
+        private string location;
+        public string Location
+        {
+            get
+            {
+                return location;
+            }
+            set
+            {
+                Set(ref location, value);
+                if (value != null)
+                {
+                    CreateTemplateCommand.RaiseCanExecuteChanged();
+                    SaveTemplateCommand.RaiseCanExecuteChanged();
+                }
+            }
+        }
+
+        private string templateCode;
+        public string TemplateCode
+        {
+            get
+            {
+                return templateCode;
+            }
+            set
+            {
+                Set(ref templateCode, value);
+                if (value != null)
+                {
+                    CreateTemplateCommand.RaiseCanExecuteChanged();
+                    SaveTemplateCommand.RaiseCanExecuteChanged();
+                }
+            }
+        }
+
+        private string templateRemark;
+        public string TemplateRemark
+        {
+            get
+            {
+                return templateRemark;
+            }
+            set
+            {
+                Set(ref templateRemark, value);
+            }
+        }
+
         #endregion
 
         #region UI Commands
@@ -124,6 +211,56 @@ namespace SystemCostCalculation.ViewModels
             }
         }
 
+        private RelayCommand createTemplateCommand;
+        public RelayCommand CreateTemplateCommand
+        {
+            get
+            {
+                if (createTemplateCommand == null)
+                {
+                    createTemplateCommand = new RelayCommand(() =>
+                    {
+                        CreateTemplate();
+                    },
+                    () => !string.IsNullOrEmpty(SystemName) && !string.IsNullOrEmpty(TenderName) && !string.IsNullOrEmpty(Location) && !string.IsNullOrEmpty(TemplateCode) && TemplateItems.Count() > 0);
+                }
+                return createTemplateCommand;
+            }
+        }
+
+        private RelayCommand saveTemplateCommand;
+        public RelayCommand SaveTemplateCommand
+        {
+            get
+            {
+                if (saveTemplateCommand == null)
+                {
+                    saveTemplateCommand = new RelayCommand(() =>
+                    {
+                        SaveTemplate();
+                    },
+                    () => !string.IsNullOrEmpty(SystemName) && !string.IsNullOrEmpty(TenderName) && !string.IsNullOrEmpty(Location) && !string.IsNullOrEmpty(TemplateCode) && TemplateItems.Count() > 0);
+                }
+                return saveTemplateCommand;
+            }
+        }
+
+        private RelayCommand deleteTemplateCommand;
+        public RelayCommand DeleteTemplateCommand
+        {
+            get
+            {
+                if (deleteTemplateCommand == null)
+                {
+                    deleteTemplateCommand = new RelayCommand(() =>
+                    {
+                        DeleteTemplate();
+                    });
+                }
+                return deleteTemplateCommand;
+            }
+        }
+
         #endregion
 
         #region Command Methods
@@ -146,6 +283,57 @@ namespace SystemCostCalculation.ViewModels
             }
         }
 
+        private void CreateTemplate()
+        {
+            //TO-DO: Use helper class to save information and template items to a text file
+
+            //Emptying text fields and datagrids
+            selectedItem = null;
+            selectedSupplier = null;
+            selectedTemplateItem = null;
+            SupplierItems.Clear();
+            TemplateItems.Clear();
+            SystemName = "";
+            TenderName = "";
+            Location = "";
+            TemplateCode = "";
+            TemplateRemark = "";
+        }
+
+        private void SaveTemplate()
+        {
+            //TO-DO: Updates template if it exists already
+
+            //Emptying text fields and datagrids
+            selectedItem = null;
+            selectedSupplier = null;
+            selectedTemplateItem = null;
+            SupplierItems.Clear();
+            TemplateItems.Clear();
+            SystemName = "";
+            TenderName = "";
+            Location = "";
+            TemplateCode = "";
+            TemplateRemark = "";
+        }
+
+        private void DeleteTemplate()
+        {
+            //TO-DO: Deletes template if it has been selected from view templates tab
+
+            //Emptying text fields and datagrids
+            selectedItem = null;
+            selectedSupplier = null;
+            selectedTemplateItem = null;
+            SupplierItems.Clear();
+            TemplateItems.Clear();
+            SystemName = "";
+            TenderName = "";
+            Location = "";
+            TemplateCode = "";
+            TemplateRemark = "";
+        }
+
         #endregion
 
         #region Helper Methods
@@ -164,6 +352,7 @@ namespace SystemCostCalculation.ViewModels
             allItems = new ObservableCollection<ItemModel>(sqlItems as List<ItemModel>);
             SupplierItems = new ObservableCollection<ItemModel>();
             TemplateItems = new ObservableCollection<ItemModel>();
+            CurrentDate = DateTime.Now.ToString("dd/MM/yyyy");
         }
 
         #endregion

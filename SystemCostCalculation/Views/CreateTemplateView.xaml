@@ -28,13 +28,13 @@
 
 
         <StackPanel Orientation="Horizontal" Margin="70 0 0 0">
-            <Button Height="60" Width="60">
-                <TextBlock Text="Create Template" TextWrapping="Wrap" TextAlignment="Center"/>
+            <Button Height="60" Width="60" Command="{Binding CreateTemplateCommand}">
+                <TextBlock Text="New Template" TextWrapping="Wrap" TextAlignment="Center"/>
             </Button>
-            <Button Height="60" Width="60" Margin="20 0 0 0">
+            <Button Height="60" Width="60" Margin="20 0 0 0" Command="{Binding SaveTemplateCommand}">
                 <TextBlock Text="Save Template" TextWrapping="Wrap" TextAlignment="Center"/>
             </Button>
-            <Button Height="60" Width="60" Margin="20 0 0 0">
+            <Button Height="60" Width="60" Margin="20 0 0 0" Command="{Binding DeleteTemplateCommand}">
                 <TextBlock Text="Delete Template" TextWrapping="Wrap" TextAlignment="Center"/>
             </Button>
         </StackPanel>
@@ -103,14 +103,14 @@
             <TextBlock Text="Date Created" Grid.Row="1" Grid.Column="2" Style="{StaticResource FieldHeading}"/>
             <TextBlock Text="Template Code" Grid.Row="0" Grid.Column="2" Style="{StaticResource FieldHeading}"/>
             <TextBlock Text="Remark" Grid.Row="2" Grid.Column="2" Style="{StaticResource FieldHeading}"/>
-            <TextBlock Text="(Displays today's date)" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding CurrentDate}" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center"/>
 
-            <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource InputField}"/>
-            <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource InputField}"/>
-            <TextBox Grid.Row="2" Grid.Column="1" Style="{StaticResource InputField}"/>
+            <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource InputField}" Text="{Binding SystemName, Mode=TwoWay}"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource InputField}" Text="{Binding TenderName, Mode=TwoWay}"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Style="{StaticResource InputField}" Text="{Binding Location, Mode=TwoWay}"/>
 
-            <TextBox Grid.Row="0" Grid.Column="3" Style="{StaticResource InputField}"/>
-            <TextBox Grid.Row="2" Grid.Column="3" Grid.RowSpan="2" Margin="0 -10 0 0" Style="{StaticResource InputField}" Height="42" Width="250" TextWrapping="Wrap"/>
+            <TextBox Grid.Row="0" Grid.Column="3" Style="{StaticResource InputField}" Text="{Binding TemplateCode, Mode=TwoWay}"/>
+            <TextBox Grid.Row="2" Grid.Column="3" Grid.RowSpan="2" Margin="0 -10 0 0" Style="{StaticResource InputField}" Height="42" Width="250" TextWrapping="Wrap" Text="{Binding TemplateRemark, Mode=TwoWay}"/>
         
         </Grid>
 
