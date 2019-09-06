@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SystemCostCalculation.HelperClasses;
 using SystemCostCalculation.Models;
 
 namespace SystemCostCalculation.ViewModels
@@ -221,8 +222,7 @@ namespace SystemCostCalculation.ViewModels
                     createTemplateCommand = new RelayCommand(() =>
                     {
                         CreateTemplate();
-                    },
-                    () => !string.IsNullOrEmpty(SystemName) && !string.IsNullOrEmpty(TenderName) && !string.IsNullOrEmpty(Location) && !string.IsNullOrEmpty(TemplateCode) && TemplateItems.Count() > 0);
+                    });
                 }
                 return createTemplateCommand;
             }
@@ -239,7 +239,7 @@ namespace SystemCostCalculation.ViewModels
                     {
                         SaveTemplate();
                     },
-                    () => !string.IsNullOrEmpty(SystemName) && !string.IsNullOrEmpty(TenderName) && !string.IsNullOrEmpty(Location) && !string.IsNullOrEmpty(TemplateCode) && TemplateItems.Count() > 0);
+                    () => !string.IsNullOrEmpty(SystemName) && !string.IsNullOrEmpty(TenderName) && !string.IsNullOrEmpty(Location) && !string.IsNullOrEmpty(TemplateCode));
                 }
                 return saveTemplateCommand;
             }
@@ -304,17 +304,21 @@ namespace SystemCostCalculation.ViewModels
         {
             //TO-DO: Updates template if it exists already
 
-            //Emptying text fields and datagrids
-            selectedItem = null;
-            selectedSupplier = null;
-            selectedTemplateItem = null;
-            SupplierItems.Clear();
-            TemplateItems.Clear();
-            SystemName = "";
-            TenderName = "";
-            Location = "";
-            TemplateCode = "";
-            TemplateRemark = "";
+            TemplateModel templateToSave = new TemplateModel()
+            {
+                systemName = SystemName,
+                templateCode = TemplateCode,
+                tenderName = tenderName,
+                //dateCreated = CurrentDate;
+                location = Location,
+                remark = TemplateRemark,
+                //totalCost =
+                //discount = 
+                systemItems = TemplateItems.ToList()
+            };
+            Console.WriteLine(templateToSave.location);
+
+            TemplateSaveAndLoad.save(templateToSave);
         }
 
         private void DeleteTemplate()
