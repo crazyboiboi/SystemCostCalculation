@@ -146,22 +146,22 @@ namespace SystemCostCalculation.ViewModels
                 Set(ref _selectedItem, value);
                 if (value != null)
                 {
-                    PopulateItemDetails(value.Name, value.Price);
+                    PopulateItemDetails(value.Code, value.Price);
                 }
                 RemoveItemCommand.RaiseCanExecuteChanged();
             }
         }
 
-        private string itemName;
-        public string ItemName
+        private string itemCode;
+        public string ItemCode
         {
             get
             {
-                return itemName;
+                return itemCode;
             }
             set
             {
-                Set(ref itemName, value);
+                Set(ref itemCode, value);
                 AddItemCommand.RaiseCanExecuteChanged();
                 EditItemCommand.RaiseCanExecuteChanged();
             }
@@ -257,10 +257,10 @@ namespace SystemCostCalculation.ViewModels
                     addItemCommand = new RelayCommand(() =>
                     {
                         AddItem();
-                        ItemName = "";
+                        ItemCode = "";
                         ItemPrice = 0.0d;
                     },
-                    () => !string.IsNullOrEmpty(ItemName) && !double.IsNaN(ItemPrice) && selectedSupplier != null);
+                    () => !string.IsNullOrEmpty(ItemCode) && !double.IsNaN(ItemPrice) && selectedSupplier != null);
                 }
                 return addItemCommand;
             }
@@ -276,10 +276,10 @@ namespace SystemCostCalculation.ViewModels
                     editItemCommand = new RelayCommand(() =>
                     {
                         EditItem();
-                        ItemName = "";
+                        ItemCode = "";
                         ItemPrice = 0.0d;
                     },
-                    () => !string.IsNullOrEmpty(ItemName) && !double.IsNaN(ItemPrice) && selectedSupplier != null);
+                    () => !string.IsNullOrEmpty(ItemCode) && !double.IsNaN(ItemPrice) && selectedSupplier != null);
                 }
                 return editItemCommand;
             }
@@ -347,7 +347,7 @@ namespace SystemCostCalculation.ViewModels
 
         private void AddItem()
         {
-            ItemModel itemToBeAssigned = SqliteDataAccess.FindUnassignedItem(ItemName);
+            ItemModel itemToBeAssigned = SqliteDataAccess.FindUnassignedItem(ItemCode);
             itemToBeAssigned.ID = currentIdNumber++;
             itemToBeAssigned.SupplierID = selectedSupplier.ID;
             itemToBeAssigned.Price = Math.Round(ItemPrice, 2);
@@ -360,9 +360,10 @@ namespace SystemCostCalculation.ViewModels
         {
             for (int i = 0; i < filteredItems.Count(); i++)
             {
-                if (filteredItems[i].Name == ItemName)
+                if (filteredItems[i].Code == ItemCode)
                 {
-                    ItemModel updatedItem = new ItemModel { ID = filteredItems[i].ID, SupplierID = filteredItems[i].SupplierID, Code = filteredItems[i].Code, Name = filteredItems[i].Name, Category = filteredItems[i].Category, Size = filteredItems[i].Size, Type = filteredItems[i].Type, Description = filteredItems[i].Description, Price = ItemPrice };
+                    double UpdatedPrice = Math.Round(ItemPrice, 2);
+                    ItemModel updatedItem = new ItemModel { ID = filteredItems[i].ID, SupplierID = filteredItems[i].SupplierID, Code = filteredItems[i].Code, Name = filteredItems[i].Name, Category = filteredItems[i].Category, Size = filteredItems[i].Size, Type = filteredItems[i].Type, Description = filteredItems[i].Description, Price = UpdatedPrice };
                     filteredItems[i] = updatedItem;
                     SqliteDataAccess.UpdateItem(filteredItems[i]);
                     break;
@@ -374,6 +375,8 @@ namespace SystemCostCalculation.ViewModels
         {
             SqliteDataAccess.DeleteItem(selectedItem);
             filteredItems.Remove(selectedItem);
+            ItemCode = "";
+            ItemPrice = 0;
         }
 
         #endregion
@@ -391,7 +394,7 @@ namespace SystemCostCalculation.ViewModels
 
         private void PopulateItemDetails(string n, double p)
         {
-            ItemName = n;
+            ItemCode = n;
             ItemPrice = p;
         }
 

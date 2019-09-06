@@ -78,7 +78,7 @@
             <Border Padding="20" BorderThickness="0.4" BorderBrush="Gray">
                 <StackPanel Orientation="Horizontal" >
                     <TextBlock Text="Item" Style="{StaticResource FieldHeading}" Margin="0 0 0 0"/>
-                    <TextBox Width="200" Margin="10 0 0 0" Style="{StaticResource InputField}" Text="{Binding ItemName,Mode=TwoWay}"/>
+                    <TextBox Width="200" Margin="10 0 0 0" Style="{StaticResource InputField}" Text="{Binding ItemCode,Mode=TwoWay}"/>
                     <TextBlock Text="Price" Style="{StaticResource FieldHeading}" Margin="10 0 0 0"/>
                     <TextBox Width="200" Margin="10 0 0 0" Style="{StaticResource InputField}" Text="{Binding ItemPrice, Mode=TwoWay}"/>
                     <Button Style="{StaticResource RectangularButtons}" Content="Add Item" Width="70" Height="25" Margin="10 0 0 0" Command="{Binding AddItemCommand}"/>

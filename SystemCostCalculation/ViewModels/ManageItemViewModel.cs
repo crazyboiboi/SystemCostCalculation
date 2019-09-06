@@ -320,7 +320,7 @@ namespace SystemCostCalculation.ViewModels
 
         public ManageItemViewModel()
         {
-            List<ItemModel> sqlItems = SqliteDataAccess.LoadItems();
+            List<ItemModel> sqlItems = SqliteDataAccess.FindUnassignedItems();
             items = new ObservableCollection<ItemModel>(sqlItems as List<ItemModel>);
             List<string> sqlCategories = SqliteDataAccess.LoadCategories();
             categories = new ObservableCollection<string>(sqlCategories as List<string>);

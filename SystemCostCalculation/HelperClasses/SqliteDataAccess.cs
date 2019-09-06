@@ -36,14 +36,28 @@ namespace SystemCostCalculation
         /// </summary>
         /// <param name="ItemName"></param>
         /// <returns>Single unassigned item</returns>
-        public static ItemModel FindUnassignedItem(string ItemName)
+        public static ItemModel FindUnassignedItem(string ItemCode)
         {
             var parameters = new DynamicParameters();
-            parameters.Add("@Name", ItemName);
+            parameters.Add("@Code", ItemCode);
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                var output = cnn.Query<ItemModel>("select * from Item where Name = @Name and SupplierID = -1 and Price = -1", parameters);
+                var output = cnn.Query<ItemModel>("select * from Item where Code = @Code and SupplierID = -1 and Price = -1", parameters);
                 return output.First();
+            }
+        }
+
+        /// <summary>
+        /// Returns all unassigned template items
+        /// </summary>
+        /// <param name="ItemName"></param>
+        /// <returns>List of unassigned items</returns>
+        public static List<ItemModel> FindUnassignedItems()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                var output = cnn.Query<ItemModel>("select * from Item where SupplierID = -1 and Price = -1", new DynamicParameters());
+                return output.ToList();
             }
         }
 
