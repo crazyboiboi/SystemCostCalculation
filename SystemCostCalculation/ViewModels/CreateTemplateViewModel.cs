@@ -23,7 +23,7 @@ namespace SystemCostCalculation.ViewModels
 
         private ObservableCollection<ItemModel> allItems { get; set; }
 
-        public string CurrentDate { get; }
+        public DateTime CurrentDate { get; }
 
         private SupplierModel _selectedSupplier;
         public SupplierModel selectedSupplier
@@ -97,7 +97,7 @@ namespace SystemCostCalculation.ViewModels
             }
             set
             {
-                Set(ref systemName, value);
+                Set(ref systemName, value.Trim());
                 if (value != null)
                 {
                     CreateTemplateCommand.RaiseCanExecuteChanged();
@@ -115,7 +115,7 @@ namespace SystemCostCalculation.ViewModels
             }
             set
             {
-                Set(ref tenderName, value);
+                Set(ref tenderName, value.Trim());
                 if (value != null)
                 {
                     CreateTemplateCommand.RaiseCanExecuteChanged();
@@ -133,7 +133,7 @@ namespace SystemCostCalculation.ViewModels
             }
             set
             {
-                Set(ref location, value);
+                Set(ref location, value.Trim());
                 if (value != null)
                 {
                     CreateTemplateCommand.RaiseCanExecuteChanged();
@@ -151,7 +151,7 @@ namespace SystemCostCalculation.ViewModels
             }
             set
             {
-                Set(ref templateCode, value);
+                Set(ref templateCode, value.Trim());
                 if (value != null)
                 {
                     CreateTemplateCommand.RaiseCanExecuteChanged();
@@ -169,7 +169,7 @@ namespace SystemCostCalculation.ViewModels
             }
             set
             {
-                Set(ref templateRemark, value);
+                Set(ref templateRemark, value.Trim());
             }
         }
 
@@ -287,41 +287,29 @@ namespace SystemCostCalculation.ViewModels
         {
             //TO-DO: Use helper class to save information and template items to a text file
 
-            //Emptying text fields and datagrids
-            selectedItem = null;
-            selectedSupplier = null;
-            selectedTemplateItem = null;
-            SupplierItems.Clear();
-            TemplateItems.Clear();
-            SystemName = "";
-            TenderName = "";
-            Location = "";
-            TemplateCode = "";
-            TemplateRemark = "";
+            ResetFields();
         }
 
         private void SaveTemplate()
         {
             //TO-DO: Updates template if it exists already
 
-            //Emptying text fields and datagrids
-            selectedItem = null;
-            selectedSupplier = null;
-            selectedTemplateItem = null;
-            SupplierItems.Clear();
-            TemplateItems.Clear();
-            SystemName = "";
-            TenderName = "";
-            Location = "";
-            TemplateCode = "";
-            TemplateRemark = "";
+            ResetFields();
         }
 
         private void DeleteTemplate()
         {
             //TO-DO: Deletes template if it has been selected from view templates tab
 
-            //Emptying text fields and datagrids
+            ResetFields();
+        }
+
+        #endregion
+
+        #region Helper Methods
+
+        private void ResetFields()
+        {
             selectedItem = null;
             selectedSupplier = null;
             selectedTemplateItem = null;
@@ -333,12 +321,6 @@ namespace SystemCostCalculation.ViewModels
             TemplateCode = "";
             TemplateRemark = "";
         }
-
-        #endregion
-
-        #region Helper Methods
-
-
 
         #endregion
 
@@ -352,7 +334,7 @@ namespace SystemCostCalculation.ViewModels
             allItems = new ObservableCollection<ItemModel>(sqlItems as List<ItemModel>);
             SupplierItems = new ObservableCollection<ItemModel>();
             TemplateItems = new ObservableCollection<ItemModel>();
-            CurrentDate = DateTime.Now.ToString("dd/MM/yyyy");
+            CurrentDate = DateTime.Now;
         }
 
         #endregion

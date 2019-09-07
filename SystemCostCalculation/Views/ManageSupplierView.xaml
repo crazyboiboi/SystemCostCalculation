@@ -58,11 +58,11 @@
                     </StackPanel>
 
                     <StackPanel Grid.Column="1" HorizontalAlignment="Left" Margin="10 0 0 0">
-                        <TextBox Style="{StaticResource InputField}" Width="150" Height="20" HorizontalAlignment="Left" Margin="0 0 0 0" Text="{Binding code, Mode=TwoWay}"/>
-                        <TextBox Style="{StaticResource InputField}" Width="200" Height="20" HorizontalAlignment="Left" Margin="0 15 0 0" Text="{Binding name, Mode=TwoWay}"/>
-                        <TextBox Style="{StaticResource InputField}" Width="150" Height="20" HorizontalAlignment="Left" Margin="0 15 0 0" Text="{Binding contact, Mode=TwoWay}"/>
-                        <TextBox Style="{StaticResource InputField}" Width="150" Height="20" HorizontalAlignment="Left" Margin="0 15 0 0" Text="{Binding address, Mode=TwoWay}"/>
-                        <TextBox Style="{StaticResource InputField}" Width="225" Height="70" HorizontalAlignment="Left" Margin="0 17 0 0" TextWrapping="Wrap" Text="{Binding otherDetails, Mode=TwoWay}"/>
+                        <TextBox Style="{StaticResource InputField}" Width="150" Height="20" HorizontalAlignment="Left" Margin="0 0 0 0" Text="{Binding code, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Style="{StaticResource InputField}" Width="200" Height="20" HorizontalAlignment="Left" Margin="0 15 0 0" Text="{Binding name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Style="{StaticResource InputField}" Width="150" Height="20" HorizontalAlignment="Left" Margin="0 15 0 0" Text="{Binding contact, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Style="{StaticResource InputField}" Width="150" Height="20" HorizontalAlignment="Left" Margin="0 15 0 0" Text="{Binding address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Style="{StaticResource InputField}" Width="225" Height="70" HorizontalAlignment="Left" Margin="0 17 0 0" TextWrapping="Wrap" Text="{Binding otherDetails, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 50 0 0 " Grid.Row="1" Grid.ColumnSpan="2">
@@ -78,9 +78,9 @@
             <Border Padding="20" BorderThickness="0.4" BorderBrush="Gray">
                 <StackPanel Orientation="Horizontal" >
                     <TextBlock Text="Item" Style="{StaticResource FieldHeading}" Margin="0 0 0 0"/>
-                    <TextBox Width="200" Margin="10 0 0 0" Style="{StaticResource InputField}" Text="{Binding ItemCode,Mode=TwoWay}"/>
+                    <TextBox Width="200" Margin="10 0 0 0" Style="{StaticResource InputField}" Text="{Binding ItemCode,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBlock Text="Price" Style="{StaticResource FieldHeading}" Margin="10 0 0 0"/>
-                    <TextBox Width="200" Margin="10 0 0 0" Style="{StaticResource InputField}" Text="{Binding ItemPrice, Mode=TwoWay}"/>
+                    <TextBox Width="200" Margin="10 0 0 0" Style="{StaticResource InputField}" Text="{Binding ItemPrice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     <Button Style="{StaticResource RectangularButtons}" Content="Add Item" Width="70" Height="25" Margin="10 0 0 0" Command="{Binding AddItemCommand}"/>
                     <Button Style="{StaticResource RectangularButtons}" Content="Edit Item" Width="70" Height="25" Margin="10 0 0 0" Command="{Binding EditItemCommand}"/>
                 </StackPanel>
