@@ -43,11 +43,11 @@ namespace SystemCostCalculation.HelperClasses
                 sw.WriteLine(template.templateCode);
                 sw.WriteLine(template.tenderName);
                 sw.WriteLine(template.dateCreated);
-                sw.WriteLine(template.dateModified);
+                //sw.WriteLine(template.dateModified);
                 sw.WriteLine(template.location);
                 sw.WriteLine(template.remark);
-                sw.WriteLine(template.totalCost);
-                sw.WriteLine(template.discount);
+                //sw.WriteLine(template.totalCost);
+                //sw.WriteLine(template.discount);
 
                 foreach(ItemModel item in template.systemItems)
                 {
