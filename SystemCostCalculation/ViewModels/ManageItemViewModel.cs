@@ -42,7 +42,7 @@ namespace SystemCostCalculation.ViewModels
             }
             set
             {
-                Set(ref _code, value);
+                Set(ref _code, value.Trim());
                 AddCommand.RaiseCanExecuteChanged();
             }
         }
@@ -56,7 +56,7 @@ namespace SystemCostCalculation.ViewModels
             }
             set
             {
-                Set(ref _name, value);
+                Set(ref _name, value.Trim());
                 AddCommand.RaiseCanExecuteChanged();
             }
         }
@@ -100,7 +100,7 @@ namespace SystemCostCalculation.ViewModels
             }
             set
             {
-                Set(ref _type, value);
+                Set(ref _type, value.Trim());
                 AddCommand.RaiseCanExecuteChanged();
             }
         }
@@ -114,7 +114,7 @@ namespace SystemCostCalculation.ViewModels
             }
             set
             {
-                Set(ref _description, value);
+                Set(ref _description, value.Trim());
                 AddCommand.RaiseCanExecuteChanged();
             }
         }
@@ -152,14 +152,8 @@ namespace SystemCostCalculation.ViewModels
                     addCommand = new RelayCommand(() =>
                     {
                         AddItem();
-                        code = "";
-                        name = "";
-                        category = "";
-                        size = 0;
-                        type = "";
-                        description = "";
                     },
-                    () => !string.IsNullOrEmpty(code) && !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(type) && !string.IsNullOrEmpty(category) && !string.IsNullOrEmpty(description)
+                    () => !string.IsNullOrEmpty(code) && !string.IsNullOrEmpty(name)
                     );
                 }
                 return addCommand;
@@ -177,7 +171,7 @@ namespace SystemCostCalculation.ViewModels
                     {
                         UpdateItem();
                     },
-                    () => selectedItem != null);
+                    () => selectedItem != null && !string.IsNullOrEmpty(code) && !string.IsNullOrEmpty(name));
                 }
                 return updateCommand;
             }
@@ -243,6 +237,7 @@ namespace SystemCostCalculation.ViewModels
             ItemModel item = new ItemModel() { SupplierID = -1, Code = code, Name = name, Category = category, Size = size, Type = type, Description = description, ID = currentIdNumber++, Price = -1 };
             items.Add(item);
             SqliteDataAccess.SaveItem(item);
+            ResetFields();
         }
 
         private void UpdateItem()
@@ -257,27 +252,14 @@ namespace SystemCostCalculation.ViewModels
                     break;
                 }
             }
-            selectedItem = null;
-            code = "";
-            name = "";
-            category = "";
-            size = 0;
-            type = "";
-            description = "";
-
+            ResetFields();
         }
 
         private void RemoveItem()
         {
             SqliteDataAccess.DeleteItem(selectedItem);
             items.Remove(selectedItem);
-            selectedItem = null;
-            code = "";
-            name = "";
-            category = "";
-            size = 0;
-            type = "";
-            description = "";
+            ResetFields();
         }
 
         private void AddCategory()
@@ -312,6 +294,17 @@ namespace SystemCostCalculation.ViewModels
             size = s;
             type = t;
             description = desc;
+        }
+
+        private void ResetFields()
+        {
+            selectedItem = null;
+            code = "";
+            name = "";
+            category = "";
+            size = 0;
+            type = "";
+            description = "";
         }
 
         #endregion

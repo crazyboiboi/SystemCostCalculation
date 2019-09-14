@@ -42,7 +42,7 @@ namespace SystemCostCalculation.ViewModels
             }
             set
             {
-                Set(ref _code, value);
+                Set(ref _code, value.Trim());
                 AddSupplierCommand.RaiseCanExecuteChanged();
             }
         }
@@ -56,7 +56,7 @@ namespace SystemCostCalculation.ViewModels
             }
             set
             {
-                Set(ref _name, value);
+                Set(ref _name, value.Trim());
                 AddSupplierCommand.RaiseCanExecuteChanged();
             }
         }
@@ -70,7 +70,7 @@ namespace SystemCostCalculation.ViewModels
             }
             set
             {
-                Set(ref _contact, value);
+                Set(ref _contact, value.Trim());
                 AddSupplierCommand.RaiseCanExecuteChanged();
             }
         }
@@ -84,7 +84,7 @@ namespace SystemCostCalculation.ViewModels
             }
             set
             {
-                Set(ref _address, value);
+                Set(ref _address, value.Trim());
                 AddSupplierCommand.RaiseCanExecuteChanged();
             }
         }
@@ -98,7 +98,7 @@ namespace SystemCostCalculation.ViewModels
             }
             set
             {
-                Set(ref _otherDetails, value);
+                Set(ref _otherDetails, value.Trim());
             }
         }
 
@@ -196,13 +196,8 @@ namespace SystemCostCalculation.ViewModels
                     addSupplierCommand = new RelayCommand(() =>
                    {
                        AddSupplier();
-                       code = "";
-                       name = "";
-                       contact = "";
-                       address = "";
-                       otherDetails = "";
                    },
-                   () => !string.IsNullOrEmpty(code) && !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(contact) && !string.IsNullOrEmpty(address));
+                   () => !string.IsNullOrEmpty(code) && !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(contact) && !string.IsNullOrEmpty(address) && selectedSupplier == null);
                 }
                 return addSupplierCommand;
             }
@@ -235,11 +230,6 @@ namespace SystemCostCalculation.ViewModels
                     deleteSupplierCommand = new RelayCommand(() =>
                     {
                         DeleteSupplier();
-                        code = "";
-                        name = "";
-                        contact = "";
-                        address = "";
-                        otherDetails = "";
                     },
                     () => selectedSupplier != null);
                 }
@@ -257,8 +247,7 @@ namespace SystemCostCalculation.ViewModels
                     addItemCommand = new RelayCommand(() =>
                     {
                         AddItem();
-                        ItemCode = "";
-                        ItemPrice = 0.0d;
+                        ResetItemFields();
                     },
                     () => !string.IsNullOrEmpty(ItemCode) && !double.IsNaN(ItemPrice) && selectedSupplier != null);
                 }
@@ -276,8 +265,7 @@ namespace SystemCostCalculation.ViewModels
                     editItemCommand = new RelayCommand(() =>
                     {
                         EditItem();
-                        ItemCode = "";
-                        ItemPrice = 0.0d;
+                        ResetItemFields();
                     },
                     () => !string.IsNullOrEmpty(ItemCode) && !double.IsNaN(ItemPrice) && selectedSupplier != null);
                 }
@@ -311,6 +299,7 @@ namespace SystemCostCalculation.ViewModels
             SupplierModel supplier = new SupplierModel() { Code = code, Name = name, Address = address, Contact = contact, OtherDetails = otherDetails, ID = currentIdNumber++ };
             suppliers.Add(supplier);
             SqliteDataAccess.SaveSupplier(supplier);
+            ResetSupplierFields();
         }
 
         private void UpdateSupplier()
@@ -325,24 +314,14 @@ namespace SystemCostCalculation.ViewModels
                     break;
                 }
             }
-            selectedSupplier = null;
-            code = "";
-            name = "";
-            contact = "";
-            address = "";
-            otherDetails = "";
+            ResetSupplierFields();
         }
 
         private void DeleteSupplier()
         {
             SqliteDataAccess.DeleteSupplier(selectedSupplier);
             suppliers.Remove(selectedSupplier);
-            selectedSupplier = null;
-            code = "";
-            name = "";
-            contact = "";
-            address = "";
-            otherDetails = "";
+            ResetSupplierFields();
         }
 
         private void AddItem()
@@ -396,6 +375,22 @@ namespace SystemCostCalculation.ViewModels
         {
             ItemCode = n;
             ItemPrice = p;
+        }
+
+        private void ResetSupplierFields()
+        {
+            selectedSupplier = null;
+            code = "";
+            name = "";
+            contact = "";
+            address = "";
+            otherDetails = "";
+        }
+
+        private void ResetItemFields()
+        {
+            ItemCode = "";
+            ItemPrice = 0.0d;
         }
 
         #endregion
