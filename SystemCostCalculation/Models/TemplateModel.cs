@@ -8,25 +8,27 @@ namespace SystemCostCalculation.Models
 {
     public class TemplateModel
     {
-        public string systemName { get; set; }
+        public string TemplateSaveName { get; set; }
 
-        public string templateCode { get; set; }
+        public string SystemName { get; set; }
 
-        public string tenderName { get; set; }
+        public string TemplateCode { get; set; }
 
-        public DateTime dateCreated { get; set; }
+        public string TenderName { get; set; }
 
-        public DateTime dateModified { get; set; }
+        public DateTime DateCreated { get; set; }
 
-        public string location { get; set; }
+        public DateTime DateModified { get; set; }
 
-        public string remark { get; set; }
+        public string Location { get; set; }
 
-        public double totalCost { get; set; }
+        public string Remark { get; set; }
 
-        public int discount { get; set; }
+        public double TotalCost { get; set; }
 
-        public List<ItemModel> systemItems { get; set; }
+        public int Discount { get; set; }
+
+        public List<ItemModel> SystemItems { get; set; }
         
 
     }

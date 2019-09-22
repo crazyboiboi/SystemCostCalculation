@@ -42,7 +42,7 @@ namespace SystemCostCalculation.ViewModels
             }
             set
             {
-                Set(ref _code, value.Trim());
+                Set(ref _code, value);
                 AddCommand.RaiseCanExecuteChanged();
             }
         }
@@ -56,7 +56,7 @@ namespace SystemCostCalculation.ViewModels
             }
             set
             {
-                Set(ref _name, value.Trim());
+                Set(ref _name, value);
                 AddCommand.RaiseCanExecuteChanged();
             }
         }
@@ -100,7 +100,7 @@ namespace SystemCostCalculation.ViewModels
             }
             set
             {
-                Set(ref _type, value.Trim());
+                Set(ref _type, value);
                 AddCommand.RaiseCanExecuteChanged();
             }
         }
@@ -114,7 +114,7 @@ namespace SystemCostCalculation.ViewModels
             }
             set
             {
-                Set(ref _description, value.Trim());
+                Set(ref _description, value);
                 AddCommand.RaiseCanExecuteChanged();
             }
         }
@@ -234,7 +234,17 @@ namespace SystemCostCalculation.ViewModels
 
         private void AddItem()
         {
-            ItemModel item = new ItemModel() { SupplierID = -1, Code = code, Name = name, Category = category, Size = size, Type = type, Description = description, ID = currentIdNumber++, Price = -1 };
+            ItemModel item = new ItemModel() {
+                SupplierID = -1,
+                Code = code.Trim(),
+                Name = name.Trim(),
+                Category = category,
+                Size = size,
+                Type = type.Trim(),
+                Description = description.Trim(),
+                ID = currentIdNumber++, Price = -1
+            };
+
             items.Add(item);
             SqliteDataAccess.SaveItem(item);
             ResetFields();
@@ -242,7 +252,16 @@ namespace SystemCostCalculation.ViewModels
 
         private void UpdateItem()
         {
-            ItemModel updatedItem = new ItemModel() { SupplierID = selectedItem.SupplierID, Code = code, Name = name, Category = category, Size = size, Type = type, Description = description, ID = selectedItem.ID, Price = selectedItem.Price };
+            ItemModel updatedItem = new ItemModel() {
+                SupplierID = selectedItem.SupplierID,
+                Code = code.Trim(), Name = name.Trim(),
+                Category = category, Size = size,
+                Type = type.Trim(),
+                Description = description.Trim(),
+                ID = selectedItem.ID,
+                Price = selectedItem.Price
+            };
+
             for (int i = 0; i < items.Count; i++)
             {
                 if (items[i].ID == updatedItem.ID)
@@ -266,9 +285,9 @@ namespace SystemCostCalculation.ViewModels
         {
             if (!categories.Contains(category))
             {
+                category.Trim();
                 SqliteDataAccess.SaveCategory(category);
                 categories.Add(category);
-                category = "";
             }
         }
 
@@ -278,7 +297,6 @@ namespace SystemCostCalculation.ViewModels
             {
                 SqliteDataAccess.SaveSize(size);
                 sizes.Add(size);
-                size = 0;
             }
         }
 

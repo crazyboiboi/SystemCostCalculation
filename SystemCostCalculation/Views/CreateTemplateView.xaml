@@ -105,12 +105,12 @@
             <TextBlock Text="Remark" Grid.Row="2" Grid.Column="2" Style="{StaticResource FieldHeading}"/>
             <TextBlock Text="{Binding CurrentDate, StringFormat={}dd/MM/yyyy}" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center"/>
 
-            <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource InputField}" Text="{Binding SystemName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource InputField}" Text="{Binding TenderName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox Grid.Row="2" Grid.Column="1" Style="{StaticResource InputField}" Text="{Binding Location, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource InputField}" Text="{Binding systemName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource InputField}" Text="{Binding tenderName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Style="{StaticResource InputField}" Text="{Binding location, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-            <TextBox Grid.Row="0" Grid.Column="3" Style="{StaticResource InputField}" Text="{Binding TemplateCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox Grid.Row="2" Grid.Column="3" Grid.RowSpan="2" Margin="0 -10 0 0" Style="{StaticResource InputField}" Height="42" Width="250" TextWrapping="Wrap" Text="{Binding TemplateRemark, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Grid.Row="0" Grid.Column="3" Style="{StaticResource InputField}" Text="{Binding templateCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Grid.Row="2" Grid.Column="3" Grid.RowSpan="2" Margin="0 -10 0 0" Style="{StaticResource InputField}" Height="42" Width="250" TextWrapping="Wrap" Text="{Binding templateRemark, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         
         </Grid>
 

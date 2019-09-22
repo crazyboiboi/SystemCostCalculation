@@ -14,19 +14,23 @@
         <viewmodels:ViewTemplateViewModel/>
     </UserControl.DataContext>
 
-    
-    
-    
-    
-    
-    <Border Padding="10">
-        <DataGrid x:Name="tenplateTable" SelectedItem="{Binding Path=selectedItem, Mode=TwoWay}" ItemsSource="{Binding filteredItems}" CanUserAddRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" AutoGenerateColumns="False" Margin="0 10 0 0">
-            <DataGrid.Columns >
-                <DataGridTextColumn IsReadOnly="true" Header="Template ID" Binding="{Binding }" Width="0.25*"/>
-                <DataGridTextColumn IsReadOnly="true" Header="Template Name" Binding="{Binding }" Width="0.5*"/>
-                <DataGridTextColumn IsReadOnly="true" Header="Tender Name" Binding="{Binding }" Width="0.5*"/>
-                <DataGridTextColumn IsReadOnly="true" Header="Date Modified" Binding="{Binding }" Width="0.45*"/>
-                <DataGridTemplateColumn Width="*">
+
+
+
+    <StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Margin="10 10 0 0" Style="{StaticResource RectangularButtons}" Width="50" Content="Edit" Command="{Binding EditTemplateCommand}"/>
+            <Button Margin="10 10 10 0 " Style="{StaticResource RectangularButtons}" Width="50" Content="Delete" Command="{Binding DeleteTemplateCommand}"/>
+        </StackPanel>
+        
+        <Border Padding="10">
+            <DataGrid x:Name="templateTable" SelectedItem="{Binding Path=selectedTemplate, Mode=TwoWay}" ItemsSource="{Binding templates, Mode=OneWay}" CanUserAddRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" AutoGenerateColumns="False" Margin="0 10 0 0">
+                <DataGrid.Columns >
+                    <DataGridTextColumn IsReadOnly="true" Header="Template ID" Binding="{Binding TemplateCode}" Width="0.25*"/>
+                    <DataGridTextColumn IsReadOnly="true" Header="Template Name" Binding="{Binding TemplateSaveName}" Width="0.5*"/>
+                    <DataGridTextColumn IsReadOnly="true" Header="System Name" Binding="{Binding SystemName}" Width="0.5*"/>
+                    <DataGridTextColumn IsReadOnly="true" Header="Date Modified" Binding="{Binding DateModified }" Width="0.45*"/>
+                    <!--<DataGridTemplateColumn Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -35,10 +39,12 @@
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-    </Border>
+                </DataGridTemplateColumn>-->
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+
+    </StackPanel>
     
         
         

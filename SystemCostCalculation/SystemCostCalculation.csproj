@@ -83,6 +83,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="HelperClasses\Constants.cs" />
     <Compile Include="HelperClasses\SqliteDataAccess.cs" />
     <Compile Include="HelperClasses\TemplateSaveAndLoad.cs" />
     <Compile Include="MainWindow.xaml.cs">

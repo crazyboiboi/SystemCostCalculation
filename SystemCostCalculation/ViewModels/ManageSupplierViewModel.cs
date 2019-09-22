@@ -42,7 +42,7 @@ namespace SystemCostCalculation.ViewModels
             }
             set
             {
-                Set(ref _code, value.Trim());
+                Set(ref _code, value);
                 AddSupplierCommand.RaiseCanExecuteChanged();
             }
         }
@@ -56,7 +56,7 @@ namespace SystemCostCalculation.ViewModels
             }
             set
             {
-                Set(ref _name, value.Trim());
+                Set(ref _name, value);
                 AddSupplierCommand.RaiseCanExecuteChanged();
             }
         }
@@ -70,7 +70,7 @@ namespace SystemCostCalculation.ViewModels
             }
             set
             {
-                Set(ref _contact, value.Trim());
+                Set(ref _contact, value);
                 AddSupplierCommand.RaiseCanExecuteChanged();
             }
         }
@@ -84,7 +84,7 @@ namespace SystemCostCalculation.ViewModels
             }
             set
             {
-                Set(ref _address, value.Trim());
+                Set(ref _address, value);
                 AddSupplierCommand.RaiseCanExecuteChanged();
             }
         }
@@ -98,7 +98,7 @@ namespace SystemCostCalculation.ViewModels
             }
             set
             {
-                Set(ref _otherDetails, value.Trim());
+                Set(ref _otherDetails, value);
             }
         }
 
@@ -296,7 +296,15 @@ namespace SystemCostCalculation.ViewModels
 
         private void AddSupplier()
         {
-            SupplierModel supplier = new SupplierModel() { Code = code, Name = name, Address = address, Contact = contact, OtherDetails = otherDetails, ID = currentIdNumber++ };
+            SupplierModel supplier = new SupplierModel() {
+                Code = code.Trim(),
+                Name = name.Trim(),
+                Address = address.Trim(),
+                Contact = contact.Trim(),
+                OtherDetails = otherDetails.Trim(),
+                ID = currentIdNumber++
+            };
+
             suppliers.Add(supplier);
             SqliteDataAccess.SaveSupplier(supplier);
             ResetSupplierFields();
@@ -304,7 +312,15 @@ namespace SystemCostCalculation.ViewModels
 
         private void UpdateSupplier()
         {
-            SupplierModel updatedSupplier = new SupplierModel { Code = code, Name = name, Address = address, Contact = contact, OtherDetails = otherDetails, ID = selectedSupplier.ID };
+            SupplierModel updatedSupplier = new SupplierModel {
+                Code = code.Trim(),
+                Name = name.Trim(),
+                Address = address.Trim(),
+                Contact = contact.Trim(),
+                OtherDetails = otherDetails.Trim(),
+                ID = selectedSupplier.ID
+            };
+
             for (int i = 0; i < suppliers.Count; i++)
             {
                 if (suppliers[i].ID == updatedSupplier.ID)
@@ -342,7 +358,18 @@ namespace SystemCostCalculation.ViewModels
                 if (filteredItems[i].Code == ItemCode)
                 {
                     double UpdatedPrice = Math.Round(ItemPrice, 2);
-                    ItemModel updatedItem = new ItemModel { ID = filteredItems[i].ID, SupplierID = filteredItems[i].SupplierID, Code = filteredItems[i].Code, Name = filteredItems[i].Name, Category = filteredItems[i].Category, Size = filteredItems[i].Size, Type = filteredItems[i].Type, Description = filteredItems[i].Description, Price = UpdatedPrice };
+                    ItemModel updatedItem = new ItemModel {
+                        ID = filteredItems[i].ID,
+                        SupplierID = filteredItems[i].SupplierID,
+                        Code = filteredItems[i].Code,
+                        Name = filteredItems[i].Name,
+                        Category = filteredItems[i].Category,
+                        Size = filteredItems[i].Size,
+                        Type = filteredItems[i].Type,
+                        Description = filteredItems[i].Description,
+                        Price = UpdatedPrice
+                    };
+
                     filteredItems[i] = updatedItem;
                     SqliteDataAccess.UpdateItem(filteredItems[i]);
                     break;

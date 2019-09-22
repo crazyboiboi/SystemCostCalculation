@@ -6,13 +6,13 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SystemCostCalculation.HelperClasses;
 using SystemCostCalculation.Models;
 
 namespace SystemCostCalculation.ViewModels
 {
     class CreateTemplateViewModel : ViewModelBase
     {
-
         #region Fields
 
         public ObservableCollection<ItemModel> TemplateItems { get; set; }
@@ -88,16 +88,16 @@ namespace SystemCostCalculation.ViewModels
             }
         }
 
-        private string systemName;
-        public string SystemName
+        private string _systemName;
+        public string systemName
         {
             get
             {
-                return systemName;
+                return _systemName;
             }
             set
             {
-                Set(ref systemName, value.Trim());
+                Set(ref _systemName, value);
                 if (value != null)
                 {
                     CreateTemplateCommand.RaiseCanExecuteChanged();
@@ -106,16 +106,16 @@ namespace SystemCostCalculation.ViewModels
             }
         }
 
-        private string tenderName;
-        public string TenderName
+        private string _tenderName;
+        public string tenderName
         {
             get
             {
-                return tenderName;
+                return _tenderName;
             }
             set
             {
-                Set(ref tenderName, value.Trim());
+                Set(ref _tenderName, value);
                 if (value != null)
                 {
                     CreateTemplateCommand.RaiseCanExecuteChanged();
@@ -124,16 +124,16 @@ namespace SystemCostCalculation.ViewModels
             }
         }
 
-        private string location;
-        public string Location
+        private string _location;
+        public string location
         {
             get
             {
-                return location;
+                return _location;
             }
             set
             {
-                Set(ref location, value.Trim());
+                Set(ref _location, value);
                 if (value != null)
                 {
                     CreateTemplateCommand.RaiseCanExecuteChanged();
@@ -142,16 +142,16 @@ namespace SystemCostCalculation.ViewModels
             }
         }
 
-        private string templateCode;
-        public string TemplateCode
+        private string _templateCode;
+        public string templateCode
         {
             get
             {
-                return templateCode;
+                return _templateCode;
             }
             set
             {
-                Set(ref templateCode, value.Trim());
+                Set(ref _templateCode, value);
                 if (value != null)
                 {
                     CreateTemplateCommand.RaiseCanExecuteChanged();
@@ -160,16 +160,16 @@ namespace SystemCostCalculation.ViewModels
             }
         }
 
-        private string templateRemark;
-        public string TemplateRemark
+        private string _templateRemark;
+        public string templateRemark
         {
             get
             {
-                return templateRemark;
+                return _templateRemark;
             }
             set
             {
-                Set(ref templateRemark, value.Trim());
+                Set(ref _templateRemark, value);
             }
         }
 
@@ -222,7 +222,7 @@ namespace SystemCostCalculation.ViewModels
                     {
                         CreateTemplate();
                     },
-                    () => !string.IsNullOrEmpty(SystemName) && !string.IsNullOrEmpty(TenderName) && !string.IsNullOrEmpty(Location) && !string.IsNullOrEmpty(TemplateCode) && TemplateItems.Count() > 0);
+                    () => !string.IsNullOrEmpty(systemName) && !string.IsNullOrEmpty(tenderName) &&!string.IsNullOrEmpty(templateCode));
                 }
                 return createTemplateCommand;
             }
@@ -239,7 +239,7 @@ namespace SystemCostCalculation.ViewModels
                     {
                         SaveTemplate();
                     },
-                    () => !string.IsNullOrEmpty(SystemName) && !string.IsNullOrEmpty(TenderName) && !string.IsNullOrEmpty(Location) && !string.IsNullOrEmpty(TemplateCode) && TemplateItems.Count() > 0);
+                    () => !string.IsNullOrEmpty(systemName) && !string.IsNullOrEmpty(tenderName) && !string.IsNullOrEmpty(templateCode));
                 }
                 return saveTemplateCommand;
             }
@@ -285,21 +285,42 @@ namespace SystemCostCalculation.ViewModels
 
         private void CreateTemplate()
         {
-            //TO-DO: Use helper class to save information and template items to a text file
-
             ResetFields();
         }
 
         private void SaveTemplate()
-        {
-            //TO-DO: Updates template if it exists already
+        {            
+            //Once save button is clicked, use a variable that stores the information
+            TemplateModel templateToSave = new TemplateModel
+            {
+                SystemName = systemName,
+                TemplateCode = templateCode,
+                TenderName = tenderName,
+                DateModified = CurrentDate,
+                Location = location,
+                Remark = templateRemark,
+                SystemItems = TemplateItems.ToList()
+            };
 
-            ResetFields();
+            //If template is newly created, generate it a name
+            if(templateToSave.TemplateSaveName == null)
+            {
+                templateToSave.TemplateSaveName = TemplateSaveAndLoad.generateTemplateSaveFilePath();
+                templateToSave.DateCreated = CurrentDate;
+            }
+
+            //Create a new data entry for the template
+            Constants.AddTemplate(templateToSave);
+
+
+            //Save the entire template
+            //TemplateSaveAndLoad.save(templateToSave);            
         }
 
         private void DeleteTemplate()
         {
             //TO-DO: Deletes template if it has been selected from view templates tab
+            TemplateSaveAndLoad.saveTemplateData();
 
             ResetFields();
         }
@@ -315,11 +336,11 @@ namespace SystemCostCalculation.ViewModels
             selectedTemplateItem = null;
             SupplierItems.Clear();
             TemplateItems.Clear();
-            SystemName = "";
-            TenderName = "";
-            Location = "";
-            TemplateCode = "";
-            TemplateRemark = "";
+            systemName = "";
+            tenderName = "";
+            location = "";
+            templateCode = "";
+            templateRemark = "";
         }
 
         #endregion

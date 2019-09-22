@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SystemCostCalculation.HelperClasses;
 
 namespace SystemCostCalculation.ViewModels
 {
@@ -22,6 +23,8 @@ namespace SystemCostCalculation.ViewModels
             manageSupplierViewModel = new ManageSupplierViewModel();
             createTemplateViewModel = new CreateTemplateViewModel();
             viewTemplateViewModel = new ViewTemplateViewModel();
+
+            TemplateSaveAndLoad.loadTemplateData();
         }
 
 
