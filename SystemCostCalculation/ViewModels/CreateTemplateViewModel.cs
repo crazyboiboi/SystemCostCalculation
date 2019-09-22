@@ -349,10 +349,8 @@ namespace SystemCostCalculation.ViewModels
 
         public CreateTemplateViewModel()
         {
-            List<SupplierModel> sqlSuppliers = SqliteDataAccess.LoadSuppliers();
-            Suppliers = new ObservableCollection<SupplierModel>(sqlSuppliers as List<SupplierModel>);
-            List<ItemModel> sqlItems = SqliteDataAccess.LoadItems();
-            allItems = new ObservableCollection<ItemModel>(sqlItems as List<ItemModel>);
+            Suppliers = Constants.suppliers;
+            allItems = Constants.items;
             SupplierItems = new ObservableCollection<ItemModel>();
             TemplateItems = new ObservableCollection<ItemModel>();
             CurrentDate = DateTime.Now;

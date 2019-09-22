@@ -1,11 +1,16 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 using SystemCostCalculation.HelperClasses;
+using SystemCostCalculation.Models;
+using SystemCostCalculation.Views;
 
 namespace SystemCostCalculation.ViewModels
 {
@@ -16,9 +21,12 @@ namespace SystemCostCalculation.ViewModels
         private CreateTemplateViewModel createTemplateViewModel;
         private ViewTemplateViewModel viewTemplateViewModel;
 
-
         public MainWindowViewModel()
         {
+            Messenger.Default.Register<SwitchViewMessage>(this, (switchViewMessage) =>
+            {
+                setView(switchViewMessage.ViewName);
+            });
             manageItemViewModel = new ManageItemViewModel();
             manageSupplierViewModel = new ManageSupplierViewModel();
             createTemplateViewModel = new CreateTemplateViewModel();
@@ -28,6 +36,19 @@ namespace SystemCostCalculation.ViewModels
         }
 
 
+        private FrameworkElement _contentControlView;
+        public FrameworkElement ContentControlView
+        {
+            get
+            {
+                return _contentControlView;
+            }
+            set
+            {
+                _contentControlView = value;
+                RaisePropertyChanged("ContentControlView");
+            }
+        }
 
         private object _currentViewModel;
         public object currentViewModel
@@ -118,16 +139,20 @@ namespace SystemCostCalculation.ViewModels
         {
             if (name.Equals("item"))
             {
-                currentViewModel = manageItemViewModel;
+                ContentControlView = new ManageItemView();
+                ContentControlView.DataContext = manageItemViewModel;
             } else if (name.Equals("supplier"))
             {
-                currentViewModel = manageSupplierViewModel;
+                ContentControlView = new ManageSupplierView();
+                ContentControlView.DataContext = manageSupplierViewModel;
             } else if (name.Equals("createtemplate"))
             {
-                currentViewModel = createTemplateViewModel;
+                ContentControlView = new CreateTemplateView();
+                ContentControlView.DataContext = createTemplateViewModel;
             } else if (name.Equals("viewtemplate"))
             {
-                currentViewModel = viewTemplateViewModel;
+                ContentControlView = new ViewTemplateView();
+                ContentControlView.DataContext = viewTemplateViewModel;
             }
         }
 

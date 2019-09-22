@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SystemCostCalculation.HelperClasses;
 using SystemCostCalculation.Models;
 
 namespace SystemCostCalculation.ViewModels
@@ -240,9 +241,10 @@ namespace SystemCostCalculation.ViewModels
                 Name = name.Trim(),
                 Category = category,
                 Size = size,
-                Type = type.Trim(),
-                Description = description.Trim(),
-                ID = currentIdNumber++, Price = -1
+                Type = type,
+                Description = description,
+                ID = currentIdNumber++,
+                Price = -1
             };
 
             items.Add(item);
@@ -256,8 +258,8 @@ namespace SystemCostCalculation.ViewModels
                 SupplierID = selectedItem.SupplierID,
                 Code = code.Trim(), Name = name.Trim(),
                 Category = category, Size = size,
-                Type = type.Trim(),
-                Description = description.Trim(),
+                Type = type,
+                Description = description,
                 ID = selectedItem.ID,
                 Price = selectedItem.Price
             };
@@ -331,13 +333,10 @@ namespace SystemCostCalculation.ViewModels
 
         public ManageItemViewModel()
         {
-            List<ItemModel> sqlItems = SqliteDataAccess.FindUnassignedItems();
-            items = new ObservableCollection<ItemModel>(sqlItems as List<ItemModel>);
-            List<string> sqlCategories = SqliteDataAccess.LoadCategories();
-            categories = new ObservableCollection<string>(sqlCategories as List<string>);
-            List<int> sqlSizes = SqliteDataAccess.LoadSizes();
-            sizes = new ObservableCollection<int>(sqlSizes as List<int>);
-            currentIdNumber = SqliteDataAccess.GetMaxItemID();
+            items = Constants.unassignedItems;
+            categories = Constants.categories;
+            sizes = Constants.sizes;
+            currentIdNumber = Constants.currentItemIDNumber;
         }
 
         #endregion

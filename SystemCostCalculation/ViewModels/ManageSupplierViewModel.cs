@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SystemCostCalculation.HelperClasses;
 using SystemCostCalculation.Models;
 
 namespace SystemCostCalculation.ViewModels
@@ -301,7 +302,7 @@ namespace SystemCostCalculation.ViewModels
                 Name = name.Trim(),
                 Address = address.Trim(),
                 Contact = contact.Trim(),
-                OtherDetails = otherDetails.Trim(),
+                OtherDetails = otherDetails,
                 ID = currentIdNumber++
             };
 
@@ -317,7 +318,7 @@ namespace SystemCostCalculation.ViewModels
                 Name = name.Trim(),
                 Address = address.Trim(),
                 Contact = contact.Trim(),
-                OtherDetails = otherDetails.Trim(),
+                OtherDetails = otherDetails,
                 ID = selectedSupplier.ID
             };
 
@@ -425,11 +426,9 @@ namespace SystemCostCalculation.ViewModels
         #region Default Constructor
         public ManageSupplierViewModel()
         {
-            List<SupplierModel> sqlSuppliers = SqliteDataAccess.LoadSuppliers();
-            suppliers = new ObservableCollection<SupplierModel>(sqlSuppliers as List<SupplierModel>);
-            currentIdNumber = SqliteDataAccess.GetMaxSupplierID();
-            List<ItemModel> sqlItems = SqliteDataAccess.LoadItems();
-            allItems = new ObservableCollection<ItemModel>(sqlItems as List<ItemModel>);
+            suppliers = Constants.suppliers;
+            currentIdNumber = Constants.currentSupplierIDNumber;
+            allItems = Constants.items;
             filteredItems = new ObservableCollection<ItemModel>();
         }
         #endregion

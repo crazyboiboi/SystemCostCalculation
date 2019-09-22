@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -50,7 +51,7 @@ namespace SystemCostCalculation.ViewModels
                     {
                         Console.WriteLine(_selectedTemplate.TemplateSaveName);
                         //TemplateModel templateToEdit = TemplateSaveAndLoad.load(_selectedTemplate.TemplateSaveName);
-                        MainWindowViewModel
+                        Messenger.Default.Send<SwitchViewMessage>(new SwitchViewMessage { ViewName = "createtemplate" });
                     },
                     () => _selectedTemplate != null);
                 }
