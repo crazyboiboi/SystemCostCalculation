@@ -50,7 +50,8 @@ namespace SystemCostCalculation.ViewModels
                     editTemplateCommand = new RelayCommand(() =>
                     {
                         Console.WriteLine(_selectedTemplate.TemplateSaveName);
-                        //TemplateModel templateToEdit = TemplateSaveAndLoad.load(_selectedTemplate.TemplateSaveName);
+                        TemplateModel templateToEdit = TemplateSaveAndLoad.load(_selectedTemplate.TemplateSaveName);
+                        Constants.currentTemplate = templateToEdit;
                         Messenger.Default.Send<SwitchViewMessage>(new SwitchViewMessage { ViewName = "createtemplate" });
                     },
                     () => _selectedTemplate != null);

@@ -61,6 +61,9 @@ namespace SystemCostCalculation.HelperClasses
             }
         }
 
+        public static TemplateModel currentTemplate { get; set; }
+
+
         public static void AddTemplate(TemplateModel template)
         {
             templates.Add(template);

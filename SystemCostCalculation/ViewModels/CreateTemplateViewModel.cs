@@ -314,7 +314,7 @@ namespace SystemCostCalculation.ViewModels
 
 
             //Save the entire template
-            //TemplateSaveAndLoad.save(templateToSave);            
+            TemplateSaveAndLoad.save(templateToSave);            
         }
 
         private void DeleteTemplate()
@@ -343,6 +343,17 @@ namespace SystemCostCalculation.ViewModels
             templateRemark = "";
         }
 
+        private void PopulateTemplate ()
+        {
+            TemplateModel t = Constants.currentTemplate;
+            systemName = t.SystemName;
+            tenderName = t.TenderName;
+            location = t.Location;
+            templateCode = t.TemplateCode;
+            templateRemark = t.Remark;
+        }
+
+
         #endregion
 
         #region Default Constructor
@@ -354,6 +365,11 @@ namespace SystemCostCalculation.ViewModels
             SupplierItems = new ObservableCollection<ItemModel>();
             TemplateItems = new ObservableCollection<ItemModel>();
             CurrentDate = DateTime.Now;
+            if(Constants.currentTemplate != null)
+            {                
+                PopulateTemplate();
+                Console.WriteLine(Constants.currentTemplate.SystemName);
+            } 
         }
 
         #endregion
