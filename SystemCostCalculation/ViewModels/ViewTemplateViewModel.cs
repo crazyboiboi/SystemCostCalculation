@@ -12,7 +12,7 @@ using SystemCostCalculation.Models;
 
 namespace SystemCostCalculation.ViewModels
 {
-    class ViewTemplateViewModel : ViewModelBase
+    public class ViewTemplateViewModel : ViewModelBase
     {
 
         #region Field
@@ -53,6 +53,7 @@ namespace SystemCostCalculation.ViewModels
                         TemplateModel templateToEdit = TemplateSaveAndLoad.load(_selectedTemplate.TemplateSaveName);
                         Constants.currentTemplate = templateToEdit;
                         Messenger.Default.Send<SwitchViewMessage>(new SwitchViewMessage { ViewName = "createtemplate" });
+                        Constants.createTemplateViewModel.PopulateTemplate();
                     },
                     () => _selectedTemplate != null);
                 }

@@ -16,10 +16,6 @@ namespace SystemCostCalculation.ViewModels
 {
     class MainWindowViewModel : ViewModelBase
     {
-        private ManageItemViewModel manageItemViewModel;
-        private ManageSupplierViewModel manageSupplierViewModel;
-        private CreateTemplateViewModel createTemplateViewModel;
-        private ViewTemplateViewModel viewTemplateViewModel;
 
         public MainWindowViewModel()
         {
@@ -27,10 +23,10 @@ namespace SystemCostCalculation.ViewModels
             {
                 setView(switchViewMessage.ViewName);
             });
-            manageItemViewModel = new ManageItemViewModel();
-            manageSupplierViewModel = new ManageSupplierViewModel();
-            createTemplateViewModel = new CreateTemplateViewModel();
-            viewTemplateViewModel = new ViewTemplateViewModel();
+            Constants.manageItemViewModel = new ManageItemViewModel();
+            Constants.manageSupplierViewModel = new ManageSupplierViewModel();
+            Constants.createTemplateViewModel = new CreateTemplateViewModel();
+            Constants.viewTemplateViewModel = new ViewTemplateViewModel();
 
             TemplateSaveAndLoad.loadTemplateData();
         }
@@ -133,26 +129,24 @@ namespace SystemCostCalculation.ViewModels
 
 
 
-
-
         private void setView(string name)
         {
             if (name.Equals("item"))
             {
                 ContentControlView = new ManageItemView();
-                ContentControlView.DataContext = manageItemViewModel;
+                ContentControlView.DataContext = Constants.manageItemViewModel;
             } else if (name.Equals("supplier"))
             {
                 ContentControlView = new ManageSupplierView();
-                ContentControlView.DataContext = manageSupplierViewModel;
+                ContentControlView.DataContext = Constants.manageSupplierViewModel;
             } else if (name.Equals("createtemplate"))
             {
                 ContentControlView = new CreateTemplateView();
-                ContentControlView.DataContext = createTemplateViewModel;
+                ContentControlView.DataContext = Constants.createTemplateViewModel;
             } else if (name.Equals("viewtemplate"))
             {
                 ContentControlView = new ViewTemplateView();
-                ContentControlView.DataContext = viewTemplateViewModel;
+                ContentControlView.DataContext = Constants.viewTemplateViewModel;
             }
         }
 

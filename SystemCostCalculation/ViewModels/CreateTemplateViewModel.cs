@@ -11,7 +11,7 @@ using SystemCostCalculation.Models;
 
 namespace SystemCostCalculation.ViewModels
 {
-    class CreateTemplateViewModel : ViewModelBase
+    public class CreateTemplateViewModel : ViewModelBase
     {
         #region Fields
 
@@ -343,7 +343,7 @@ namespace SystemCostCalculation.ViewModels
             templateRemark = "";
         }
 
-        private void PopulateTemplate ()
+        public void PopulateTemplate ()
         {
             TemplateModel t = Constants.currentTemplate;
             systemName = t.SystemName;
@@ -365,11 +365,13 @@ namespace SystemCostCalculation.ViewModels
             SupplierItems = new ObservableCollection<ItemModel>();
             TemplateItems = new ObservableCollection<ItemModel>();
             CurrentDate = DateTime.Now;
-            if(Constants.currentTemplate != null)
+            // Putting this in the constructor doesn't do anything since 
+            // its the 'view' getting changed everytime, the 'viewmodel' stays constant
+            /*if(Constants.currentTemplate != null)
             {                
                 PopulateTemplate();
                 Console.WriteLine(Constants.currentTemplate.SystemName);
-            } 
+            } */
         }
 
         #endregion

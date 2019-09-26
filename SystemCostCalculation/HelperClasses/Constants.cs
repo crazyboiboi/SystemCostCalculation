@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SystemCostCalculation.Models;
+using SystemCostCalculation.ViewModels;
 
 namespace SystemCostCalculation.HelperClasses
 {
@@ -62,6 +63,14 @@ namespace SystemCostCalculation.HelperClasses
         }
 
         public static TemplateModel currentTemplate { get; set; }
+
+        public static ManageItemViewModel manageItemViewModel { get; set; }
+
+        public static ManageSupplierViewModel manageSupplierViewModel { get; set; }
+
+        public static CreateTemplateViewModel createTemplateViewModel { get; set; }
+
+        public static ViewTemplateViewModel viewTemplateViewModel { get; set; }
 
 
         public static void AddTemplate(TemplateModel template)
