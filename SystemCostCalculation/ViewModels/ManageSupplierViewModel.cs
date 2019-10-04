@@ -307,6 +307,7 @@ namespace SystemCostCalculation.ViewModels
             };
 
             suppliers.Add(supplier);
+            Constants.suppliers.Add(supplier);
             SqliteDataAccess.SaveSupplier(supplier);
             ResetSupplierFields();
         }
@@ -327,6 +328,7 @@ namespace SystemCostCalculation.ViewModels
                 if (suppliers[i].ID == updatedSupplier.ID)
                 {
                     suppliers[i] = updatedSupplier;
+                    Constants.suppliers[i] = updatedSupplier;
                     SqliteDataAccess.UpdateSupplier(updatedSupplier);
                     break;
                 }
@@ -338,6 +340,7 @@ namespace SystemCostCalculation.ViewModels
         {
             SqliteDataAccess.DeleteSupplier(selectedSupplier);
             suppliers.Remove(selectedSupplier);
+            Constants.suppliers.Remove(selectedSupplier);
             ResetSupplierFields();
         }
 
@@ -345,6 +348,7 @@ namespace SystemCostCalculation.ViewModels
         {
             ItemModel itemToBeAssigned = SqliteDataAccess.FindUnassignedItem(ItemCode);
             itemToBeAssigned.ID = currentIdNumber++;
+            Constants.currentItemIDNumber++;
             itemToBeAssigned.SupplierID = selectedSupplier.ID;
             itemToBeAssigned.Price = Math.Round(ItemPrice, 2);
             filteredItems.Add(itemToBeAssigned);
