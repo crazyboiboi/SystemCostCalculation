@@ -135,14 +135,18 @@ namespace SystemCostCalculation.ViewModels
             {
                 ContentControlView = new ManageItemView();
                 ContentControlView.DataContext = Constants.manageItemViewModel;
+                Constants.manageItemViewModel.ResetFields();
             } else if (name.Equals("supplier"))
             {
                 ContentControlView = new ManageSupplierView();
                 ContentControlView.DataContext = Constants.manageSupplierViewModel;
+                Constants.manageSupplierViewModel.ResetItemFields();
+                Constants.manageSupplierViewModel.ResetSupplierFields();
             } else if (name.Equals("createtemplate"))
             {
                 ContentControlView = new CreateTemplateView();
                 ContentControlView.DataContext = Constants.createTemplateViewModel;
+                Constants.createTemplateViewModel.ResetFields();
             } else if (name.Equals("viewtemplate"))
             {
                 ContentControlView = new ViewTemplateView();

@@ -316,7 +316,7 @@ namespace SystemCostCalculation.ViewModels
             description = desc;
         }
 
-        private void ResetFields()
+        public void ResetFields()
         {
             selectedItem = null;
             code = "";

@@ -329,7 +329,7 @@ namespace SystemCostCalculation.ViewModels
 
         #region Helper Methods
 
-        private void ResetFields()
+        public void ResetFields()
         {
             selectedItem = null;
             selectedSupplier = null;
@@ -345,12 +345,15 @@ namespace SystemCostCalculation.ViewModels
 
         public void PopulateTemplate ()
         {
+            //To-Do: Write in other property too
             TemplateModel t = Constants.currentTemplate;
             systemName = t.SystemName;
             tenderName = t.TenderName;
             location = t.Location;
             templateCode = t.TemplateCode;
             templateRemark = t.Remark;
+
+            Constants.currentTemplate = null;
         }
 
 
@@ -365,13 +368,6 @@ namespace SystemCostCalculation.ViewModels
             SupplierItems = new ObservableCollection<ItemModel>();
             TemplateItems = new ObservableCollection<ItemModel>();
             CurrentDate = DateTime.Now;
-            // Putting this in the constructor doesn't do anything since 
-            // its the 'view' getting changed everytime, the 'viewmodel' stays constant
-            /*if(Constants.currentTemplate != null)
-            {                
-                PopulateTemplate();
-                Console.WriteLine(Constants.currentTemplate.SystemName);
-            } */
         }
 
         #endregion

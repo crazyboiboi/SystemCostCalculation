@@ -405,7 +405,7 @@ namespace SystemCostCalculation.ViewModels
             ItemPrice = p;
         }
 
-        private void ResetSupplierFields()
+        public void ResetSupplierFields()
         {
             selectedSupplier = null;
             code = "";
@@ -415,7 +415,7 @@ namespace SystemCostCalculation.ViewModels
             otherDetails = "";
         }
 
-        private void ResetItemFields()
+        public void ResetItemFields()
         {
             ItemCode = "";
             ItemPrice = 0.0d;

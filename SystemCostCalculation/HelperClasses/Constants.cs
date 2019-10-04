@@ -11,11 +11,11 @@ namespace SystemCostCalculation.HelperClasses
 {
     public class Constants
     {
+        #region Database Variables
+
         public static int currentSupplierIDNumber = SqliteDataAccess.GetMaxSupplierID();
 
         public static int currentItemIDNumber = SqliteDataAccess.GetMaxItemID();
-
-        public static ObservableCollection<TemplateModel> templates = new ObservableCollection<TemplateModel>();
 
         public static ObservableCollection<SupplierModel> suppliers
         {
@@ -62,7 +62,23 @@ namespace SystemCostCalculation.HelperClasses
             }
         }
 
+        #endregion
+
+        #region Template 
+
+        public static ObservableCollection<TemplateModel> templates = new ObservableCollection<TemplateModel>();
+
         public static TemplateModel currentTemplate { get; set; }
+
+        public static void AddTemplate(TemplateModel template)
+        {
+            templates.Add(template);
+            Console.WriteLine(templates.Count);
+        }
+
+        #endregion
+
+        #region ViewModel
 
         public static ManageItemViewModel manageItemViewModel { get; set; }
 
@@ -72,12 +88,9 @@ namespace SystemCostCalculation.HelperClasses
 
         public static ViewTemplateViewModel viewTemplateViewModel { get; set; }
 
+        #endregion
 
-        public static void AddTemplate(TemplateModel template)
-        {
-            templates.Add(template);
-            Console.WriteLine(templates.Count);
-        }
+        
 
     }
 
