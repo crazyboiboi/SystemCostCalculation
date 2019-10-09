@@ -292,7 +292,7 @@ namespace SystemCostCalculation
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                var output = cnn.ExecuteScalar<int>("select COUNT(*) from Supplier");
+                var output = cnn.ExecuteScalar<int>("select MAX(ID) from Supplier");
                 return output;
             }
         }

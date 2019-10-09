@@ -15,8 +15,6 @@ namespace SystemCostCalculation.ViewModels
     {
         #region Fields
 
-        public int currentIdNumber;
-
         public ObservableCollection<ItemModel> items { get; set; }
         public ObservableCollection<string> categories { get; set; }
         public ObservableCollection<int> sizes { get; set; }
@@ -243,7 +241,7 @@ namespace SystemCostCalculation.ViewModels
                 Size = size,
                 Type = type,
                 Description = description,
-                ID = currentIdNumber++,
+                ID = Constants.currentItemIDNumber++,
                 Price = -1
             };
 
@@ -336,7 +334,6 @@ namespace SystemCostCalculation.ViewModels
             items = Constants.unassignedItems;
             categories = Constants.categories;
             sizes = Constants.sizes;
-            currentIdNumber = Constants.currentItemIDNumber;
         }
 
         #endregion
