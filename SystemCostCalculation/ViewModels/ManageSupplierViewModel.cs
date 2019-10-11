@@ -14,7 +14,7 @@ namespace SystemCostCalculation.ViewModels
     public class ManageSupplierViewModel : ViewModelBase
     {
         #region Fields
-        public int currentIdNumber;
+
         public ObservableCollection<SupplierModel> suppliers { get; set; }
 
         private ObservableCollection<ItemModel> allItems { get; set; }
@@ -115,6 +115,7 @@ namespace SystemCostCalculation.ViewModels
                 Set(ref _selectedSupplier, value);
                 if (_selectedSupplier != null)
                 {
+                    Console.WriteLine("Supplier ID: " + value.ID);
                     PopulateSupplierDetails(value.Code, value.Name, value.Contact, value.Address, value.OtherDetails);
                     List<ItemModel> sqlItems = SqliteDataAccess.LoadItems();
                     allItems = new ObservableCollection<ItemModel>(sqlItems as List<ItemModel>);
@@ -303,9 +304,8 @@ namespace SystemCostCalculation.ViewModels
                 Address = address.Trim(),
                 Contact = contact.Trim(),
                 OtherDetails = otherDetails,
-                ID = currentIdNumber++
+                ID = ++Constants.currentSupplierIDNumber
             };
-
             suppliers.Add(supplier);
             Constants.suppliers.Add(supplier);
             SqliteDataAccess.SaveSupplier(supplier);
@@ -347,8 +347,7 @@ namespace SystemCostCalculation.ViewModels
         private void AddItem()
         {
             ItemModel itemToBeAssigned = SqliteDataAccess.FindUnassignedItem(ItemCode);
-            itemToBeAssigned.ID = currentIdNumber++;
-            Constants.currentItemIDNumber++;
+            itemToBeAssigned.ID = Constants.currentItemIDNumber++;
             itemToBeAssigned.SupplierID = selectedSupplier.ID;
             itemToBeAssigned.Price = Math.Round(ItemPrice, 2);
             filteredItems.Add(itemToBeAssigned);
@@ -425,13 +424,17 @@ namespace SystemCostCalculation.ViewModels
             ItemPrice = 0.0d;
         }
 
+        public void ResetSupplierDataGrid()
+        {
+            filteredItems.Clear();
+        }
+
         #endregion
 
         #region Default Constructor
         public ManageSupplierViewModel()
         {
             suppliers = Constants.suppliers;
-            currentIdNumber = Constants.currentSupplierIDNumber;
             allItems = Constants.items;
             filteredItems = new ObservableCollection<ItemModel>();
         }

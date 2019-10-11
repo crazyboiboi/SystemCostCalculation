@@ -142,6 +142,7 @@ namespace SystemCostCalculation.ViewModels
                 ContentControlView.DataContext = Constants.manageSupplierViewModel;
                 Constants.manageSupplierViewModel.ResetItemFields();
                 Constants.manageSupplierViewModel.ResetSupplierFields();
+                Constants.manageSupplierViewModel.ResetSupplierDataGrid();
             } else if (name.Equals("createtemplate"))
             {
                 ContentControlView = new CreateTemplateView();
