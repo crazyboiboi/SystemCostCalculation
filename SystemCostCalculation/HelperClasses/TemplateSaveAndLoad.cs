@@ -132,6 +132,7 @@ namespace SystemCostCalculation.HelperClasses
             {
                 string[] lines = File.ReadAllLines(path);
                 TemplateModel template = new TemplateModel();
+                List<ItemModel> items = new List<ItemModel>();
 
                 template.SystemName = lines[0];
                 template.TemplateCode = lines[1];
@@ -159,8 +160,10 @@ namespace SystemCostCalculation.HelperClasses
                     item.Description = col[7];
                     item.Price = Convert.ToDouble(col[8]);
                     item.ItemDiscount = Convert.ToInt16(col[9]);
-                }
 
+                    items.Add(item);
+                }
+                template.SystemItems = items;
                 return template;
 
             } catch(FileNotFoundException e)

@@ -23,7 +23,7 @@ namespace SystemCostCalculation.ViewModels
 
         private ObservableCollection<ItemModel> allItems { get; set; }
 
-        public DateTime CurrentDate { get; }
+        public DateTime CurrentDate { get; set; }
 
         private SupplierModel _selectedSupplier;
         public SupplierModel selectedSupplier
@@ -352,6 +352,11 @@ namespace SystemCostCalculation.ViewModels
             location = t.Location;
             templateCode = t.TemplateCode;
             templateRemark = t.Remark;
+            CurrentDate = Convert.ToDateTime(t.DateCreated);
+            foreach(ItemModel item in t.SystemItems)
+            {
+                TemplateItems.Add(item);
+            }
 
             Constants.currentTemplate = null;
         }
