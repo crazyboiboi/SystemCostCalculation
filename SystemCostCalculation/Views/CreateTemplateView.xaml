@@ -118,25 +118,27 @@
         <Grid Grid.Row="1" Grid.Column="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition Width="0.25*"/>
             </Grid.ColumnDefinitions>
 
             <DataGrid x:Name="templateItemTable" SelectedItem="{Binding Path=selectedTemplateItem, Mode=TwoWay}" ItemsSource="{Binding TemplateItems}"  CanUserAddRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" AutoGenerateColumns="False" Margin="0 10 0 0" Height="300" Width="550" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <DataGrid.Columns>
-                    <DataGridTextColumn IsReadOnly="true" Header="ItemID" Binding="{Binding Code}" Width="0.25*"/>
+                    <!-- <DataGridTextColumn IsReadOnly="true" Header="ItemID" Binding="{Binding Code}" Width="0.25*"/> -->           
                     <DataGridTextColumn IsReadOnly="true" Header="Name" Binding="{Binding Name}" Width="0.75*"/>
-                    <DataGridTextColumn IsReadOnly="true" Header="Size" Binding="{Binding Size}" Width="0.5*"/>
-                    <DataGridTextColumn IsReadOnly="true" Header="Type" Binding="{Binding Type}" Width="0.5*"/>
+                    <DataGridTextColumn IsReadOnly="true" Header="Size" Binding="{Binding Size}" Width="0.25*"/>
+                    <DataGridTextColumn IsReadOnly="true" Header="Type" Binding="{Binding Type}" Width="0.5*"/>                       
                     <DataGridTextColumn IsReadOnly="true" Header="Price" Binding="{Binding Price}" Width="0.4*"/>
-                    <DataGridTextColumn IsReadOnly="true" Header="Quantity" Binding="{Binding Quantity}" Width="0.4*"/>
+                    <DataGridTextColumn IsReadOnly="False" Header="Quantity" Binding="{Binding Quantity}" Width="0.35*"/>
+                    <DataGridTextColumn IsReadOnly="False" Header="Discount" Binding="{Binding ItemDiscount}" Width="0.35*"/>
+                    <DataGridTextColumn IsReadOnly="true" Header="Total" Binding="{Binding DiscountedPrice}" Width="0.4*"/>
                 </DataGrid.Columns>
             </DataGrid>
 
             <StackPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
-                <Button Height="60" Width="60">
+                <Button Height="60" Width="60" Command="{Binding EditItemDiscountCommand}">
                     <TextBlock Text="Edit Item Discount" TextWrapping="Wrap" TextAlignment="Center"/>
                 </Button>
-                <Button Height="60" Width="60" Margin="0 20 0 0">
+                <Button Height="60" Width="60" Margin="0 20 0 0" Command="{Binding EditItemQuantityCommand}">
                     <TextBlock Text="Edit Item Quantity" TextWrapping="Wrap" TextAlignment="Center"/>
                 </Button>
                 <Button Height="60" Width="60" Margin="0 20 0 0" Command="{Binding RemoveItemFromTemplateCommand}">
@@ -145,14 +147,23 @@
             </StackPanel>
             
         </Grid>
-        
 
 
-        <StackPanel Grid.Row="2" Grid.Column="1" Margin="0 10 0 0">
-            <TextBlock Text="Total Cost: " Style="{StaticResource FieldHeading}" Margin="0 10 0 0"/>
-            <TextBlock Text="Discount " Style="{StaticResource FieldHeading}" Margin="0 10 0 0"/>
-            <TextBlock Text="Total Cost after discount: " Style="{StaticResource FieldHeading}" Margin="0 10 0 0" />
 
+        <StackPanel Grid.Row="2" Grid.Column="1" Margin="0 10 0 0" Orientation="Horizontal">
+            <StackPanel Margin="0 0 20 0">
+                <TextBlock Text="Total Cost: " Style="{StaticResource FieldHeading}" Margin="0 10 0 0"/>
+                <TextBlock Text="Discount " Style="{StaticResource FieldHeading}" Margin="0 10 0 0"/>
+                <TextBlock Text="Total Cost after discount: " Style="{StaticResource FieldHeading}" Margin="0 10 0 0" />
+            </StackPanel>
+    
+            <StackPanel>
+                <TextBlock Text="{Binding totalCost}" Style="{StaticResource FieldHeading}" Margin="0 10 0 0"/>
+                <TextBlock Text="{Binding discount}" Style="{StaticResource FieldHeading}" Margin="0 10 0 0"/>
+                <TextBlock Text="{Binding discountedCost }" Style="{StaticResource FieldHeading}" Margin="0 10 0 0" />
+            </StackPanel>
+            
+            
 
         </StackPanel>
         

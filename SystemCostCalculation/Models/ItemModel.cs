@@ -35,11 +35,16 @@ namespace SystemCostCalculation.Models
 
         public bool Selected { get; set; }
 
+        public double DiscountedPrice { get; set; }
+
+        //public double DiscountedPrice
+        //{
+        //    get
+        //    {
+        //        return Price * Quantity * (100-ItemDiscount)/100;
+        //    }
+        //}
+
         public int ItemDiscount { get; set; }
-
-        public void saveItem()
-        {
-
-        }
     }
 }

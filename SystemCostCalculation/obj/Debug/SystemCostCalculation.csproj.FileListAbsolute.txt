@@ -25,6 +25,23 @@ D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj
 D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\ManageItemView.g.cs
 D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\ManageItemView.baml
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\CommonServiceLocator.dll
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\GalaSoft.MvvmLight.dll
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\GalaSoft.MvvmLight.Extras.dll
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\GalaSoft.MvvmLight.Platform.dll
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\System.Windows.Interactivity.dll
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\GalaSoft.MvvmLight.pdb
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\GalaSoft.MvvmLight.xml
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\GalaSoft.MvvmLight.Extras.pdb
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\GalaSoft.MvvmLight.Extras.xml
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\GalaSoft.MvvmLight.Platform.pdb
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\GalaSoft.MvvmLight.Platform.xml
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\App.baml
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\CreateTemplateView.g.cs
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\CreateTemplateView.baml
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.csprojAssemblyReference.cache
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\ViewTemplateView.g.cs
+D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\ViewTemplateView.baml
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\bin\Debug\StockDatabase.db
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\bin\Debug\SystemCostCalculation.exe.config
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\bin\Debug\SystemCostCalculation.exe
@@ -46,15 +63,21 @@ C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\bin\
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\bin\Debug\System.Data.SQLite.xml
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\bin\Debug\System.Data.SQLite.dll.config
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\MainWindow.g.cs
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\CreateTemplateView.g.cs
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\ManageItemView.g.cs
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\ManageSupplierView.g.cs
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\ViewTemplateView.g.cs
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\App.g.cs
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation_Content.g.cs
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation_MarkupCompile.cache
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation_MarkupCompile.lref
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\App.baml
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\MainWindow.baml
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\CreateTemplateView.baml
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\ManageItemView.baml
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\ManageSupplierView.baml
+C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\ViewTemplateView.baml
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.g.resources
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.Properties.Resources.resources
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.csproj.GenerateResource.cache
@@ -62,26 +85,3 @@ C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.csproj.CopyComplete
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.exe
 C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.pdb
-C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\App.baml
-D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\CommonServiceLocator.dll
-D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\GalaSoft.MvvmLight.dll
-D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\GalaSoft.MvvmLight.Extras.dll
-D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\GalaSoft.MvvmLight.Platform.dll
-D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\System.Windows.Interactivity.dll
-D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\GalaSoft.MvvmLight.pdb
-D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\GalaSoft.MvvmLight.xml
-D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\GalaSoft.MvvmLight.Extras.pdb
-D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\GalaSoft.MvvmLight.Extras.xml
-D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\GalaSoft.MvvmLight.Platform.pdb
-D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\bin\Debug\GalaSoft.MvvmLight.Platform.xml
-D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\App.baml
-C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\CreateTemplateView.g.cs
-C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\CreateTemplateView.baml
-D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\CreateTemplateView.g.cs
-D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\CreateTemplateView.baml
-C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation_MarkupCompile.lref
-C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\ViewTemplateView.g.cs
-C:\Users\Sean Seow\Source\Repos\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\ViewTemplateView.baml
-D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\SystemCostCalculation.csprojAssemblyReference.cache
-D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\ViewTemplateView.g.cs
-D:\Personal Programming Projects\SystemCostCalculation\SystemCostCalculation\obj\Debug\Views\ViewTemplateView.baml

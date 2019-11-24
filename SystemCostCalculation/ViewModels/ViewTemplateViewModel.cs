@@ -35,6 +35,7 @@ namespace SystemCostCalculation.ViewModels
             {
                 Set(ref _selectedTemplate, value);
                 EditTemplateCommand.RaiseCanExecuteChanged();
+                DeleteTemplateCommand.RaiseCanExecuteChanged();
             }
         }
         #endregion
@@ -49,9 +50,9 @@ namespace SystemCostCalculation.ViewModels
                 {
                     editTemplateCommand = new RelayCommand(() =>
                     {
-                        Console.WriteLine(_selectedTemplate.TemplateSaveName);
                         TemplateModel templateToEdit = TemplateSaveAndLoad.load(_selectedTemplate.TemplateSaveName);
                         Constants.currentTemplate = templateToEdit;
+                        Constants.templateIndex = Constants.templates.IndexOf(_selectedTemplate);
                         Messenger.Default.Send<SwitchViewMessage>(new SwitchViewMessage { ViewName = "createtemplate" });
                         Constants.createTemplateViewModel.PopulateTemplate();
                     },
@@ -70,7 +71,7 @@ namespace SystemCostCalculation.ViewModels
                 {
                     deleteTemplateComamnd = new RelayCommand(() =>
                     {
-                        DeleteTemplate();
+                        Constants.templates.Remove(_selectedTemplate);
                     },
                     () => _selectedTemplate != null);
                 }
@@ -79,16 +80,7 @@ namespace SystemCostCalculation.ViewModels
         }
 
 
-        #endregion
-
-
-        private void DeleteTemplate()
-        {
-
-        }
-
-
-
+        #endregion         
 
         public ViewTemplateViewModel()
         {

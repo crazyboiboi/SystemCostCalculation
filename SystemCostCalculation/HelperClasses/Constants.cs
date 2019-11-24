@@ -66,16 +66,22 @@ namespace SystemCostCalculation.HelperClasses
 
         #region Template 
 
+        //Stores all templates in a list
         public static ObservableCollection<TemplateModel> templates = new ObservableCollection<TemplateModel>();
 
         public static TemplateModel currentTemplate { get; set; }
 
+        public static int templateIndex { get; set; }
+
         public static void AddTemplate(TemplateModel template)
         {
             templates.Add(template);
-            Console.WriteLine(templates.Count);
         }
 
+        public static void DeleteTemplate()
+        {
+            templates.RemoveAt(templateIndex);
+        }
         #endregion
 
         #region ViewModel

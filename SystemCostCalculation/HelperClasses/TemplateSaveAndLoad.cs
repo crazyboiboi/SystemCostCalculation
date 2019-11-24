@@ -36,17 +36,17 @@ namespace SystemCostCalculation.HelperClasses
         //TO-DO: Only do this OnWindowClosing()
         public static void saveTemplateData()
         {
-            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string desktopPath = "D:\\";
             string path = Path.Combine(desktopPath, "templatesSave.txt");
             using (StreamWriter sw = new StreamWriter(path))
             {
                 sw.WriteLine(fileCount);
 
-                foreach(TemplateModel template in Constants.templates)
+                foreach (TemplateModel template in Constants.templates)
                 {
                     sw.Write(template.TemplateSaveName + ";");
                     sw.Write(template.SystemName + ";");
-                    sw.Write(template.TemplateCode + ";") ;
+                    sw.Write(template.TemplateCode + ";");
                     sw.Write(template.TenderName + ";");
                     sw.WriteLine(template.DateModified);
                 }
@@ -55,7 +55,7 @@ namespace SystemCostCalculation.HelperClasses
 
         public static void loadTemplateData()
         {
-            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string desktopPath = "D:\\";
             string path = Path.Combine(desktopPath, "templatesSave.txt");
 
             try
@@ -63,7 +63,7 @@ namespace SystemCostCalculation.HelperClasses
                 string[] lines = File.ReadAllLines(path);
                 fileCount = Convert.ToInt32(lines[0]);
 
-                for(int i=1; i<lines.Length; i++)
+                for (int i = 1; i < lines.Length; i++)
                 {
                     string[] col = lines[i].Split(new char[] { ';' });
                     TemplateModel template = new TemplateModel()
@@ -76,23 +76,25 @@ namespace SystemCostCalculation.HelperClasses
                     };
                     Constants.AddTemplate(template);
                 }
-               
-            } catch (FileNotFoundException ex)
+
+            }
+            catch (FileNotFoundException ex)
             {
                 //Error message
             }
-        } 
+        }
 
 
 
         //Save the template in a .txt file
         public static void save(TemplateModel template)
         {
-            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string desktopPath = "D:\\";
             string path = Path.Combine(desktopPath, fileName);
 
             using (StreamWriter sw = new StreamWriter(path))
             {
+                sw.WriteLine(template.TemplateSaveName);
                 sw.WriteLine(template.SystemName);
                 sw.WriteLine(template.TemplateCode);
                 sw.WriteLine(template.TenderName);
@@ -100,10 +102,9 @@ namespace SystemCostCalculation.HelperClasses
                 sw.WriteLine(template.DateModified);
                 sw.WriteLine(template.Location);
                 sw.WriteLine(template.Remark);
-                //sw.WriteLine(template.totalCost);
-                //sw.WriteLine(template.discount);
+                sw.WriteLine(template.Discount);
 
-                foreach(ItemModel item in template.SystemItems)
+                foreach (ItemModel item in template.SystemItems)
                 {
                     sw.Write(item.ID + ";");
                     sw.Write(item.SupplierID + ";");
@@ -114,6 +115,7 @@ namespace SystemCostCalculation.HelperClasses
                     sw.Write(item.Type + ";");
                     sw.Write(item.Description + ";");
                     sw.Write(item.Price + ";");
+                    sw.Write(item.Quantity + ";");
                     sw.WriteLine(item.ItemDiscount);
                 }
             }
@@ -125,7 +127,7 @@ namespace SystemCostCalculation.HelperClasses
         //Load the template in a .txt file
         public static TemplateModel load(string fileName)
         {
-            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string desktopPath = "D:\\";
             string path = Path.Combine(desktopPath, fileName);
 
             try
@@ -134,18 +136,18 @@ namespace SystemCostCalculation.HelperClasses
                 TemplateModel template = new TemplateModel();
                 List<ItemModel> items = new List<ItemModel>();
 
-                template.SystemName = lines[0];
-                template.TemplateCode = lines[1];
-                template.TenderName = lines[2];
-                template.DateCreated = Convert.ToDateTime(lines[3]);
-                template.DateModified = Convert.ToDateTime(lines[4]);
-                template.Location = lines[5];
-                template.Remark = lines[6];
-                //template.TotalCost = Convert.ToDouble(lines[7]);
-                //template.Discount = Convert.ToInt32(lines[8]);
+                template.TemplateSaveName = lines[0];
+                template.SystemName = lines[1];
+                template.TemplateCode = lines[2];
+                template.TenderName = lines[3];
+                template.DateCreated = Convert.ToDateTime(lines[4]);
+                template.DateModified = Convert.ToDateTime(lines[5]);
+                template.Location = lines[6];
+                template.Remark = lines[7];
+                template.Discount = Convert.ToInt16(lines[8]);
 
                 //Load items with delimiter
-                for (int i=7; i<lines.Length; i++)
+                for (int i = 9; i < lines.Length; i++)
                 {
                     string[] col = lines[i].Split(new char[] { ';' });
 
@@ -159,14 +161,16 @@ namespace SystemCostCalculation.HelperClasses
                     item.Type = col[6];
                     item.Description = col[7];
                     item.Price = Convert.ToDouble(col[8]);
-                    item.ItemDiscount = Convert.ToInt16(col[9]);
+                    item.Quantity = Convert.ToUInt16(col[9]);
+                    item.ItemDiscount = Convert.ToInt16(col[10]);
 
                     items.Add(item);
                 }
                 template.SystemItems = items;
                 return template;
 
-            } catch(FileNotFoundException e)
+            }
+            catch (FileNotFoundException e)
             {
                 return null;
                 //Error message here
