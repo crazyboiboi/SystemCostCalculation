@@ -94,10 +94,7 @@ namespace SystemCostCalculation.HelperClasses
 
         public static ViewTemplateViewModel viewTemplateViewModel { get; set; }
 
-        #endregion
-
-        
-
+        #endregion   
     }
 
 }

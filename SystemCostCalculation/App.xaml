@@ -6,6 +6,16 @@
     
     <Application.Resources>
         
+        
+        <!--IMAGES/ICONS PATH-->
+
+        <BitmapImage x:Key="error" UriSource="/Resources/error_icon.png"/>
+        <BitmapImage x:Key="save" UriSource="/Resources/save_icon.png"/>
+        <BitmapImage x:Key="tick" UriSource="/Resources/tick_icon.png"/>
+        <BitmapImage x:Key="warning" UriSource="/Resources/warning_icon.png"/>
+
+
+
         <Style TargetType="Button" x:Key="NavButton">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Foreground" Value="White"/>

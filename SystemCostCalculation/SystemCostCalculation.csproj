@@ -158,6 +158,10 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="Resources\error_icon.png" />
+    <Resource Include="Resources\save_icon.png" />
+    <Resource Include="Resources\tick_icon.png" />
+    <Resource Include="Resources\warning_icon.png" />
     <Content Include="StockDatabase.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

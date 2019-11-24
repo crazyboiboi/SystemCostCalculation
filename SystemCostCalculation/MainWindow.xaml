@@ -60,9 +60,14 @@
 
 
         <Grid Grid.Row="1" Grid.Column="1" Background="AliceBlue">
-            <Border BorderThickness="10" BorderBrush="#d9d9d9">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Background="Gray" Height="20">
+                    <Image Height="15" Width="20" Source="{StaticResource error}" Margin="10 0 10 0"/>
+                    <TextBlock VerticalAlignment="Center" Text="Message status!!"/>
+                </StackPanel>
                 <ContentControl Content="{Binding ContentControlView}"/>
-            </Border>            
+            </StackPanel>
+           
         </Grid>
 
 

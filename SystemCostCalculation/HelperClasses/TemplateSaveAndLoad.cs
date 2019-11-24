@@ -24,9 +24,9 @@ namespace SystemCostCalculation.HelperClasses
         }
 
         //A method to return a path and a file name based on existing list of text files in the folder
-        public static string generateTemplateSaveFilePath()
+        public static string generateTemplateSaveFilePath(string name)
         {
-            fileName = "testFile" + countFiles() + ".txt";
+            fileName = name + countFiles() + ".txt";
             return fileName;
         }
 
@@ -36,7 +36,7 @@ namespace SystemCostCalculation.HelperClasses
         //TO-DO: Only do this OnWindowClosing()
         public static void saveTemplateData()
         {
-            string desktopPath = "D:\\";
+            string desktopPath = AppDomain.CurrentDomain.BaseDirectory;
             string path = Path.Combine(desktopPath, "templatesSave.txt");
             using (StreamWriter sw = new StreamWriter(path))
             {
@@ -55,7 +55,7 @@ namespace SystemCostCalculation.HelperClasses
 
         public static void loadTemplateData()
         {
-            string desktopPath = "D:\\";
+            string desktopPath = AppDomain.CurrentDomain.BaseDirectory;
             string path = Path.Combine(desktopPath, "templatesSave.txt");
 
             try
@@ -89,8 +89,8 @@ namespace SystemCostCalculation.HelperClasses
         //Save the template in a .txt file
         public static void save(TemplateModel template)
         {
-            string desktopPath = "D:\\";
-            string path = Path.Combine(desktopPath, fileName);
+            string desktopPath = AppDomain.CurrentDomain.BaseDirectory;
+            string path = Path.Combine(desktopPath, template.TemplateSaveName);
 
             using (StreamWriter sw = new StreamWriter(path))
             {
@@ -127,7 +127,7 @@ namespace SystemCostCalculation.HelperClasses
         //Load the template in a .txt file
         public static TemplateModel load(string fileName)
         {
-            string desktopPath = "D:\\";
+            string desktopPath = AppDomain.CurrentDomain.BaseDirectory;
             string path = Path.Combine(desktopPath, fileName);
 
             try

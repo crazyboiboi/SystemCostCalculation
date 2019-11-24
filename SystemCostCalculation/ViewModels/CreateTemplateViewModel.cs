@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,18 @@ namespace SystemCostCalculation.ViewModels
 
         private ObservableCollection<ItemModel> allItems { get; set; }
 
-        public DateTime CurrentDate { get; set; }
+        private DateTime _currentDate;
+        public DateTime CurrentDate
+        {
+            get
+            {
+                return _currentDate;
+            }
+            set
+            {
+                Set(ref _currentDate, value);
+            }
+        }
 
         private SupplierModel _selectedSupplier;
         public SupplierModel selectedSupplier
@@ -385,18 +397,19 @@ namespace SystemCostCalculation.ViewModels
                 SystemName = systemName,
                 TemplateCode = templateCode,
                 TenderName = tenderName,
-                DateModified = CurrentDate,
+                DateModified = DateTime.Now,
                 Location = location,
                 Remark = templateRemark,
                 SystemItems = TemplateItems.ToList(),
+                Discount = discount,
                 TemplateSaveName = templateSaveName
             };
 
             //If template is newly created, generate it a name
             if (templateToSave.TemplateSaveName == null)
             {
-                templateToSave.TemplateSaveName = TemplateSaveAndLoad.generateTemplateSaveFilePath();
-                templateToSave.DateCreated = CurrentDate;
+                templateToSave.TemplateSaveName = TemplateSaveAndLoad.generateTemplateSaveFilePath(systemName);
+                templateToSave.DateCreated = DateTime.Now;
                 //Create a new data entry for the template
                 Constants.AddTemplate(templateToSave);
             }
@@ -466,7 +479,7 @@ namespace SystemCostCalculation.ViewModels
             templateCode = t.TemplateCode;
             templateRemark = t.Remark;
             templateSaveName = t.TemplateSaveName;
-            CurrentDate = Convert.ToDateTime(t.DateCreated);
+            CurrentDate = t.DateCreated;
             discount = t.Discount;
             double afterDiscount = (double)(100 - discount) / 100;
             foreach (ItemModel item in t.SystemItems)
@@ -498,6 +511,11 @@ namespace SystemCostCalculation.ViewModels
             SupplierItems = new ObservableCollection<ItemModel>();
             TemplateItems = new ObservableCollection<ItemModel>();
             CurrentDate = DateTime.Now;
+            if (Constants.currentTemplate != null)
+            {
+                CurrentDate = Constants.currentTemplate.DateCreated;
+            }
+
         }
 
         #endregion
